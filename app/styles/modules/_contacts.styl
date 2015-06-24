@@ -1,0 +1,30 @@
+.contact-list
+  > ul
+    margin-top:60px
+    padding-bottom:51px
+    text-align:center
+    border-bottom:1px solid #e5e5e5
+    > li
+      color:#303030
+      lr(18px)
+      dibt()
+      position:relative
+      z-index:0
+      margin-left:62px
+      &:first-child
+        margin-left:0
+      icons = $location $caledar $email_contacts $phone_contacts $skype
+      for value, key in icons
+        &:nth-of-type({key+1})
+          &:after
+            content:''
+            position:absolute
+            z-index:1
+            sprite(value)
+            left:-17px
+            tt(-50%, 0)
+            top:-1px
+      > a
+        text-decoration:none
+        color:#303030
+        lr(18px)

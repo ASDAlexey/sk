@@ -706,7 +706,7 @@
             <div class="container">
               <h1 class="default-title">Подпишитесь на обновления</h1>
               <p>Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat.</p>
-              <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SubscribeCtrl" ng-init="action=&quot;./controller.php&quot;;dataForm.data={}" class="form-validate subscribe-form">
+              <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SubscribeCtrl" ng-init="action=&quot;./controller.php&quot;" class="form-validate subscribe-form">
                 <div>
                   <input type="email" name="subscribe" placeholder="Ваш email" ng-model="dataForm.data.subscribe" autocomplete="off" required>
                 </div>
@@ -847,8 +847,8 @@
         </div>
       </div>
     </div>
-    <!--script(src="bundle.js" async)-->
-    <script src="http://localhost:8080/webpack-dev-server.js"></script>
-    <script src="http://localhost:8080/bundle.js"></script>
+    <script src="bundle.js" async></script>
+    <!--script(src="http://localhost:8080/webpack-dev-server.js")-->
+    <!--script(src="http://localhost:8080/bundle.js")-->
   </body>
 </html>

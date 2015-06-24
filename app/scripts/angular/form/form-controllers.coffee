@@ -109,13 +109,33 @@ module.exports = (angular)->
     "$http"
     "$rootScope"
     "$timeout"
-    ($scope,$http,$rootScope,$timeout,windowProp) ->
-      $scope.setCountInputs = (count)->
-        $scope.widthLine = new Array(count)
-        $scope.widthLine = _.fill($scope.widthLine,'0');
-      $scope.setWidthLine = (index,count)->
-        $scope.widthLine[index] = count
+    ($scope,$http,$rootScope,$timeout) ->
       $rootScope.formIsValide = false
+      #custom select
+      $scope.setCountSelects = ()->
+        $scope.zIndex = new Array(1)
+        $scope.zIndex = _.fill($scope.zIndex,false)
+      $scope.fOpen = (number)->
+        $scope.zIndex[number] = true
+      $scope.fClose = (number)->
+        $scope.zIndex[number] = false
+      $scope.selects = {}
+      $scope.setSelect = (selectObj)->
+        $scope.selects[selectObj.name] = []
+        $scope.selects[selectObj.name].push {
+          name : selectObj.placeholder.text
+          value : selectObj.placeholder.value
+          maker : ""
+          ticked : true
+        }
+        angular.forEach selectObj.options,(value,key)->
+          unless selectObj.placeholder.text is value.text
+            $scope.selects[selectObj.name].push {
+              name : value.text
+              value : value.value
+              maker : ""
+              ticked : false
+            }
       $scope.form_set_pristine = (form) ->
         if form.$setPristine
           form.$setPristine()
@@ -125,25 +145,47 @@ module.exports = (angular)->
           angular.forEach form,(input,key) ->
             if typeof input is 'object' and input.$name isnt `undefined`
               form[input.$name].$setViewValue (if form[input.$name].$viewValue isnt `undefined` then form[input.$name].$viewValue else "")
-      $scope.send = (dataForm,formValidate,productId)=>
+      $scope.addSelects = ()->
+        resultSelects = []
+        angular.forEach $scope.selects,(value,key)->
+          if _.findWhere(value,{'ticked' : true}).value
+            resultSelects.push {
+              "name" : key
+              "value" : _.result(_.findWhere(value,{'ticked' : true}),'value')
+            }
+        if resultSelects.length
+          return resultSelects
+        else
+          return false
+      $scope.send = (dataForm,formValidate,action)=>
         if formValidate.$valid
-          $rootScope.formIsValide = true
-          $scope.dataForm = {}
-          $scope.dataForm.productId = productId
-          $timeout(->
-            $rootScope.hideThank()
-          ,2000)
-          $scope.form_set_pristine(formValidate)
-          $http(
-            url : "./controller.php"
+          $scope.thanksShowTime()
+          if $scope.addSelects()
+            dataForm.data.selects = $scope.addSelects()
+          sendOptions =
+            action : action
             method : "POST"
-            data : dataForm
-          )
+            data : angular.copy(dataForm)
+          $scope.clear(formValidate)
+          $scope.sendData(sendOptions)
         else
           $scope.form_set_dirty(formValidate)
       $scope.clear = (formValidate)=>
-        $scope.dataForm = {}
+        $scope.dataForm.data = {}
         $scope.form_set_pristine(formValidate)
       $rootScope.hideThank = ()->
         $rootScope.formIsValide = false
+      $scope.thanksShowTime = ()->
+        $rootScope.formIsValide = true
+        $timeout(->
+          $rootScope.hideThank()
+        ,2000)
+      $scope.sendData = (sendOptions)->
+        $http(
+          url : sendOptions.action
+          method : sendOptions.method
+          data : sendOptions.data
+        ).then(->
+          $scope.clear(formValidate)
+        )
   ]

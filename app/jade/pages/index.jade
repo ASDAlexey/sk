@@ -110,7 +110,7 @@ block content
         .container
             h1.default-title Подпишитесь на обновления
             p Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat.
-            form.form-validate.subscribe-form(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SubscribeCtrl" ng-init='action="./controller.php";dataForm.data={}')
+            form.form-validate.subscribe-form(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SubscribeCtrl" ng-init='action="./controller.php"')
                 div
                     input(type="email" name="subscribe" placeholder="Ваш email" ng-model='dataForm.data.subscribe' autocomplete="off" required)
                 input(type="hidden" name="task" ng-init='dataForm.hidden.task="subscribe"' ng-model='dataForm.hidden.task')

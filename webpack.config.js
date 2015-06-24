@@ -72,14 +72,14 @@ module.exports={
         //    "window.jQuery":"jquery",
         //    "root.jQuery":"jquery"
         //}),
-        new webpack.HotModuleReplacementPlugin(),
-        //new ngminPlugin(),
-        //new webpack.optimize.DedupePlugin(),
-        //new webpack.optimize.UglifyJsPlugin({
-        //    compress:{
-        //        warnings:false
-        //    },
-        //    minimize:true
-        //})
+        //new webpack.HotModuleReplacementPlugin(),
+        new ngminPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress:{
+                warnings:false
+            },
+            minimize:true
+        })
     ]
 };

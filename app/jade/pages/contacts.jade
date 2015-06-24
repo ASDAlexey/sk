@@ -1,0 +1,87 @@
+//- index.jade
+extends ../layout.jade
+block content
+    ul.breadcrumbs
+        li
+            a(href="./") Главная
+        li
+            span Контакты
+    section.content-block
+        h1.default-title Наши контакты
+        h2.default-sub-title Lorem ipsum dolor sit amet enim. Etiam ullamcorp uspendisse a pellentesque.
+        .contact-list
+            ul
+                li г. Москва, Ленина, 45
+                li Пн-Вв с 9:00 до 18:00
+                li
+                    a(href="mailto:s.klimov@mail.ru") s.klimov@mail.ru
+                li 8 (495) 456 78 78
+        h3 Наши контакты
+        h2.default-sub-title Lorem ipsum dolor sit amet enim. Etiam ullamcorp uspendisse a pellentesque. li klimov
+        form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)")
+            div.select-block(ng-class="{'open':zIndex[0]==true}")
+                // setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})
+                // name_select -любое имя cелекта латиницей
+                // "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder
+                //  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}
+                // "options" - перечисляем коллекция всех options ceлекта
+                // name в setSelect должен совпадать с input-model="selects['select0']"
+                div(multi-select ng-init='setSelect({"name":"select0","placeholder":{"value":"", "text":"Город"},"options":[{"value":"1","text":"Москва","src":""},{"value":"2","text":"Санкт-Петербург","src":""}]})' on-open="fOpen(0)" on-close="fClose(0)" input-model="selects['select0']" button-label="name" item-label="name maker" tick-property="ticked" selection-mode="single" helper-elements="")
+            div.small
+                label(for="name") Имя
+                input#name(type="text" name="name" ng-model='dataForm.data.name' autocomplete="off" required)
+            div.small
+                label(for="email") E-mail
+                input#email(type="email" name="email" ng-model='dataForm.data.email' autocomplete="off" required)
+            div
+                label(for="msg") Сообщение
+                textarea(name="msg" ng-model='dataForm.data.msg' autocomplete="off" required)
+            input(type="hidden" name="task" ng-init='dataForm.hidden.task="contacts"' ng-model='dataForm.hidden.task')
+            div.wrapper-send
+                button.send(ng-click='send(dataForm,formValidate,action)') Отправить
+    section.also-like
+        h1 Вам может также понравиться
+        ul
+            li
+                a(href="./product-details.html")
+                    .wrapper-img
+                        img(src="./images/also-like/1.jpg")
+                    .wrapper-text
+                        h2 Туфли “CARLO PAZOLINI”
+                        p 3 999 руб.
+            li
+                a(href="./product-details.html")
+                    .wrapper-img
+                        img(src="./images/also-like/2.jpg")
+                    .wrapper-text
+                        h2 Туфли “CARLO PAZOLINI”
+                        p 3 999 руб.
+
+            li
+                a(href="./product-details.html").wrapper-img
+                    .wrapper-img
+                        img(src="./images/also-like/3.jpg")
+                    .wrapper-text
+                        h2 Туфли “CARLO PAZOLINI”
+                        p 3 999 руб.
+            li
+                a(href="./product-details.html")
+                    .wrapper-img
+                        img(src="./images/also-like/4.jpg")
+                    .wrapper-text
+                        h2 Туфли “CARLO PAZOLINI”
+                        p 3 999 руб.
+            li
+                a(href="./product-details.html")
+                    .wrapper-img
+                        img(src="./images/also-like/5.jpg")
+                    .wrapper-text
+                        h2 Туфли “CARLO PAZOLINI” Туфли “CARLO PAZOLINI"
+                        p 3 999 руб.
+            li
+                a(href="./product-details.html")
+                    .wrapper-img
+                        img(src="./images/also-like/6.jpg")
+                    .wrapper-text
+                        h2 Туфли “CARLO PAZOLINI”
+                        p 3 999 руб.
