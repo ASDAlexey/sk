@@ -1,0 +1,36 @@
+HTMLCollection.prototype.forEach=Array.prototype.forEach;
+NodeList.prototype.forEach=Array.prototype.forEach;
+HTMLElement.prototype.index=function(){
+    var self=this,
+        parent=self.parentNode,
+        i=0;
+    while(self.previousElementSibling){
+        i++;
+        self=self.previousElementSibling
+    }
+    return this===parent.children[i]?i:-1;
+};
+if(typeof document.body.closest!=='function'){
+// matches polyfill
+    this.Element&&function(ElementPrototype){
+        ElementPrototype.matches=ElementPrototype.matches||
+            ElementPrototype.matchesSelector||
+            ElementPrototype.webkitMatchesSelector||
+            ElementPrototype.msMatchesSelector||
+            function(selector){
+                var node=this,nodes=(node.parentNode||node.document).querySelectorAll(selector),i=-1;
+                while(nodes[++i]&&nodes[i]!=node);
+                return !!nodes[i];
+            }
+    }(Element.prototype);
+
+// closest polyfill
+    this.Element&&function(ElementPrototype){
+        ElementPrototype.closest=ElementPrototype.closest||
+            function(selector){
+                var el=this;
+                while(el.matches&& !el.matches(selector)) el=el.parentNode;
+                return el.matches?el:null;
+            }
+    }(Element.prototype);
+}

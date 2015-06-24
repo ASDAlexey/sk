@@ -1,0 +1,65 @@
+.product-description
+  h2
+    color:#3c4447
+    lbl(17px)
+    text-transform:uppercase
+  ul
+    margin-bottom:30px
+    > li
+      margin-top:28px !important
+      margin-left:0 !important
+      padding-left:49px
+      position:relative
+      z-index:0
+      lr()
+      color:#3c4447
+      &:after
+        content:'';
+        position:absolute;
+        z-index:1;
+        width:7px
+        height:7px
+        border-radius:50%
+        background-color:#ff3600
+        left:37px
+        top:2px
+  p
+    lr(14px, 1.35)
+    color:#3c4447
+    a
+      lsb(14px, 1.35)
+      color:#e33406
+.wrapper-gallery
+  margin-bottom:42px
+  margin-right:49px
+  float:left
+  display:block
+  width:337px
+  .button
+    margin:0
+    width:363px
+    position:relative
+    z-index:0
+    left:-13px
+  ul
+    li
+      margin:0
+      display:none !important
+      &:first-of-type
+        display:block !important
+        position:relative
+        z-index:0
+        a
+          position:relative
+          z-index:0
+          &:after
+            content:''
+            position:absolute
+            z-index:1
+            right:19px
+            bottom:13px
+            sprite($photobox)
+      a
+        width:337px
+        height:231px
+        text-decoration:none

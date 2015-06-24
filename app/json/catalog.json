@@ -1,0 +1,56 @@
+[
+  {
+    "src": "./images/catalog/1.jpg",
+    "title": "Дачный домик с навесо для автомобиля",
+    "square": 82.65,
+    "price": "от 1 345 678 руб"
+  },
+  {
+    "src": "./images/catalog/2.jpg",
+    "title": "Испания",
+    "square": 122.1,
+    "price": "от 345 678 руб"
+  },
+  {
+    "src": "./images/catalog/3.jpg",
+    "title": "Финляндия",
+    "square": 159.8,
+    "price": "от 905 678 руб"
+  },
+  {
+    "src": "./images/catalog/4.jpg",
+    "title": "Греция",
+    "square": 159.8,
+    "price": "от 3 345 678 руб"
+  },
+  {
+    "src": "./images/catalog/5.jpg",
+    "title": "Италия",
+    "square": 203.9,
+    "price": "от 2 375 688 руб"
+  },
+  {
+    "src": "./images/catalog/6.jpg",
+    "title": "Европа",
+    "square": 82.65,
+    "price": "от 5 345 678 руб"
+  },
+  {
+    "src": "./images/catalog/7.jpg",
+    "title": "Япония",
+    "square": 82.65,
+    "price": "от 1 345 678 руб"
+  },
+  {
+    "src": "./images/catalog/8.jpg",
+    "title": "Испания",
+    "square": 122.1,
+    "price": "от 1 345 678 руб"
+  },
+  {
+    "src": "./images/catalog/9.jpg",
+    "title": "Финляндия",
+    "square": 159.8,
+    "price": "от 1 345 678 руб"
+  }
+]

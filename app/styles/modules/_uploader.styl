@@ -1,0 +1,86 @@
+.progress-load
+  position:fixed
+  z-index:1001
+  left:0
+  top:0
+  width:100%
+  height:4px
+  display:block
+  span
+    width:0
+    height:100%
+    display:block
+    tn(.3s)
+    background-color:#e7512a
+.list-files
+  float:right
+  width:718px
+  dibt()
+  .ua-gecko &,.ua-ie &
+    width:708px
+  > li
+    cursor:pointer
+    margin-top:15px
+    margin-left:12px
+    dibt()
+    > *
+      dibt()
+    span
+      color:#fcfeff
+      lr(15px)
+    div
+      span
+        margin-left:3px
+        dibt()
+        color:#fcfeff
+        lr(15px)
+      a
+        dibt()
+        margin-left:4px
+        margin-top:-3px
+        sprite($remove_file)
+.wrapper-files-block
+  after()
+  text-align:left
+  margin:34px 0 0
+  .btn-file
+    cursor:pointer
+    dibt()
+    width:205px
+    height:42px
+    background-color:#e7512a
+    position:relative
+    z-index:0
+    padding:0
+    > *
+      cursor:pointer
+    &:after
+      content:''
+      position:absolute
+      z-index:1
+      sprite($add_file)
+      right:10px
+      top:50%
+      tt(0, -50%)
+    span
+      padding-right:23px
+      padding-left:29px
+      display:block
+      position:absolute
+      z-index:1
+      width:100%
+      left:0
+      top 50%
+      tt(0, -50%)
+      color:#fcfeff
+      lb(13px)
+      text-transform:uppercase
+      margin-top:2px
+    input[type="file"]
+      position:absolute
+      z-index:3
+      top:0
+      left:0
+      opacity:0
+      width:100%
+      height:100%

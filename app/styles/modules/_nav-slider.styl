@@ -1,0 +1,182 @@
+.nav-slider
+  width:100%
+  overflow hidden
+  ul
+    font-size:0
+    .bond-slide
+      dibt()
+      &:nth-of-type(2n-1)
+        a
+          background-color:#e7512a
+      > a
+        position:relative
+        z-index:0
+        text-decoration:none
+        width:276px
+        height:200px
+        display:block
+        background-color:#ef6623
+        tn(.7s)
+        &:hover
+          span
+            &.img
+                &.menu-1
+                  &:after
+                    sprite($menu_1)
+                &.menu-2
+                  &:after
+                    sprite($menu_2)
+                &.menu-3
+                  &:after
+                    sprite($menu_3)
+                &.menu-4
+                  &:after
+                    sprite($menu_4)
+                &.menu-5
+                  &:after
+                    sprite($menu_5)
+                &.menu-6
+                  &:after
+                    sprite($menu_6)
+                &.menu-7
+                  &:after
+                    sprite($menu_7)
+        span
+          tn(.3s)
+          &.img
+            border-radius:50%
+            position:absolute
+            z-index:1
+            left:50%
+            top:39px
+            margin-left:-50px
+            width:100px
+            height:100px
+            dibt()
+            background-color:#fff
+            &.menu-1
+              &:after
+                content:'';
+                position:absolute;
+                z-index:1;
+                aa(2)
+                sprite($menu_1_h)
+            &.menu-2
+              &:after
+                content:'';
+                position:absolute;
+                z-index:1;
+                aa(2)
+                sprite($menu_2_h)
+            &.menu-3
+              &:after
+                content:'';
+                position:absolute;
+                z-index:1;
+                aa(2)
+                sprite($menu_3_h)
+            &.menu-4
+              &:after
+                content:'';
+                position:absolute;
+                z-index:1;
+                aa(2)
+                sprite($menu_4_h)
+            &.menu-5
+              &:after
+                content:'';
+                position:absolute;
+                z-index:1;
+                aa(2)
+                sprite($menu_5_h)
+            &.menu-6
+              &:after
+                content:'';
+                position:absolute;
+                z-index:1;
+                aa(2)
+                sprite($menu_6_h)
+            &.menu-7
+              &:after
+                content:'';
+                position:absolute;
+                z-index:1;
+                aa(2)
+                sprite($menu_7_h)
+          &:nth-of-type(2)
+            text-align:center
+            width:100%
+            position:absolute
+            z-index:1
+            left:0
+            bottom:25px
+            color:#fff
+            text-transform:uppercase
+        &:hover
+          background-color:#3c4447
+          span
+            &.img
+              background-color:#3c4447
+/*jbond slider*/
+.bond{
+  height:200px;
+  position:relative;
+  overflow:hidden;
+  width:100%;
+}
+.bond-hover,
+.bond-touchmargin,
+.bond-touchcss{
+  height:276px;
+  margin:0 auto;
+  overflow:hidden;
+  padding-top:7px;
+  position:relative;
+}
+.bond-wrapper{
+  -webkit-transform:translate3d(0px, 0px, 0px);
+  -webkit-transition-property:-webkit-transform;
+  -webkit-transition-duration:0s;
+  -webkit-transition-timing-function:cubic-bezier(0, 1, 1, 1);
+  position:absolute;
+  left:0;
+}
+.bond-wrapper a{
+  display:block;
+  -webkit-transition:none;
+  -moz-transition:none;
+  -o-transition:none;
+  transition:none;
+  border:none;
+}
+.bond-box{
+  width:9999px;
+}
+.bond-box .float-block{
+  margin-left:40px;
+  margin-right:40px;
+}
+.bond-slide{
+  float:left;
+  position:relative;
+  z-index:0;
+  top:0;
+  left:0;
+}
+.transparency{
+  margin-top:-115px;
+  display:block;
+}
+.bond-slide img{
+  width:276px;
+  height:140px;
+  border:none;
+}
+.slider-arrows-bond li{
+  float:left;
+  width:10px;
+  height:10px;
+  cursor:pointer;
+  background-color:orange;
+  margin-left:10px;
+}

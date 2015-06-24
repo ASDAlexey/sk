@@ -1,0 +1,397 @@
+.wrapper > .header
+  height:61px
+  background-color:#e5e5e5
+  .header-list
+    text-align:right
+    > li
+      dibt()
+      margin-top:23px
+      margin-left:56px
+      > a
+        color:#303030
+        text-decoration:none
+        position:relative
+        z-index:0
+        &:after
+          content:''
+          position:absolute
+          z-index:1
+          left:-26px
+          top:50%
+          tt(0, -50%)
+          margin-top:-1px
+      &:first-child
+        > a
+          &:after
+            sprite($email)
+            margin-top:-3px
+      &:nth-child(2)
+        > a
+          &:after
+            sprite($phone)
+      &:nth-child(3)
+        margin-left:30px
+        > a
+          background-color:#822a7e
+          color:#fff
+          padding:5px 7px
+          tn(.5s)
+          &:hover
+            background-color:#92d2d4
+.header-content
+  padding-right:42px
+  padding-bottom:35px
+  margin-bottom:31px
+  margin-top:36px
+  border-bottom:1px solid #e5e5e5
+  after()
+  position:relative
+  z-index:1
+  .style
+    position:relative
+    z-index:0
+    padding-top:16px
+    &:after
+      content:''
+      position:absolute
+      z-index:1
+      top:50%
+      margin-top:6px
+      left:-17px
+      tt(0, -50%)
+    > a
+      text-decoration:none
+  .authentificition
+    span
+      color:#f00
+    &:after
+      sprite($auth)
+  .cart
+    margin:0 32px 0 53px
+    padding:13px 14px 11px 44px
+    border-left:1px solid #fff
+    border-right:1px solid #fff
+    border-top:1px solid #fff
+    border-bottom:1px solid #fff
+    tn(.5s)
+    position:relative
+    z-index:3
+    &:before
+      content:''
+      position:absolute
+      z-index:2
+      left:0
+      bottom:-1px
+      height:1px
+      background-color:#fff
+      width:100%
+    a
+      span
+        margin-right:0 !important
+        span
+          margin-right:0 !important
+    .mini-cart-content
+      background-color:#fff
+      position:absolute
+      z-index:1
+      right:-1px
+      top:100%
+      width:441px
+      border:1px solid #e5e5e5
+      .wrapper-scroller
+        overflow visible
+      .scroller
+        ul
+          overflow auto
+          > li
+            height:87px
+            padding:18px 0 18px 0
+            margin-left:18px
+            margin-right:15px
+            border-bottom:1px solid #e5e5e5
+            .wrapper-img
+              width:50px
+              height:50px
+              border:1px solid #e5e5e5
+              dibt()
+              position:relative
+              z-index:0
+              img
+                aa(1)
+                max-width 90%
+                max-height 90%
+            .wrapper-title
+              dibt()
+              width:234px
+              .title
+                padding-top:1px
+                padding-left:12px
+                color:#303030
+                lb(12px)
+                width:100%
+                height:49px
+                display:flex
+                align-items center
+                a
+                  text-decoration:none
+            .wrapper-price
+              dibt()
+              width:100px
+              .price
+                text-align:center
+                padding-top:1px
+                color:#303030
+                lb(12px)
+                width:100%
+                height:49px
+                display:flex
+                align-items center
+                span
+                  margin:auto
+            .wrapper-delete
+              dibt()
+              position:relative
+              z-index:0
+              height:48px
+              .delete
+                position:absolute
+                z-index:1
+                text-decoration:none
+                sprite($close)
+                aa(1)
+      > .footer-small-cart
+        after()
+        position:relative
+        z-index:0
+        .close-small-cart
+          padding:0
+          position:absolute
+          z-index:1
+          right:-30px
+          bottom:-30px
+          background-color:#000
+          tn(.5s)
+          width:30px
+          height:30px
+          .fa
+            color:#fff
+            aa(1)
+            &:before
+              tn(.5s)
+          &:hover
+            .fa
+              &:before
+                transform:rotate(-180deg)
+                transform-origin:0 0
+          &:hover
+            background-color:#fff
+            color:#000
+            .fa
+              color:#000
+        > div
+          padding-left:18px
+          padding-top:29px
+          padding-bottom:28px
+          float:left
+          span
+            lb(12px)
+            color:#36979d
+            &:first-child
+              color:#303030
+        > .issue
+          float:right
+          background-color:#79bdbe
+          display:block
+          text-decoration:none
+          text-transform:uppercase
+          color:#fff
+          width:113px
+          height:32px
+          text-align:center
+          lr(12px, 32px)
+          margin-top:18px
+          margin-right:15px
+          &:hover
+            background-color:#66bebe
+    &:hover, &.active
+      border-color:#e5e5e5
+      border-bottom:1px solid #fff
+    &:after
+      sprite($cart)
+      left:10px;
+      top:12px;
+    > a
+      span
+        dibt()
+        &:first-child
+          margin-right:4px
+  .search
+    float:none
+    position:absolute
+    z-index:1
+    top:0
+    right:0
+    span
+      aa(1)
+    .send
+      width:42px
+      height:42px
+      border:1px solid #959595
+    &:hover
+      .wrapper-search-block
+        width:1139px
+    .wrapper-search-block
+      tn(1s)
+      overflow hidden
+      position:absolute
+      z-index:1
+      right:42px
+      top:0
+      width:0
+      &.active
+        width:1139px
+      input
+        background-color:#fff
+        border-top:1px solid #959595
+        border-left:1px solid #959595
+        border-bottom:1px solid #959595
+        display:block
+        width:100%
+        height:42px
+        padding:1px 12px 0
+        lr(16px, 42px)
+  > *
+    float:right
+  > ul
+    float:none
+    font-size:0
+    > li
+      height:43px
+      dibt()
+      &:hover
+        > .sub-menu
+          max-height 5000px
+          padding-bottom:34px
+          border-bottom:3px solid #79bdbe
+        span
+          &:before
+            top:-12px
+            opacity:1
+      span
+        display:block
+        position:relative
+        z-index:0
+        &:before
+          content:''
+          position:absolute
+          z-index:1
+          left:50%
+          top:0
+          opacity:0
+          border:13px solid transparent;
+          border-bottom:13px solid #79bdbe;
+          tt(-50%,0)
+          tn(.5s)
+        &:after
+          content:''
+          position:absolute
+          z-index:1
+          left:0
+          top:-1px
+          width:100%
+          height:35px
+      > .sub-menu
+        max-height 0
+        transition:all .5s ease-in-out
+        overflow hidden
+        padding-bottom:0
+        border-top:1px solid #e5e5e5
+        border-bottom:0 solid #ccc
+        background-color:#fff
+        padding-left:88px
+        width:calc(100% + 66px)
+        position:absolute
+        z-index:2
+        left:-33px
+        top:78px
+        > div
+          position:relative
+          z-index:0
+          margin-top:32px
+          dibt()
+          &:last-child
+            &:after
+              display:none
+          &.start-category
+            &:before
+              content:''
+              position:absolute
+              z-index:1
+              top:32px
+              height:calc(100% - 32px)
+              width:1px
+              left:-5px
+              background-color:#ccc
+          &:after
+            content:''
+            position:absolute
+            z-index:1
+            top:32px
+            height:calc(100% - 32px)
+            width:1px
+            right:0
+            background-color:#ccc
+          h2
+            height:10px
+            padding-left:40px
+            color:#3c3b3a
+            text-transform:uppercase
+            lr(14px)
+            margin-bottom:21px
+          > ul
+            padding:0 40px
+            dibt()
+            position:relative
+            z-index:0
+            &:after
+              content:''
+              position:absolute
+              z-index:1
+              right:0
+              top:0
+              height:100%
+              width:1px
+              background-color:#ccc
+            &:last-child
+              &:after
+                display:none
+            > li
+              margin-top:14px
+              &:first-child
+                margin-top:0
+              > a
+                text-decoration:none
+                lr(14px)
+                color:#3c3b3a
+                tn(.5s)
+                &:hover
+                  color:#78c0c1
+      &:first-child
+        margin-right:54px
+        > a
+          padding:0
+      &:nth-child(2)
+        > a
+          border:none
+      > a
+        border-left:1px solid #c9c9c9
+        padding:3px 19px 0
+        display:block
+        color:#303030
+        lr(14px, 43px)
+        text-decoration:none
+        tn(.5s)
+        &:hover
+          color:#78c0c1
+        > img
+          dibt()

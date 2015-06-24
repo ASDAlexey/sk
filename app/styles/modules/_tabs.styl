@@ -1,0 +1,211 @@
+.tabs
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-attachment:fixed;
+  background-image:url(../images/bg/bg-tabs.jpg)
+  height:515px
+  padding-top:46px
+  position:relative
+  z-index:0
+  .container
+    position:relative
+    z-index:0
+    &.tab-index-1
+      &:after
+        left:-1855px
+      &:before
+        right:-1106px
+    &.tab-index-2
+      &:after
+        left:-1609px
+      &:before
+        right:-1406px
+    &.tab-index-3
+      &:after
+        left:-1349px
+      &:before
+        right:-1667px
+    &.tab-index-4
+      &:after
+        left:-1124px
+      &:before
+        right:-1891px
+    &:after, &:before
+      tn(.7s)
+      content:''
+      position:absolute
+      z-index:1
+      width:1920px
+      height:7px
+      background-color:#fff
+      top:200px
+    &:after
+      left:0
+    &:before
+      right:0
+  &.contact-tabs
+    height:auto
+    background:none
+    .container
+      &:after, &:before
+        display:none
+    ul
+      > li
+        width:100%
+        > div
+          font-size:0
+    dl.tab-contacts
+      dibt()
+      width:50%
+      font-size:0
+      &:nth-of-type(odd)
+        padding-left:64px
+        padding-right:32px
+      &:nth-of-type(even)
+        padding-left:64px
+        padding-right:32px
+      > *
+        width:100%
+        dibt()
+      for num in (1..6)
+        &:nth-of-type({num})
+          dt
+            &:after
+              sprite(lookup('$contact_' + num))
+      &:nth-of-type(6)
+        dt
+          color:#e64c24
+      &:nth-of-type(-n+2)
+        dt
+          margin-top:24px
+      &:last-child
+        dd
+          cursor:pointer
+          ul
+            height:15px
+            overflow:hidden
+          a
+            text-decoration:none
+            span
+              color:#3c4447
+      dt
+        position:relative
+        z-index:0
+        color:#3c4447
+        lb(16px)
+        text-transform:uppercase
+        padding:30px 0 10px
+        &:after
+          content:'';
+          position:absolute;
+          z-index:1;
+          left:-40px
+          top:26px
+      dd
+        color:#3c4447
+        lr(16px)
+    .switcher-tabs
+      border-bottom:1px solid #3c4447
+      padding-bottom:23px
+    .switcher-tabs
+      > li
+        margin-top:30px !important
+        width:324px
+        padding-top:0
+        margin-left:0
+        a
+          color:#3c4447
+          position:relative
+          z-index:0
+          tn(.5s)
+          &:hover, &.active
+            color:#ffffff
+            &:after
+              opacity:1
+          &:before
+            display:none
+          &:after
+            tn(.5s)
+            z-index:-1
+            background:none !important
+            top:-6px !important
+            width:157px !important
+            height:26px !important
+            background-color:#e64c24 !important
+            transform:skewX(44deg)
+            margin-left:-79px
+            opacity:0
+
+  .switcher-tabs
+    > li
+      display:table-cell
+      width:1%
+      text-align:center
+      padding-top:153px
+      &:hover
+        a
+          &:before
+            border-color:#fc5301
+      a
+        text-decoration:none
+        color:#fff
+        text-transform:uppercase
+        lh(18px)
+        position:relative
+        z-index:0
+        &:before
+          tn()
+          width:96px
+          height:96px
+          border-radius:50%
+          border:1px solid #fff
+          content:''
+          position:absolute
+          z-index:0
+          left:50%
+          top:-116px
+          transform:translate(-50%, 0)
+        &:after
+          content:'';
+          position:absolute;
+          z-index:1;
+          sprite($tab1)
+          left:50%
+          top:-85px
+          transform:translate(-50%, 0)
+      &:nth-of-type(2)
+        a
+          &:after
+            sprite($tab2)
+      &:nth-of-type(3)
+        a
+          &:after
+            sprite($tab3)
+            top:-92px
+      &:nth-of-type(4)
+        a
+          &:after
+            sprite($tab4)
+  .tabs-container
+    > li
+      > ul
+        margin-top:70px
+        > li
+          width:1%
+          display:table-cell
+          text-align:left
+          padding-left:56px
+          h1
+            color:#fff
+            lbl(14px)
+            margin-bottom:22px
+            text-transform:uppercase
+          ul
+            li
+              a
+                ur()
+                text-decoration:none
+                color:#fff
+                tn(.3s)
+                &:hover
+                  color:#da5e22

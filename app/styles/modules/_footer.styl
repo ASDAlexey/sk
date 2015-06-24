@@ -1,0 +1,111 @@
+.footer
+  position:relative
+  z-index:0
+  height:327px
+  overflow:hidden
+  width:100%
+  background-color:#e5e5e5
+  .container
+    after()
+  .firm-logo
+    text-decoration:none
+    white-space:nowrap
+    padding-top:10px
+    float:right
+    > div
+      dibt()
+      &:first-child
+        position:relative
+        z-index:0
+        margin-right:8px
+        text-align:right
+        top:-7px
+        span
+          display:block
+          color:#939393
+          font:12px / 12px Arial, sans-serif
+          margin-top:2px
+  .footer-bottom
+    padding-top:21px
+  .footer-top
+    .container
+      padding-top:62px
+      position:relative
+      z-index:0
+      font-size:0
+      after()
+      background-color:#fff
+      height:253px
+      &:before
+        content:''
+        position:absolute
+        z-index:1
+        left:33px
+        top:0
+        width:calc(100% - 66px)
+        height:1px
+        background-color:#e5e5e5
+      > div
+        width:25%
+        dibt()
+        > p
+          margin:19px 0 47px
+          color:#303030
+        .title
+          color:#303030
+          lb()
+          text-transform:uppercase
+        ul
+          &.social
+            font-size:0
+            > li
+              margin-top:0
+              dibt()
+              margin-left:14px
+              &:first-child
+                margin-top:0
+                margin-left:0
+              a
+                display:block
+                width:32px
+                height:32px
+                border:1px solid #606060
+                position:relative
+                z-index:0
+                tn(.5s)
+                &:hover
+                  background-color:#77b7b8
+                  border:1px solid #77b7b8
+                  >span
+                    color:#fff
+                > span
+                  &:first-child
+                    aa(1)
+                    tn(.5s)
+                  &:nth-child(2)
+                    dibt()
+                    text-indent:-9999px
+          &:not(.social)
+            > li
+              margin-top:14px
+              &:first-child
+                margin-top:22px
+              a
+                position:relative
+                z-index:0
+                text-decoration:none
+                lr(12px)
+                color:#303030
+                &:hover
+                  &:after
+                    width:100%
+                &:after
+                  tn(.5s)
+                  content:''
+                  position:absolute
+                  z-index:1
+                  left:0
+                  bottom:-2px
+                  height:1px
+                  width:0
+                  background-color:#303030

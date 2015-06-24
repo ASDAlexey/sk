@@ -1,0 +1,188 @@
+mixin header()
+    header.header
+        ul.header-list
+            li
+                a(href="./contacts.html") Наши контакты
+            li
+                a(href="tel:8-495-456-7878") 8 (495) 456 78 78
+            li
+                a(href="") Перезвоните мне
+mixin header-content()
+    header.header-content
+        .search
+            form.form-validate.search(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SearchCtrl" ng-init='action="index.php?limitstart=0&option=com_virtuemart&view=category"')
+                button.send(ng-click='send(dataForm,formValidate,action)' ng-class="{'active':isOpenSearch==true}")
+                    span.fa.fa-search
+                .wrapper-search-block(ng-class="{'active':isOpenSearch==true}")
+                    input(type="text" name="search" placeholder="Поиск" ng-model='dataForm.search' autocomplete="off" ng-focus="isOpenSearch=true" ng-blur="blurSearch(dataForm.search)" required)
+        .cart.style(flip3d)
+            a(href="")
+                span Корзина (
+                span 2
+                | )
+            .mini-cart-content
+                .wrapper-scroller.mini-cart-slider
+                    ul.switcher
+                        li
+                            a(href="" class="prev")
+                        li
+                            a(href="" class="next")
+                    scroller.scroller.scroller-y.is-draggable(item-width="87" count-slides="3" direction="scrollTop")
+                        ul
+                            li
+                                a(href="./product-details.html").wrapper-img
+                                    img(src="./images/small-cart/1.png" width="45" height="38")
+                                .wrapper-title
+                                    h1.title
+                                        a(href="./product-details.html") Туфли “МАНГО”
+                                .wrapper-price
+                                    p.price
+                                        span 3 999 руб.
+                                .wrapper-delete
+                                    a.delete(href="")
+                            li
+                                a(href="./product-details.html").wrapper-img
+                                    img(src="./images/small-cart/1.png" width="45" height="38")
+                                .wrapper-title
+                                    h1.title
+                                        a(href="./product-details.html") Туфли “МАНГО” 2
+                                .wrapper-price
+                                    p.price
+                                        span 3 999 руб.
+                                .wrapper-delete
+                                    a.delete(href="")
+                            li
+                                a(href="./product-details.html").wrapper-img
+                                    img(src="./images/small-cart/1.png" width="45" height="38")
+                                .wrapper-title
+                                    h1.title
+                                        a(href="./product-details.html") Туфли “МАНГО” 3
+                                .wrapper-price
+                                    p.price
+                                        span 3 999 руб.
+                                .wrapper-delete
+                                    a.delete(href="")
+                footer.footer-small-cart
+                    .close-small-cart
+                        .fa.fa-close
+                    div
+                        span Итого:
+                        span  3 999
+                        span руб.
+                    a.issue(href="./cart.html") Оформить
+        .authentificition.style
+            a(href="" hidden) Вход
+            a(href="") Иван (
+                span выйти
+                | )
+        -var nav=["Для женщин","Для мужчин","Для детей","Акции","Распродажа","О компании"];
+        ul
+            li
+                a(href="./")
+                    img(src="./images/logo.png" width="42" height="42")
+            each listNav,key in nav
+                li
+                    a(href="./category.html") #{listNav}
+                    span
+                    div.sub-menu
+                        div.start-category
+                            h2 Обувь
+                            ul
+                                li
+                                    a(href="./product-details.html") Балетки
+                                li
+                                    a(href="./product-details.html") Босоножки
+                                li
+                                    a(href="./product-details.html") Cандалии
+                                li
+                                    a(href="./product-details.html") Ботинки
+                                li
+                                    a(href="./product-details.html") Кеды
+                        div
+                            h2
+                            ul
+                                li
+                                    a(href="./product-details.html") Кроссовки
+                                li
+                                    a(href="./product-details.html") Мокасины
+                                li
+                                    a(href="./product-details.html") Пантолеты
+                                li
+                                    a(href="./product-details.html") Шлепанцы
+                                li
+                                    a(href="./product-details.html") Полусапожки
+                        div
+                            h2
+                            ul
+                                li
+                                    a(href="./product-details.html") Резиновые сапоги
+                                li
+                                    a(href="./product-details.html") Сабо
+                                li
+                                    a(href="./product-details.html") Сапоги
+                                li
+                                    a(href="./product-details.html") Слипоны
+                                li
+                                    a(href="./product-details.html") Тапочки
+                        div
+                            h2
+                            ul
+                                li
+                                    a(href="./product-details.html") Туфли
+                        div.start-category
+                            h2 Сумки
+                            ul
+                                li
+                                    a(href="./product-details.html") Балетки
+                                li
+                                    a(href="./product-details.html") Босоножки
+                                li
+                                    a(href="./product-details.html") Cандалии
+                                li
+                                    a(href="./product-details.html") Ботинки
+                                li
+                                    a(href="./product-details.html") Кеды
+                        div
+                            h2
+                            ul
+                                li
+                                    a(href="./product-details.html") Кроссовки
+                                li
+                                    a(href="./product-details.html") Мокасины
+                                li
+                                    a(href="./product-details.html") Пантолеты
+                                li
+                                    a(href="./product-details.html") Шлепанцы
+                                li
+                                    a(href="./product-details.html") Полусапожки
+                        div.start-category
+                            h2 Платья
+                            ul
+                                li
+                                    a(href="./product-details.html") Резиновые сапоги
+                                li
+                                    a(href="./product-details.html") Сабо
+                                li
+                                    a(href="./product-details.html") Сапоги
+                                li
+                                    a(href="./product-details.html") Слипоны
+                                li
+                                    a(href="./product-details.html") Тапочки
+                        div
+                            h2
+                            ul
+                                li
+                                    a(href="./product-details.html") Туфли
+mixin breadcrumbs(arr)
+    div.wrapper-breadcrumbs
+        ul.breadcrumbs.animated.bounceInRight
+            -var itteration=0;
+            -var count=arr.length;
+            each arrItem in arr
+                if (itteration==count-1)
+                    li
+                        span #{arrItem}
+                else
+                    li
+                        a(href="./") #{arrItem}
+                - itteration++

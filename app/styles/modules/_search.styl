@@ -1,0 +1,110 @@
+.search-block
+  display:block
+  padding-top:7px
+  .multiSelect .checkboxLayer
+    top:34px
+  .multiSelect .button .buttonLabel
+    text-align:right
+  .wrapper-search-block .multiSelect .buttonLabel
+    padding-top:7px
+  .search
+    height:auto;
+    width:100%
+    after()
+    .send
+      float:right
+      width:36px
+      height:36px
+      position:relative
+      z-index:2
+      border:2px solid #ff3000
+      tn(.3s)
+      display:none
+      &.active
+        display:block
+      &:hover
+        border-color:#0048a0
+        .fa-search
+          color:#0048a0
+      .fa-search
+        tn(.3s)
+        aa(1)
+        font-size:18px
+        color:#ff3000
+.wrapper-search-block
+  overflow hidden
+  width:0
+  float:right
+  border:1px solid #fff
+  background-color:rgba(255,255,255,.7)
+  height:36px
+  position:relative
+  z-index:0
+  right:-2px
+  tn(.5s)
+  &.active{
+    width:800px
+    overflow visible
+  }
+  .multiSelect .multiSelectItem:not(.multiSelectGroup).selected,.multiSelect .multiSelectItem
+    text-align:right
+  .multiSelect .tickMark
+    display:none
+  .multiSelect .acol
+    position:relative
+    z-index:0
+  .multiSelect .checkBoxContainer
+    padding:0
+  .multiSelect .multiSelectItem
+    padding:9px 3px 7px
+  .multiSelect .multiSelectItem
+    width:234px
+  .multiSelect .multiSelectItem:not(.multiSelectGroup).selected
+    background:none !important
+    border:none !important
+    .acol
+      label
+        span
+          color:#ff3000 !important
+  .multiSelect .multiSelectItem:hover, .multiSelect .multiSelectGroup:hover
+    background:none !important
+    background-color:#f4f7e7 !important
+    border-top:1px solid #ccc !important
+    border-bottom:1px solid #ccc !important
+  >input
+    width:560px
+    display:block
+    background:none
+    height:36px
+    float:left
+    padding-left:34px
+  .multiSelect
+    .caret
+      text-indent:-9999em
+      dibt()
+      margin-left:20px !important
+      right:30px
+      sprite($angle)
+      width: 10px !important
+      height: 6px !important
+      border:none !important
+      margin-top:4px !important
+    .buttonLabel
+      color:#ff3000
+      padding: 10px 0 8px
+    .button
+      padding-right:19px
+      width:235px
+      background:none
+      border:none
+      text-align:right
+      position:relative
+      z-index:0
+.wrapper-search-select
+  dibt()
+  position:relative
+  z-index:0
+  opacity:0
+  tn(.5s)
+  &.active
+    opacity:1

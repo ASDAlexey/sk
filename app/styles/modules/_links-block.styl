@@ -1,0 +1,53 @@
+.links-block
+  margin-top:30px
+  > ul
+    font-size:0
+    > li
+      dibt()
+      width:25%
+      $height = 290px
+      .arrow
+        color:#fff
+        dibt()
+        margin-bottom:10px
+        font-size:20px
+        sprite($arrow)
+      .title
+        margin-bottom:10px
+      h1, h2
+        color:#fff
+        text-transform:uppercase
+      .title
+        lb(24px)
+      .discont
+        font:72px Georgia, sans-serif
+        font-style italic
+        color:#fff
+        padding-bottom:15px
+        dibt()
+      h2
+        font:18px Georgia, sans-serif
+        font-style italic
+      > *
+        background-position:center center
+        background-size:cover
+        text-align:center
+        padding:0 30px
+        text-decoration:none
+      .col-h-1
+        height:$height
+        display:flex
+        align-content:center
+        align-items:center
+        tn(.5s)
+        &:hover
+          opacity:.9
+      .col-h-2
+        tn(.5s)
+        display:flex
+        align-content:center
+        height:$height* 2
+        > *
+          margin:auto;
+        &:hover
+          opacity:.7

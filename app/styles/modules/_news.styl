@@ -1,0 +1,96 @@
+.list-news
+  > li
+    margin-right:16px
+    padding:18px 0
+    text-align:left
+    font-size:0
+    height:151px
+    width:calc(100% - 16px)
+    position:relative
+    z-index:0
+    &:after
+      content:''
+      position:absolute
+      z-index:1
+      right:-16px
+      top:50%
+      tt(0, -50%)
+      border:17px solid transparent;
+      border-right:15px solid #fff;
+      opacity:0
+      tn(.5s)
+    &.active
+        &:after
+          opacity:1
+    .wrapper-img
+      text-decoration:none
+      dibt()
+      width:126px
+      height:115px
+      position:relative
+      z-index:0
+      overflow:hidden
+      img
+        height:115px
+        position:absolute
+        z-index:0
+        top:0
+        left:50%
+        tt(-50%, 0)
+    .preview-info
+      height:100%
+      position:relative
+      z-index:0
+      dibt()
+      margin-left:16px
+      width:197px
+      h2
+        margin-bottom:5px
+        a
+          text-decoration:none
+          color:#000
+      .time
+        color:#9a9c92
+        kr(10px)
+      img
+        margin:20px 0 20px
+      p
+        color:#000
+        kl(14px)
+        position:absolute
+        z-index:1
+        left:0
+        bottom:0
+.pagination
+  margin:8px 0
+  white-space:nowrap
+  text-align:center
+  font-size:0
+  > li
+    margin-left:3px
+    dibt()
+    &:first-child
+      margin-left:0
+    > a
+      border:1px solid #f4f7e7
+      padding-top:4px
+      dibt()
+      width:21px
+      height:21px
+      text-decoration:none
+      color:#0048a0
+      tn()
+      &:hover
+        border-color:#0048a0
+      span
+        color:#0048a0
+        font-size:14px
+        position:relative
+        z-index:0
+        top:-1px
+    > span
+      padding-top:4px
+      dibt()
+      width:26px
+      height:26px
+      color:#ff3000

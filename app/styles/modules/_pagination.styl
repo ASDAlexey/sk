@@ -1,0 +1,35 @@
+.wrapper-pagination
+  text-align:center
+  position:relative
+  z-index:0
+  top:23px
+.pagination
+  padding:7px 100px 3px
+  dibt()
+  position:relative
+  z-index:0
+  text-align:center
+  &:after
+    left:0
+    top:0
+    content:'';
+    position:absolute;
+    z-index:1;
+    width:100%
+    height:100%
+    border:1px dashed #fff
+    tm(skewX(-37deg))
+  > li
+    position:relative
+    z-index:2
+    dibt()
+    > *
+      dibt()
+      margin:0 3px
+    a
+      text-decoration:none
+      color:#e9e9e9
+      lr()
+    span
+      color:#fff
+      lbl()

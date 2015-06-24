@@ -1,0 +1,102 @@
+doctype html
+html
+    head
+        include ./includes/head.jade
+        include ./includes/mixins.jade
+    body(pointer-events-scroll style="opacity:0")
+        .wrapper.dNtoLoad
+            +header()
+            main.main
+                .container
+                    +header-content()
+                    block content
+        footer.footer
+            .footer-top
+                .container
+                    div
+                        h1.title Коллекции
+                        ul
+                            li
+                                a(href="./category.html") Женская обувь (1725)
+                            li
+                                a(href="./category.html") Мужская обувь (635)
+                            li
+                                a(href="./category.html") Детская обувь (2514)
+                            li
+                                a(href="./category.html") Распродажа (76)
+                    div
+                        h1.title Полезные ссылки
+                        ul
+                            li
+                                a(href="./category.html") Женская обувь (1725)
+                            li
+                                a(href="./category.html") Мужская обувь (635)
+                            li
+                                a(href="./category.html") Детская обувь (2514)
+                            li
+                                a(href="./category.html") Распродажа (76)
+                    div
+                        h1.title Магазин
+                        ul
+                            li
+                                a(href="./category.html") Женская обувь (1725)
+                            li
+                                a(href="./category.html") Мужская обувь (635)
+                            li
+                                a(href="./category.html") Детская обувь (2514)
+                            li
+                                a(href="./category.html") Распродажа (76)
+                    div
+                        h1.title Социальные сети
+                        p 2015 © All rights reserved. S.Klimov
+                        ul.social
+                            li
+                                a(href="https://twitter.com/")
+                                    span.fa.fa-twitter
+                                    span twitter
+                            li
+                                a(href="https://ru-ru.facebook.com/")
+                                    span.fa.fa-facebook
+                                    span facebook
+                            li
+                                a(href="http://instagram.com/")
+                                    span.fa.fa-instagram
+                                    span instagram
+            .container
+                .footer-bottom
+                    a.firm-logo(href='http://tutmee.ru')
+                        div
+                            span &Scy;&ocy;&zcy;&dcy;&acy;&ncy;&icy;&iecy; &dcy;&icy;&zcy;&acy;&jcy;&ncy;&acy;
+                            span &icy; &rcy;&acy;&zcy;&rcy;&acy;&bcy;&ocy;&tcy;&kcy;&acy; &scy;&acy;&jcy;&tcy;&ocy;&vcy;
+                            span LTD Tutmee.ru
+                        div
+                            img(src='./images/firm-logo.png' width="195" height="53")
+        //#container-preloader.svg-container(preloader='[".wrapper"]' animate-preloader)
+        //    .progress
+        //        .text#persent-loaded 0
+        //        progress-circle
+        //    svg#preloader-svg(width='100%', height='100%' viewBox="0 0 187.3 93.70")
+        //        path#outline(style='-webkit-filter:url(#f2)', stroke='#ff3000', fill='none', stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')
+        //        path#outline-bg(opacity='0.5', fill='none', stroke="#ededed", stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')
+        button.up.fa.fa-angle-double-up(move-up)
+        // popup recall block
+        //popup-svg.hide
+        //    .slider-form
+        //        h2
+        //            span Сделать заказ
+        //            span прямо сейчас
+        //        form.form-validate(name="formValidate", method='POST' novalidate='' is-valide-border="{{formValidate.$invalid}}" ng-controller="SliderFormCtrl")
+        //            div.wrapper-input
+        //                input(type="text" name="name" placeholder="Ваше имя" ng-model='dataForm.name' autocomplete="off" required)
+        //                span
+        //            div.wrapper-input
+        //                input(type="text" name="phone" ui-mask="+7(999)-999-99-99" ng-model='dataForm.phone' autocomplete="off" required)
+        //                span
+        //            .wrapper-send
+        //                button.send(ng-click="send('slider-form',formValidate)") Отправить заявку
+        //            p Гарантируем конфиденциальность ваших данных
+        //                span.fa.fa-lock
+        include ./includes/thanks.jade
+        //script(src="bundle.js" async)
+        script(src="http://localhost:8080/webpack-dev-server.js")
+        script(src="http://localhost:8080/bundle.js")

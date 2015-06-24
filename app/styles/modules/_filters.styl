@@ -1,0 +1,107 @@
+.filters
+  padding-top:23px
+  padding-left:20px
+  position:relative
+  z-index:3
+  padding-bottom:36px
+  width:887px
+  +below(1528px)
+    width:739px
+  +below(1220px)
+    width:590px
+  .multiSelect .button
+    &:after
+      content:''
+      position:absolute
+      z-index:1
+      border:5px solid transparent;
+      border-top:5px solid #ccc;
+      top:42%
+      tn(.5s)
+  .select-block.open
+    .multiSelect .button
+      &:after
+        top:22%
+        transform:scale(1,-1)
+  .send
+    margin-right:10px
+    float:right
+    color:#0048a0
+    width:100px
+    height:25px
+    border:2px solid #0048a0
+    tn(.7s)
+    &:hover
+      color:#fff
+      background-color:#0048a0
+  form > *
+    margin-top:7px
+  &:after
+    content:''
+    position:absolute
+    z-index:0
+    left:20px;
+    bottom:0
+    height:1px
+    width:1920px
+    background-color:#ccc
+  .color
+    white-space nowrap
+    dibt()
+    height:24px
+    border:1px solid #ccc
+    margin-right:10px
+    h1
+      dibt()
+      color:#010101
+      kr(16px)
+      font-weight:400
+      padding-top:3px
+      padding-left:13px
+      padding-right:11px
+    ul
+      dibt()
+      font-size:0
+      > li
+        dibt()
+        width:16px
+        height:16px
+        margin-right:4px
+        > a
+          display:block
+          height:100%
+          margin-top:3px
+          position:relative
+          z-index:0
+          &:after
+            content:''
+            position:absolute
+            z-index:1
+            aa(1)
+            opacity:0
+            tn(.5s, opacity)
+          &.active
+            &:after
+              opacity:1
+              sprite($check)
+            &.color_1
+              &:after
+                sprite($check_black)
+          colors = {
+            color_1: #fff,
+            color_2: #000,
+            color_3: #828282,
+            color_4: #995648,
+            color_5: #d4846f,
+            color_6: #cea867,
+            color_7: #74867a,
+            color_8: #8e7f62,
+            color_9: #6e8096,
+            color_9: #764b46,
+            color_10: #cc8f69
+          }
+          for key, value in colors
+            &.{key}
+              background-color:value
+              if value == #fff
+                border:1px solid #000

@@ -1,0 +1,142 @@
+//- index.jade
+extends ../layout.jade
+block content
+    section.carousel
+        .wrapper-scroller.top-scroller(ng-controller="ScrollerCtrl")
+            // Если слайдов меньше 2 не выводить на php блок ul.switch-brands
+            ul.move-to-slide-block
+                -var i=0;
+                while i<3
+                    li
+                        a(href="" ng-class="{'active':currentSlide==#{i}}" ng-click="toSlide(#{i},$event)")
+                    -i++
+            scroller.scroller.is-draggable(item-width="1180" count-slides="3" direction="scrollLeft")
+                div(style="background-image:url('./images/slider/1.jpg')")
+                    // У блока .inner может быть два расположения в зависимости от картинки .left - значит внутренний текст будет распологаться слева,.right - значит внутренний текст будет распологаться справа
+                    .inner.left
+                        .cont
+                            img.slider-logo(src="./images/slider-logo.png")
+                            h1 Весенняя распродажа
+                            p Яркие краски, весеннее настроение
+                            div
+                                a(href="./category.html") Начать покупки
+                div(style="background-image:url('./images/slider/1.jpg')")
+                    // У блока .inner может быть два расположения в зависимости от картинки .left - значит внутренний текст будет распологаться слева,.right - значит внутренний текст будет распологаться справа
+                    .inner.left
+                        .cont
+                            img.slider-logo(src="./images/slider-logo.png")
+                            h1 Весенняя распродажа
+                            p Яркие краски, весеннее настроение
+                            div
+                                a(href="./category.html") Начать покупки
+                div(style="background-image:url('./images/slider/1.jpg')")
+                    // У блока .inner может быть два расположения в зависимости от картинки .left - значит внутренний текст будет распологаться слева,.right - значит внутренний текст будет распологаться справа
+                    .inner.left
+                        .cont
+                            img.slider-logo(src="./images/slider-logo.png")
+                            h1 Весенняя распродажа
+                            p Яркие краски, весеннее настроение
+                            div
+                                a(href="./category.html") Начать покупки
+        section.links-block
+            ul
+                li
+                    a.col-h-2(style="background-color:#ffcd45;" href="./category.html")
+                        .inner
+                            h1.title Спортивная обувь
+                            h2 новое поступление
+                    a.col-h-1(style="background-image:url('./images/links-block/1.jpg')" href="./category.html")
+                li
+                    a.col-h-1(style="background-image:url('./images/links-block/2.jpg')" href="./category.html")
+                    a.col-h-1(style="background-image:url('./images/links-block/3.jpg')" href="./category.html")
+                    a.col-h-1(style="background-color:#789498;" href="./category.html")
+                        .inner
+                            span.arrow
+                            h1.title Мужской стиль
+                            h2 натуральная кожа
+                li
+                    a.col-h-1(style="background-image:url('./images/links-block/4.jpg')" href="./category.html")
+                    a.col-h-1(style="background-color:#ff5c56;" href="./category.html")
+                        .inner
+                            span.discont -50%
+                            h1.title Мужской стиль
+                            h2 натуральная кожа
+                    a.col-h-1(style="background-image:url('./images/links-block/5.jpg')" href="./category.html")
+                li
+                    a.col-h-1(style="background-color:#79bdbe;" href="./category.html")
+                        .inner
+                            span.arrow
+                            h1.title Мужской стиль
+                            h2 натуральная кожа
+                    a.col-h-2(style="background-color:#92d2d4;" href="./category.html")
+                        .inner
+                            h1.title Мужской стиль
+                            h2 натуральная кожа
+    section.popular
+        h1.default-title Популярное
+        div.wrapper-link
+            a(href="./category.html") показать больше
+        ul.list-products(itemscope itemtype="http://schema.org/Product")
+            -var i=0;
+            while i<4
+                li(flipper-x)
+                    .back
+                        if i%2==0
+                            span.sale sale
+                        else
+                            span.new new
+                        .inner
+                            h2 Размеры
+                            p 36 38 40
+                            a(href="product-details.html").link Быстрый просмотр
+                    .front
+                        if i%2==0
+                            span.sale sale
+                        else
+                            span.new new
+                        .wrapper-img
+                            img(src="./images/popular/#{i+1}.jpg")
+                    .info
+                        h3 Туфли “MANGO”
+                        p
+                            del 6 788 руб.
+                            span 3 999 руб.
+                        div.wrapper-stars
+                            .stars
+                                span(style="width:87%")
+                            span.count (38)
+                -i++
+    section.subscribe
+        .container
+            h1.default-title Подпишитесь на обновления
+            p Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat.
+            form.form-validate.subscribe-form(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SubscribeCtrl" ng-init='action="./controller.php";dataForm.data={}')
+                div
+                    input(type="email" name="subscribe" placeholder="Ваш email" ng-model='dataForm.data.subscribe' autocomplete="off" required)
+                input(type="hidden" name="task" ng-init='dataForm.hidden.task="subscribe"' ng-model='dataForm.hidden.task')
+                button.send(ng-click='send(dataForm,formValidate,action)') Ок
+    section.brands
+        h1.default-title Бренды
+        h2.default-sub-title перейти к покупкам
+        .wrapper-scroller.brand-scroller.slider-brand(ng-controller="ScrollerCtrl")
+            // Если слайдов меньше 6 не выводить на php блок ul.switch-brands
+            ul.switch-brands
+                li
+                    a(href="" ng-click="prev($event)")
+                        span
+                li
+                    a(href="" ng-click="next($event)")
+                        span
+            scroller.scroller.is-draggable.list-brans(item-width="185" count-slides="12" direction="scrollLeft")
+                -var i=1;
+                while i<7
+                    div
+                        div(data-href="./category.html").wrapper-img
+                            img(src="./images/brands/#{i}.png")
+                    -i++
+                -var i=1;
+                while i<7
+                    div
+                        div(data-href="./category.html").wrapper-img
+                            img(src="./images/brands/#{i}.png")
+                    -i++
