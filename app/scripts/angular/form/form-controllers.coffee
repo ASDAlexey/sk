@@ -1,4 +1,4 @@
-module.exports = (angular)->
+module.exports = (angular,$)->
   'use strict'
   controller = angular.module("App.form.form-controllers",[])
   controller.controller "SearchCtrl",[
@@ -8,7 +8,6 @@ module.exports = (angular)->
     "$timeout"
     "$window"
     ($scope,$http,$rootScope,$timeout,$window) ->
-#show search panel
       $scope.blurSearch = (search)->
         unless search
           $scope.isOpenSearch = false
@@ -57,6 +56,42 @@ module.exports = (angular)->
           $scope.form_set_dirty(formValidate)
       $rootScope.hideThank = ()->
         $rootScope.formIsValide = false
+  ]
+  controller.controller "FormAuthCtrl",[
+    "$scope"
+    "$http"
+    "$rootScope"
+    "$timeout"
+    "$window"
+    ($scope,$http,$rootScope,$timeout,$window) ->
+      $scope.form_set_dirty = (form) ->
+        if form.$setDirty
+          form.$setDirty()
+          angular.forEach form,(input,key) ->
+            if typeof input is 'object' and input.$name isnt `undefined`
+              form[input.$name].$setViewValue (if form[input.$name].$viewValue isnt `undefined` then form[input.$name].$viewValue else "")
+      #show pwd
+      $scope.isPwdShow = false
+      $scope.type = "password"
+      $scope.switch = (side)->
+        $rootScope.$broadcast('change:auth',
+          side:side
+        )
+      $scope.determineType = (condition)->
+        $scope.isPwdShow = !condition
+        if !condition
+          $scope.type = "text"
+        else
+          $scope.type = "password"
+      $scope.changeShowPsw = (pwd)->
+        $scope.isPwdShow = !pwd
+      $scope.changeShowRePsw = (pwd)->
+        $scope.isRePwdShow = !pwd
+      $scope.send = (dataForm,formValidate,action,form)=>
+        if formValidate.$valid
+          angular.element(document.getElementById(form)).submit()
+        else
+          $scope.form_set_dirty(formValidate)
   ]
   controller.controller "SubscribeCtrl",[
     "$scope"

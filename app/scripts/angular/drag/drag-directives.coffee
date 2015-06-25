@@ -31,9 +31,9 @@ module.exports = (angular,$)->
               e.preventDefault()
               ect = e.currentTarget
               if ect.classList.contains('prev')
-                TweenMax.to(element[0],.7,{scrollTo : {y : "+=87"}})
-              if ect.classList.contains('next')
                 TweenMax.to(element[0],.7,{scrollTo : {y : "+=-87"}})
+              if ect.classList.contains('next')
+                TweenMax.to(element[0],.7,{scrollTo : {y : "+=87"}})
             )
           )
         scope.options =

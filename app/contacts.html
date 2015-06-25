@@ -18,7 +18,7 @@
       });
     </script>
   </head>
-  <body pointer-events-scroll style="opacity:0">
+  <body pointer-events-scroll ng-controller="PopupCtrl" style="opacity:0">
     <div class="wrapper dNtoLoad">
           <header class="header">
             <ul class="header-list">
@@ -34,7 +34,7 @@
                   <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SearchCtrl" ng-init="action=&quot;index.php?limitstart=0&amp;option=com_virtuemart&amp;view=category&quot;" class="form-validate search">
                     <button ng-click="send(dataForm,formValidate,action)" ng-class="{'active':isOpenSearch==true}" class="send"><span class="fa fa-search"></span></button>
                     <div ng-class="{'active':isOpenSearch==true}" class="wrapper-search-block">
-                      <input type="text" name="search" placeholder="Поиск" ng-model="dataForm.search" autocomplete="off" ng-focus="isOpenSearch=true" ng-blur="blurSearch(dataForm.search)" required>
+                      <input type="text" name="search" placeholder="Поиск" ng-model="dataForm.search" autocomplete="off" ng-focus="isOpenSearch=true" ng-blur="blurSearch(dataForm.search)">
                     </div>
                   </form>
                 </div>
@@ -85,7 +85,7 @@
                     </footer>
                   </div>
                 </div>
-                <div class="authentificition style"><a href="" hidden>Вход</a><a href="">Иван (<span>выйти</span>)</a></div>
+                <div class="authentificition style"><a href="" ng-click="openPopup('enter',{})">Вход</a><a href="" hidden>Иван (<span>выйти</span>)</a></div>
                 <ul>
                   <li><a href="./"><img src="./images/logo.png" width="42" height="42"></a></li>
                   <li><a href="./category.html">Для женщин</a><span></span>
@@ -707,6 +707,58 @@
     <!--                button.send(ng-click="send('slider-form',formValidate)") Отправить заявку-->
     <!--            p Гарантируем конфиденциальность ваших данных-->
     <!--                span.fa.fa-lock-->
+    <!-- popup-->
+    <popup-svg class="hide-block">
+      <section class="authentification-block"><img src="./images/popup-logo.jpg" class="logo">
+        <div flipper-x="click" class="flipper">
+          <div class="back">
+            <form id="auth-reg" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='./controller.php'" class="form-validate reg">
+              <h1 class="title-form">Регистрация</h1>
+              <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" ng-model="dataForm.data.email" required>
+              </div>
+              <div>
+                <label>Пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required>
+              </div>
+              <div>
+                <label>Повторить пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" required>
+              </div>
+              <div class="wrapper-send">
+                <button ng-click="send(dataForm,formValidate,action,&quot;auth-reg&quot;)" class="send">Зарегистрироваться</button>
+              </div>
+              <div class="wrapper-link"><a href="" ng-click="switch('enter')">Вернуться к форме входа</a></div>
+            </form>
+          </div>
+          <div class="front">
+            <form id="auth-enter" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='./controller.php'" class="form-validate">
+              <h1 class="title-form">Войти</h1>
+              <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" ng-model="dataForm.data.email" required>
+              </div>
+              <div>
+                <label for="pwd">Пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required>
+              </div>
+              <input type="hidden" name="task" value="enter">
+              <input type="hidden" name="b8d93ef2c20163ba95c60b46df5d75be" value="1">
+              <div class="wrapper-send">
+                <button ng-click="send(dataForm,formValidate,action,&quot;auth-enter&quot;)" class="send">Авторизоваться</button>
+              </div>
+              <div class="wrapper-link">
+                <p>У меня еще нет аккаунта</p><a href="" ng-click="switch('reg')">Зарегистрироваться</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </popup-svg>
     <div ng-if="formIsValide==true" class="w">
       <div ng-class="{'load':load==true}" class="wrapper-thank">
         <div ng-click="hideThank()" rotate class="close"><span></span></div>
@@ -715,8 +767,8 @@
         </div>
       </div>
     </div>
-    <script src="bundle.js" async></script>
-    <!--script(src="http://localhost:8080/webpack-dev-server.js")-->
-    <!--script(src="http://localhost:8080/bundle.js")-->
+    <!--script(src="bundle.js" async)-->
+    <script src="http://localhost:8080/webpack-dev-server.js"></script>
+    <script src="http://localhost:8080/bundle.js"></script>
   </body>
 </html>

@@ -14,7 +14,7 @@ mixin header-content()
                 button.send(ng-click='send(dataForm,formValidate,action)' ng-class="{'active':isOpenSearch==true}")
                     span.fa.fa-search
                 .wrapper-search-block(ng-class="{'active':isOpenSearch==true}")
-                    input(type="text" name="search" placeholder="Поиск" ng-model='dataForm.search' autocomplete="off" ng-focus="isOpenSearch=true" ng-blur="blurSearch(dataForm.search)" required)
+                    input(type="text" name="search" placeholder="Поиск" ng-model='dataForm.search' autocomplete="off" ng-focus="isOpenSearch=true" ng-blur="blurSearch(dataForm.search)")
         .cart.style(flip3d)
             a(href="")
                 span Корзина (
@@ -71,8 +71,8 @@ mixin header-content()
                         span руб.
                     a.issue(href="./cart.html") Оформить
         .authentificition.style
-            a(href="" hidden) Вход
-            a(href="") Иван (
+            a(href="" ng-click="openPopup('enter',{})") Вход
+            a(href="" hidden) Иван (
                 span выйти
                 | )
         -var nav=["Для женщин","Для мужчин","Для детей","Акции","Распродажа","О компании"];

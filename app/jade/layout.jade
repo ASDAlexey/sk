@@ -3,7 +3,7 @@ html
     head
         include ./includes/head.jade
         include ./includes/mixins.jade
-    body(pointer-events-scroll style="opacity:0")
+    body(pointer-events-scroll ng-controller="PopupCtrl" style="opacity:0")
         .wrapper.dNtoLoad
             +header()
             main.main
@@ -96,7 +96,50 @@ html
         //                button.send(ng-click="send('slider-form',formValidate)") Отправить заявку
         //            p Гарантируем конфиденциальность ваших данных
         //                span.fa.fa-lock
+        // popup
+        popup-svg.hide-block
+            section.authentification-block
+                img.logo(src="./images/popup-logo.jpg")
+                .flipper(flipper-x="click")
+                    .back
+                        form#auth-reg.form-validate.reg(name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl"
+                        ng-init="action='./controller.php'")
+                            h1.title-form Регистрация
+                            div
+                                label(for="email") E-mail
+                                input#email(type="email" name="email" ng-model='dataForm.data.email' required)
+                            div
+                                label Пароль
+                                .show-psw(ng-click="determineType(isPwdShow)")
+                                input(type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required)
+                            div
+                                label Повторить пароль
+                                .show-psw(ng-click="determineType(isPwdShow)")
+                                input(type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" required)
+                            div.wrapper-send
+                                button.send(ng-click='send(dataForm,formValidate,action,"auth-reg")') Зарегистрироваться
+                            div.wrapper-link
+                                a(href="" ng-click="switch('enter')") Вернуться к форме входа
+                    .front
+                        form.form-validate#auth-enter(name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate
+                        ng-controller="FormAuthCtrl"
+                        ng-init="action='./controller.php'")
+                            h1.title-form Войти
+                            div
+                                label(for="email") E-mail
+                                input#email(type="email" name="email" ng-model='dataForm.data.email' required)
+                            div
+                                label(for="pwd") Пароль
+                                .show-psw(ng-click="determineType(isPwdShow)")
+                                input(type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required)
+                            input(type="hidden" name="task" value="enter")
+                            input(type="hidden" name="b8d93ef2c20163ba95c60b46df5d75be" value="1")
+                            div.wrapper-send
+                                button.send(ng-click='send(dataForm,formValidate,action,"auth-enter")') Авторизоваться
+                            div.wrapper-link
+                                p У меня еще нет аккаунта
+                                a(href="" ng-click="switch('reg')") Зарегистрироваться
         include ./includes/thanks.jade
-        script(src="bundle.js" async)
-        //script(src="http://localhost:8080/webpack-dev-server.js")
-        //script(src="http://localhost:8080/bundle.js")
+        //script(src="bundle.js" async)
+        script(src="http://localhost:8080/webpack-dev-server.js")
+        script(src="http://localhost:8080/bundle.js")

@@ -79,8 +79,10 @@ block content
         ul.list-products(itemscope itemtype="http://schema.org/Product")
             -var i=0;
             while i<4
-                li(flipper-x)
+                li(flipper-x="hover")
                     .back
+                        img(src="./images/popular/#{i+1}.jpg")
+                        .over-light
                         if i%2==0
                             span.sale sale
                         else

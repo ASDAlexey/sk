@@ -7,7 +7,7 @@
       margin-top:49px
       dibt()
       width:100%
-      >label
+      > label
         text-transform:uppercase
         color:#606060
         lm(12px)
@@ -42,6 +42,113 @@
           tn(.5s)
           &:hover
             background-color:#66bebe
+.authentification-block
+  .logo
+    left:50%
+    top:-105px
+    tt(-50%, 0)
+    position:absolute
+    z-index:1
+  .flipper
+    margin:0 auto
+    width:500px
+    position:relative
+    z-index:0
+    height:543px
+    .front, .back
+      backface-visibility:hidden
+      background-color:#fff
+    .back
+      top:0
+      left:0
+      position:absolute
+      //z-index:0
+      width:100%
+      height:100%
+    .front
+      width:100%
+      position:relative
+      height:100%
+  .title-form
+    text-transform:uppercase
+    color:#303030
+    lb(36px)
+  .form-validate
+    padding:60px 60px 41px 60px
+    margin:0 auto
+    width:500px
+    background-color:#fff
+    &.reg
+      > div
+        margin-top:35px
+    > div
+      position:relative
+      z-index:0
+      margin-top:49px
+      dibt()
+      width:100%
+      text-align:left
+      .show-psw
+        user-select none
+        cursor:pointer
+        position:absolute
+        z-index:1
+        right:9px
+        top:40px
+        sprite($show)
+        opacity:.5
+        tn(.7s)
+        &.active
+          opacity:1
+      > label
+        text-transform:uppercase
+        color:#606060
+        lm(12px)
+        margin-bottom:12px
+        dibt()
+      &.wrapper-link
+        text-align:center
+        > p
+          font:14px Georgia, sans-serif
+          font-weight:700
+          font-style italic
+          color:#303030
+          margin-bottom:14px
+        > a
+          text-transform:uppercase
+          color:#59a6a7
+          lb(12px)
+          text-decoration:none
+          dibt()
+          tn(.5s)
+          &:hover
+            color:#51a0a7
+      input
+        height:43px
+        width:100%
+        display:block
+        padding-left:10px
+      textarea
+        padding-left:10px
+        width:100%
+        display:block
+        resize none
+        height:198px
+      &.wrapper-send
+        margin-top:30px
+        text-align:center
+        .send
+          padding-top:5px
+          width:194px
+          height:51px
+          text-transform:uppercase
+          color:#fff
+          dibt()
+          background-color:#79bdbe
+          tn(.5s)
+          &:hover
+            background-color:#66bebe
+
 
 
 

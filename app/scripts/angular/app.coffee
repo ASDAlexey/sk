@@ -1,4 +1,5 @@
-module.exports = (angular,Snap)->
+module.exports = (angular)->
+
 #  require('./preloader/preloader.coffee')(angular)
   require('./form/form.coffee')(angular)
   #  require('../plugins/angular-parallax.js')(angular)
@@ -9,7 +10,7 @@ module.exports = (angular,Snap)->
   #  require('./aside/aside.coffee')(angular,$)
   require('./animate/animate.coffee')(angular)
   #  require('./news/news.coffee')(angular,$)
-  #  require('./popup/popup.coffee')(angular)
+  require('./popup/popup.coffee')(angular)
   require('./drag/drag.coffee')(angular)
   app = angular.module("App",[
     'ngAnimate'
@@ -25,7 +26,7 @@ module.exports = (angular,Snap)->
 #    'App.svg'
 #    'App.map'
 #    'App.aside'
-#    'App.popup'
+    'App.popup'
 #    'App.news'
     'App.drag'
   ])
