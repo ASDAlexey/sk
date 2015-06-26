@@ -1,0 +1,5 @@
+div
+    div(range-slider floor='{{floor}}' ceiling='{{ceiling}}' step="{{step}}" ng-model-low='handleLow' ng-model-high='handleHeight')
+    ul.list-range
+        li(ng-bind-template="{{handleLow}} руб.")
+        li(ng-bind-template="{{handleHeight}} руб.")

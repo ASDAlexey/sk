@@ -1,9 +1,10 @@
 module.exports = (angular)->
   'use strict'
   controller = angular.module("App.aside.aside-controllers",[])
-  controller.controller "AsideCrtl",[
+  controller.controller "AsideCtrl",[
     "$scope"
     ($scope) ->
-      @switchList = (number)->
-        @currentList = number
+      $scope.switchers = {}
+      $scope.switch = (name)->
+        $scope.switchers[name].isOpen = !$scope.switchers[name].isOpen
   ]

@@ -63,7 +63,8 @@ module.exports = (angular,$)->
     "$rootScope"
     "$timeout"
     "$window"
-    ($scope,$http,$rootScope,$timeout,$window) ->
+    "Video"
+    ($scope,$http,$rootScope,$timeout,$window,Video) ->
       $scope.form_set_dirty = (form) ->
         if form.$setDirty
           form.$setDirty()
@@ -75,7 +76,7 @@ module.exports = (angular,$)->
       $scope.type = "password"
       $scope.switch = (side)->
         $rootScope.$broadcast('change:auth',
-          side:side
+          side : side
         )
       $scope.determineType = (condition)->
         $scope.isPwdShow = !condition
@@ -88,6 +89,10 @@ module.exports = (angular,$)->
       $scope.changeShowRePsw = (pwd)->
         $scope.isRePwdShow = !pwd
       $scope.send = (dataForm,formValidate,action,form)=>
+        $scope.videos = Video.query()
+        $scope.videos.$promise.then((data)->
+          console.log($scope.videos)
+        )
         if formValidate.$valid
           angular.element(document.getElementById(form)).submit()
         else

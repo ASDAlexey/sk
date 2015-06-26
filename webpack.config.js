@@ -66,13 +66,13 @@ module.exports={
         ]
     },
     plugins:[
-        new webpack.ProvidePlugin({
-            $:"jquery",
-            jQuery:"jquery",
-            "window.jQuery":"jquery",
-            "root.jQuery":"jquery"
-        }),
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.ProvidePlugin({
+        //    $:"jquery",
+        //    jQuery:"jquery",
+        //    "window.jQuery":"jquery",
+        //    "root.jQuery":"jquery"
+        //}),
+        new webpack.HotModuleReplacementPlugin()
         //new ngminPlugin(),
         //new webpack.optimize.DedupePlugin(),
         //new webpack.optimize.UglifyJsPlugin({

@@ -1,0 +1,186 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i',
+1 verbose cli   'angular-animate' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 silly cache add args [ 'angular-animate@^1.3.14', null ]
+5 verbose cache add spec angular-animate@^1.3.14
+6 silly cache add parsed spec { raw: 'angular-animate@^1.3.14',
+6 silly cache add   scope: null,
+6 silly cache add   name: 'angular-animate',
+6 silly cache add   rawSpec: '^1.3.14',
+6 silly cache add   spec: '>=1.3.14 <2.0.0',
+6 silly cache add   type: 'range' }
+7 verbose addNamed angular-animate@>=1.3.14 <2.0.0
+8 silly addNamed semver.valid null
+9 silly addNamed semver.validRange >=1.3.14 <2.0.0
+10 silly addNameRange { name: 'angular-animate',
+10 silly addNameRange   range: '>=1.3.14 <2.0.0',
+10 silly addNameRange   hasData: false }
+11 silly mapToRegistry name angular-animate
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry uri https://registry.npmjs.org/angular-animate
+15 verbose addNameRange registry:https://registry.npmjs.org/angular-animate not in flight; fetching
+16 verbose get https://registry.npmjs.org/angular-animate not expired, no request
+17 silly addNameRange number 2 { name: 'angular-animate',
+17 silly addNameRange   range: '>=1.3.14 <2.0.0',
+17 silly addNameRange   hasData: true }
+18 silly addNameRange versions [ 'angular-animate',
+18 silly addNameRange   [ '0.0.1',
+18 silly addNameRange     '0.0.2',
+18 silly addNameRange     '1.2.19-build.256',
+18 silly addNameRange     '1.2.16',
+18 silly addNameRange     '1.2.23',
+18 silly addNameRange     '1.3.0-rc.5',
+18 silly addNameRange     '1.3.0',
+18 silly addNameRange     '1.3.1',
+18 silly addNameRange     '1.3.2',
+18 silly addNameRange     '1.3.3',
+18 silly addNameRange     '1.3.4-build.3588',
+18 silly addNameRange     '1.2.27',
+18 silly addNameRange     '1.3.4',
+18 silly addNameRange     '1.3.5',
+18 silly addNameRange     '1.3.6',
+18 silly addNameRange     '1.3.7',
+18 silly addNameRange     '1.2.28',
+18 silly addNameRange     '1.3.8',
+18 silly addNameRange     '1.4.0-beta.0',
+18 silly addNameRange     '1.3.9',
+18 silly addNameRange     '1.3.10',
+18 silly addNameRange     '1.4.0-beta.1',
+18 silly addNameRange     '1.4.0-beta.2',
+18 silly addNameRange     '1.3.11',
+18 silly addNameRange     '1.4.0-beta.3',
+18 silly addNameRange     '1.3.12',
+18 silly addNameRange     '1.3.13',
+18 silly addNameRange     '1.4.0-beta.4',
+18 silly addNameRange     '1.3.14',
+18 silly addNameRange     '1.4.0-beta.5',
+18 silly addNameRange     '1.4.0-beta.6',
+18 silly addNameRange     '1.3.15',
+18 silly addNameRange     '1.4.0-rc.0',
+18 silly addNameRange     '1.4.0-rc.1',
+18 silly addNameRange     '1.4.0-rc.2',
+18 silly addNameRange     '1.4.0',
+18 silly addNameRange     '1.3.16',
+18 silly addNameRange     '1.4.1' ] ]
+19 verbose addNamed angular-animate@1.4.1
+20 silly addNamed semver.valid 1.4.1
+21 silly addNamed semver.validRange 1.4.1
+22 silly cache afterAdd angular-animate@1.4.1
+23 verbose afterAdd C:\Users\Alexey\AppData\Roaming\npm-cache\angular-animate\1.4.1\package\package.json not in flight; writing
+24 verbose afterAdd C:\Users\Alexey\AppData\Roaming\npm-cache\angular-animate\1.4.1\package\package.json written
+25 silly install resolved [ { name: 'angular-animate',
+25 silly install resolved     version: '1.4.1',
+25 silly install resolved     description: 'AngularJS module for animations',
+25 silly install resolved     main: 'index.js',
+25 silly install resolved     scripts: { test: 'echo "Error: no test specified" && exit 1' },
+25 silly install resolved     repository:
+25 silly install resolved      { type: 'git',
+25 silly install resolved        url: 'https://github.com/angular/angular.js.git' },
+25 silly install resolved     keywords: [ 'angular', 'framework', 'browser', 'animation', 'client-side' ],
+25 silly install resolved     author:
+25 silly install resolved      { name: 'Angular Core Team',
+25 silly install resolved        email: 'angular-core+npm@google.com' },
+25 silly install resolved     license: 'MIT',
+25 silly install resolved     bugs: { url: 'https://github.com/angular/angular.js/issues' },
+25 silly install resolved     homepage: 'http://angularjs.org',
+25 silly install resolved     gitHead: '96dfa5c8db40d3e57381393f73badc4265d43baf',
+25 silly install resolved     _id: 'angular-animate@1.4.1',
+25 silly install resolved     _shasum: 'efee776c182beb77bac8981408c7163d96d78d7d',
+25 silly install resolved     _from: 'angular-animate@>=1.3.14 <2.0.0',
+25 silly install resolved     _npmVersion: '2.0.2',
+25 silly install resolved     _nodeVersion: '0.10.26',
+25 silly install resolved     _npmUser: { name: 'angularcore', email: 'angular-core+npm@google.com' },
+25 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+25 silly install resolved     dist:
+25 silly install resolved      { shasum: 'efee776c182beb77bac8981408c7163d96d78d7d',
+25 silly install resolved        tarball: 'http://registry.npmjs.org/angular-animate/-/angular-animate-1.4.1.tgz' },
+25 silly install resolved     directories: {},
+25 silly install resolved     _resolved: 'https://registry.npmjs.org/angular-animate/-/angular-animate-1.4.1.tgz',
+25 silly install resolved     readme: 'ERROR: No README data found!' } ]
+26 info install angular-animate@1.4.1 into C:\projects\sk
+27 info installOne angular-animate@1.4.1
+28 verbose installOne of angular-animate to C:\projects\sk not in flight; installing
+29 verbose lock using C:\Users\Alexey\AppData\Roaming\npm-cache\_locks\angular-animate-961e86619e46366d.lock for C:\projects\sk\node_modules\angular-animate
+30 silly install write writing angular-animate 1.4.1 to C:\projects\sk\node_modules\angular-animate
+31 silly cache addNamed cb angular-animate@1.4.1
+32 verbose unbuild node_modules\angular-animate
+33 silly gentlyRm C:\projects\sk\node_modules\angular-animate is being purged from base C:\projects\sk
+34 verbose gentlyRm don't care about contents; nuking C:\projects\sk\node_modules\angular-animate
+35 verbose tar unpack C:\Users\Alexey\AppData\Roaming\npm-cache\angular-animate\1.4.1\package.tgz
+36 verbose tar unpacking to C:\projects\sk\node_modules\angular-animate
+37 silly gentlyRm C:\projects\sk\node_modules\angular-animate is being purged
+38 verbose gentlyRm don't care about contents; nuking C:\projects\sk\node_modules\angular-animate
+39 silly gunzTarPerm modes [ '777', '666' ]
+40 silly gunzTarPerm extractEntry package.json
+41 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+42 silly gunzTarPerm extractEntry README.md
+43 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+44 silly gunzTarPerm extractEntry angular-animate.js
+45 silly gunzTarPerm modified mode [ 'angular-animate.js', 420, 438 ]
+46 silly gunzTarPerm extractEntry angular-animate.min.js
+47 silly gunzTarPerm modified mode [ 'angular-animate.min.js', 420, 438 ]
+48 silly gunzTarPerm extractEntry index.js
+49 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+50 silly gunzTarPerm extractEntry angular-animate.min.js.map
+51 silly gunzTarPerm modified mode [ 'angular-animate.min.js.map', 420, 438 ]
+52 silly gunzTarPerm extractEntry bower.json
+53 silly gunzTarPerm modified mode [ 'bower.json', 420, 438 ]
+54 info preinstall angular-animate@1.4.1
+55 silly install resolved []
+56 verbose about to build C:\projects\sk\node_modules\angular-animate
+57 info build C:\projects\sk\node_modules\angular-animate
+58 verbose linkStuff [ false, false, false, 'C:\\projects\\sk\\node_modules' ]
+59 info linkStuff angular-animate@1.4.1
+60 verbose linkBins angular-animate@1.4.1
+61 verbose linkMans angular-animate@1.4.1
+62 verbose rebuildBundles angular-animate@1.4.1
+63 info install angular-animate@1.4.1
+64 info postinstall angular-animate@1.4.1
+65 verbose unlock done using C:\Users\Alexey\AppData\Roaming\npm-cache\_locks\angular-animate-961e86619e46366d.lock for C:\projects\sk\node_modules\angular-animate
+66 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-build\node_modules\decompress\node_modules\vinyl-fs\node_modules\glob-watcher\node_modules\gaze\node_modules\globule\node_modules\glob requires graceful-fs@'~1.2.0' but will load
+66 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-build\node_modules\decompress\node_modules\vinyl-fs\node_modules\graceful-fs,
+66 warn unmet dependency which is version 3.0.6
+67 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-build\node_modules\decompress\node_modules\vinyl-fs\node_modules\glob-watcher\node_modules\gaze\node_modules\globule\node_modules\glob requires inherits@'1' but will load
+67 warn unmet dependency C:\projects\sk\node_modules\inherits,
+67 warn unmet dependency which is version 2.0.1
+68 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-build\node_modules\download\node_modules\vinyl-fs\node_modules\glob-watcher\node_modules\gaze\node_modules\globule\node_modules\glob requires graceful-fs@'~1.2.0' but will load
+68 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-build\node_modules\download\node_modules\vinyl-fs\node_modules\graceful-fs,
+68 warn unmet dependency which is version 3.0.6
+69 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-build\node_modules\download\node_modules\vinyl-fs\node_modules\glob-watcher\node_modules\gaze\node_modules\globule\node_modules\glob requires inherits@'1' but will load
+69 warn unmet dependency C:\projects\sk\node_modules\inherits,
+69 warn unmet dependency which is version 2.0.1
+70 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-wrapper\node_modules\download\node_modules\vinyl-fs\node_modules\glob-watcher\node_modules\gaze\node_modules\globule\node_modules\glob requires graceful-fs@'~1.2.0' but will load
+70 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-wrapper\node_modules\download\node_modules\vinyl-fs\node_modules\graceful-fs,
+70 warn unmet dependency which is version 3.0.6
+71 warn unmet dependency C:\projects\sk\node_modules\imagemin-pngquant\node_modules\pngquant-bin\node_modules\bin-wrapper\node_modules\download\node_modules\vinyl-fs\node_modules\glob-watcher\node_modules\gaze\node_modules\globule\node_modules\glob requires inherits@'1' but will load
+71 warn unmet dependency C:\projects\sk\node_modules\inherits,
+71 warn unmet dependency which is version 2.0.1
+72 warn unmet dependency C:\projects\sk\node_modules\gulp.spritesmith\node_modules\spritesmith\node_modules\pixelsmith\node_modules\ndarray-fill\node_modules\cwise\node_modules\static-module\node_modules\static-eval\node_modules\escodegen requires estraverse@'~1.3.0' but will load
+72 warn unmet dependency C:\projects\sk\node_modules\estraverse,
+72 warn unmet dependency which is version 4.1.0
+73 verbose stack Error: The package angular does not satisfy its siblings' peerDependencies requirements!
+73 verbose stack     at c:\Program Files\nodejs\node_modules\npm\lib\install.js:125:32
+73 verbose stack     at c:\Program Files\nodejs\node_modules\npm\lib\install.js:264:7
+73 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:138:5
+73 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:251:14
+73 verbose stack     at cb (c:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+73 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:251:14
+73 verbose stack     at cb (c:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+73 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:251:14
+73 verbose stack     at cb (c:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+73 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:251:14
+74 verbose cwd C:\projects\sk
+75 error Windows_NT 6.1.7601
+76 error argv "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "i" "angular-animate"
+77 error node v0.12.2
+78 error npm  v2.7.4
+79 error code EPEERINVALID
+80 error peerinvalid The package angular does not satisfy its siblings' peerDependencies requirements!
+80 error peerinvalid Peer angular-material@0.8.3 wants angular@1.3.x
+80 error peerinvalid Peer angular-formly@4.2.5 wants angular@^1.x
+81 verbose exit [ 1, true ]

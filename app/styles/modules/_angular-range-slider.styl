@@ -1,0 +1,52 @@
+$sliderBarHeight = 8px
+// Thickness of range bar
+$sliderBarColor = #dedede
+// Background color of range bar
+$sliderHandleWidth = 17px
+// Diameter of range handles
+$sliderHighlightColor = #79bdbe
+$sliderHandleColor = #060606
+$sliderHandleColorActive = #338688
+// Highlight color for selection and range handles
+.angular-range-slider
+  display:inline-block
+  position:relative
+  height:$sliderBarHeight
+  width:100%
+  margin:24px 0 20px
+  vertical-align:middle
+  div
+    white-space:nowrap
+    position:absolute
+    &.bar
+      width:100%
+      height:100%
+      background:$sliderBarColor
+      overflow:hidden
+      .selection
+        width:0
+        height:100%
+        background:$sliderHighlightColor
+    &.handle
+      cursor:pointer
+      width:$sliderHandleWidth
+      height:$sliderHandleWidth
+      top:(($sliderBarHeight - $sliderHandleWidth) / 2)
+      background-color:$sliderHandleColor
+      z-index:2
+      transition:background-color .5s ease-out
+      &.active
+        background-color:$sliderHandleColorActive
+    &.bubble
+      display:none
+      cursor:default
+      top:($sliderHandleWidth * -1)
+      padding:1px 3px 1px 3px
+      font-size:0.7em
+      font-family:sans-serif
+      &.active
+        display:inline-block
+      &.limit
+        color:#777
+      &.value
+        display:none !important

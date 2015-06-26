@@ -1,0 +1,4 @@
+div.checkbox-block
+    input(id="" type="checkbox" ng-model="model" class="custom-checkbox")
+    label(ng-class="(model==true)?'check':'no-check'" ng-click="switch(model)" class="checkbox" ng-transclude)
+    span.fa.fa-check(ng-click="switch(model)")

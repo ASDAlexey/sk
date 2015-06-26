@@ -1,4 +1,4 @@
-module.exports = (angular,$)->
+module.exports = (angular)->
   'use strict'
   directive = angular.module('App.animate.animate-directives',[])
   directive.directive 'flipperX',[
@@ -52,7 +52,7 @@ module.exports = (angular,$)->
           TweenMax.set(frontCard,{rotationX : -90,transformOrigin : "0 0 0"})
           tl = new TimelineMax({paused : true})
           tl.to(frontCard,.4,{rotationX : 0,transformOrigin : "0 0 0",ease : Sine.easeOut})
-          element[0].addEventListener 'mouseenter',->
+          element[0].querySelector('a').addEventListener 'click',->
             element[0].classList.add('active')
             tl.play()
           element[0].querySelector('.close-small-cart').addEventListener 'click',->

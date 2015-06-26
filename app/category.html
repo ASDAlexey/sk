@@ -554,18 +554,418 @@
             <h1 class="default-title">Для женщин</h1>
             <h2 class="default-sub-title">все товары</h2>
             <ul class="sub-categories">
-              <li><a href="">Туфли</a></li>
-              <li><a href="">Босоножки</a></li>
-              <li><a href="">Балетки</a></li>
-              <li><a href="">Мокасины</a></li>
-              <li><a href="">Сапоги</a></li>
-              <li><a href="">Полусапожки</a></li>
-              <li><a href="">Сникеры</a></li>
-              <li><a href="">Лоферы</a></li>
-              <li><a href="">Сандалии</a></li>
-              <li><a href="">Сабо</a></li>
+              <li><a href="" class="active"><span>Туфли</span></a></li>
+              <li><a href=""><span>Босоножки</span></a></li>
+              <li><a href=""><span>Балетки</span></a></li>
+              <li><a href=""><span>Мокасины</span></a></li>
+              <li><a href=""><span>Сапоги</span></a></li>
+              <li><a href=""><span>Полусапожки</span></a></li>
+              <li><a href=""><span>Сникеры</span></a></li>
+              <li><a href=""><span>Лоферы</span></a></li>
+              <li><a href=""><span>Сандалии</span></a></li>
+              <li><a href=""><span>Сабо</span></a></li>
             </ul>
+            <div class="wrapper-columns">
+              <aside ng-controller="AsideCtrl" class="aside">
+                <form name="formValidate" method="POST" action="./controller.php" class="form-validate">
+                  <ul class="list-switchers">
+                    <li>
+                      <!--Если aside.switchers.price.isOpen = true то блок цены открыт при загрузке иначе закрыт, открытыми должны быть блоки в которых выбранно что-нибуть--><a ng-init="switchers.price.isOpen=false" ng-class="(switchers.price.isOpen==false)?'close':'open'" ng-click="switch('price')">Цена</a>
+                      <div class="content-switcher">
+                        <range floor="0" ceiling="4000" handle-low="400" handle-height="3500" step="5" model="switchers.price"></range>
+                      </div>
+                    </li>
+                    <li><a ng-init="switchers.size.isOpen=false" ng-class="(switchers.size.isOpen==false)?'close':'open'" ng-click="switch('size')">Размер</a>
+                      <div class="content-switcher">
+                        <!-- nameSize1 - может быть любое название свойства латиницей-->
+                        <checkbox checked model="switchers.size.nameSize1">0</checkbox>
+                        <checkbox model="switchers.size.nameSize2">23</checkbox>
+                        <checkbox model="switchers.size.nameSize3">23.5</checkbox>
+                        <checkbox model="switchers.size.nameSize4">24</checkbox>
+                        <checkbox model="switchers.size.nameSize5">24.5</checkbox>
+                        <checkbox model="switchers.size.nameSize6">25</checkbox>
+                        <checkbox model="switchers.size.nameSize7">26</checkbox>
+                        <checkbox model="switchers.size.nameSize8">26.5</checkbox>
+                        <checkbox model="switchers.size.nameSize9">27</checkbox>
+                        <checkbox model="switchers.size.nameSize10">27.5</checkbox>
+                      </div>
+                    </li>
+                    <li><a ng-init="switchers.brand.isOpen=false" ng-class="(switchers.brand.isOpen==false)?'close':'open'" ng-click="switch('brand')">Бренд</a>
+                      <div class="content-switcher">
+                        <checkbox model="switchers.size.name1">GRADI (1)</checkbox>
+                        <checkbox checked model="switchers.brand.name2">adidas (2)</checkbox>
+                        <checkbox model="switchers.brand.name3">Alba (13)</checkbox>
+                        <checkbox model="switchers.brand.name4">Alex Mazurin (2)</checkbox>
+                        <checkbox model="switchers.brand.name5">Antonio Biaggi (3)</checkbox>
+                        <checkbox model="switchers.brand.name6">Apart (2)</checkbox>
+                        <checkbox model="switchers.brand.name7">ASH (5)</checkbox>
+                        <checkbox model="switchers.brand.name8">Baden (2)</checkbox>
+                        <checkbox model="switchers.brand.name9">Basic Editions (2)</checkbox>
+                        <checkbox model="switchers.brand.name10">Benta (14)</checkbox>
+                        <checkbox model="switchers.brand.name11">Betsy (2)</checkbox>
+                      </div>
+                    </li>
+                    <li><a ng-init="switchers.heel_height.isOpen=false" ng-class="(switchers.heel_height.isOpen==false)?'close':'open'" ng-click="switch('heel_height')">Высота каблука</a>
+                      <div class="content-switcher">
+                        <checkbox model="switchers.heel_height.name1">без каблука (1)</checkbox>
+                        <checkbox checked model="switchers.heel_height.name2">танкетка (2)</checkbox>
+                        <checkbox model="switchers.heel_height.name3">0-3 см (13)</checkbox>
+                        <checkbox model="switchers.heel_height.name4">3-9 см (2)</checkbox>
+                        <checkbox model="switchers.heel_height.name5">10-14 см (4)</checkbox>
+                      </div>
+                    </li>
+                    <li><a ng-init="switchers.color.isOpen=true" ng-class="(switchers.color.isOpen==false)?'close':'open'" ng-click="switch('color')">Цвет</a>
+                      <div class="content-switcher">
+                        <color model="switchers.color.customsforall_value_name1" value="eccfb4"></color>
+                        <color model="switchers.color.customsforall_value_name2" value="eaeaea"></color>
+                        <color model="switchers.color.customsforall_value_name3" value="a7c4c8"></color>
+                        <color model="switchers.color.customsforall_value_name4" value="ffe269"></color>
+                        <color model="switchers.color.customsforall_value_name5" value="74b435"></color>
+                        <color model="switchers.color.customsforall_value_name5" value="000000"></color>
+                        <color model="switchers.color.customsforall_value_name5" value="dd3f5e"></color>
+                        <color model="switchers.color.customsforall_value_name5" value="ff3535"></color>
+                        <color model="switchers.color.customsforall_value_name5" value="ff903f"></color>
+                        <color model="switchers.color.customsforall_value_name5" value="ff903f"></color>
+                        <color model="switchers.color.customsforall_value_name5" value="b37bda"></color>
+                      </div>
+                    </li>
+                    <li><a ng-init="switchers.material.isOpen=false" ng-class="(switchers.material.isOpen==false)?'close':'open'" ng-click="switch('material')">Материал</a>
+                      <div class="content-switcher">
+                        <checkbox model="switchers.color.name1">crosl ite (1)</checkbox>
+                        <checkbox checked model="switchers.color.name2">искусственная замша (2)</checkbox>
+                        <checkbox model="switchers.color.name3">искусственная кожа (8)</checkbox>
+                        <checkbox model="switchers.color.name4">искусственный материал (1)</checkbox>
+                        <checkbox model="switchers.color.name5">микрофибра (1)</checkbox>
+                        <checkbox model="switchers.color.name5">натуральная замша (40)</checkbox>
+                        <checkbox model="switchers.color.name5">натуральная кожа (517)</checkbox>
+                        <checkbox model="switchers.color.name5">натуральный велюр (78)</checkbox>
+                        <checkbox model="switchers.color.name5">натуральный нубук (12)</checkbox>
+                        <checkbox model="switchers.color.name5">ПВХ (1)</checkbox>
+                        <checkbox model="switchers.color.name5">полимер (2)</checkbox>
+                      </div>
+                    </li>
+                    <input type="hidden" value="{{switchers}}">
+                  </ul>
+                  <div class="wrapper-buttons">
+                    <button href="product-details.html">Отправить</button><a href="product-details.html">Сбросить все</a>
+                  </div>
+                </form>
+              </aside>
+              <section class="wrapper-list-products">
+                <div class="sorting">
+                  <h2>Сортировать по:</h2>
+                  <ul>
+                    <li><a href="" class="active arrow-up">полулярности</a></li>
+                    <li><a href="" class="active arrow-down">цене</a></li>
+                    <li><a href="">рейтингу</a></li>
+                  </ul>
+                </div>
+                <ul itemscope itemtype="http://schema.org/Product" class="list-products">
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/1.jpg">
+                      <div class="over-light"></div><span class="sale">sale</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="sale">sale</span>
+                      <div class="wrapper-img"><img src="./images/popular/1.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/2.jpg">
+                      <div class="over-light"></div><span class="new">new</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="new">new</span>
+                      <div class="wrapper-img"><img src="./images/popular/2.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/3.jpg">
+                      <div class="over-light"></div><span class="sale">sale</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="sale">sale</span>
+                      <div class="wrapper-img"><img src="./images/popular/3.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/4.jpg">
+                      <div class="over-light"></div><span class="new">new</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="new">new</span>
+                      <div class="wrapper-img"><img src="./images/popular/4.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/1.jpg">
+                      <div class="over-light"></div><span class="sale">sale</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="sale">sale</span>
+                      <div class="wrapper-img"><img src="./images/popular/1.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/2.jpg">
+                      <div class="over-light"></div><span class="new">new</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="new">new</span>
+                      <div class="wrapper-img"><img src="./images/popular/2.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/3.jpg">
+                      <div class="over-light"></div><span class="sale">sale</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="sale">sale</span>
+                      <div class="wrapper-img"><img src="./images/popular/3.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/4.jpg">
+                      <div class="over-light"></div><span class="new">new</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="new">new</span>
+                      <div class="wrapper-img"><img src="./images/popular/4.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/1.jpg">
+                      <div class="over-light"></div><span class="sale">sale</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="sale">sale</span>
+                      <div class="wrapper-img"><img src="./images/popular/1.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/2.jpg">
+                      <div class="over-light"></div><span class="new">new</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="new">new</span>
+                      <div class="wrapper-img"><img src="./images/popular/2.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/3.jpg">
+                      <div class="over-light"></div><span class="sale">sale</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="sale">sale</span>
+                      <div class="wrapper-img"><img src="./images/popular/3.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li flipper-x="hover">
+                    <div class="back"><img src="./images/popular/4.jpg">
+                      <div class="over-light"></div><span class="new">new</span>
+                      <div class="inner">
+                        <h2>Размеры</h2>
+                        <p>36 38 40</p><a href="product-details.html" class="link">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="front"><span class="new">new</span>
+                      <div class="wrapper-img"><img src="./images/popular/4.jpg"></div>
+                    </div>
+                    <div class="info">
+                      <h3>Туфли “MANGO”</h3>
+                      <p>
+                        <del>6 788 руб.</del><span>3 999 руб.</span>
+                      </p>
+                      <div class="wrapper-stars">
+                        <div class="stars"><span style="width:87%"></span></div><span class="count">(38)</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="wrapper-pagination">
+                  <ul class="pagination">
+                    <li><a href="">1</a></li>
+                    <li><span href="">2</span></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                  </ul>
+                </div>
+              </section>
+            </div>
           </section>
+              <section class="also-like">
+                <h1>Вам может также понравиться</h1>
+                <ul>
+                  <li><a href="./product-details.html">
+                      <div class="wrapper-img"><img src="./images/also-like/1.jpg"></div>
+                      <div class="wrapper-text">
+                        <h2>Туфли “CARLO PAZOLINI”</h2>
+                        <p>3 999 руб.</p>
+                      </div></a></li>
+                  <li><a href="./product-details.html">
+                      <div class="wrapper-img"><img src="./images/also-like/2.jpg"></div>
+                      <div class="wrapper-text">
+                        <h2>Туфли “CARLO PAZOLINI”</h2>
+                        <p>3 999 руб.</p>
+                      </div></a></li>
+                  <li><a href="./product-details.html" class="wrapper-img">
+                      <div class="wrapper-img"><img src="./images/also-like/3.jpg"></div>
+                      <div class="wrapper-text">
+                        <h2>Туфли “CARLO PAZOLINI”</h2>
+                        <p>3 999 руб.</p>
+                      </div></a></li>
+                  <li><a href="./product-details.html">
+                      <div class="wrapper-img"><img src="./images/also-like/4.jpg"></div>
+                      <div class="wrapper-text">
+                        <h2>Туфли “CARLO PAZOLINI”</h2>
+                        <p>3 999 руб.</p>
+                      </div></a></li>
+                  <li><a href="./product-details.html">
+                      <div class="wrapper-img"><img src="./images/also-like/5.jpg"></div>
+                      <div class="wrapper-text">
+                        <h2>Туфли “CARLO PAZOLINI” Туфли “CARLO PAZOLINI"</h2>
+                        <p>3 999 руб.</p>
+                      </div></a></li>
+                  <li><a href="./product-details.html">
+                      <div class="wrapper-img"><img src="./images/also-like/6.jpg"></div>
+                      <div class="wrapper-text">
+                        <h2>Туфли “CARLO PAZOLINI”</h2>
+                        <p>3 999 руб.</p>
+                      </div></a></li>
+                </ul>
+              </section>
         </div>
       </main>
     </div>

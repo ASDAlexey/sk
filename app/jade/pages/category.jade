@@ -11,23 +11,162 @@ block content
         h2.default-sub-title все товары
         ul.sub-categories
             li
-                a(href="") Туфли
+                a.active(href="")
+                    span Туфли
             li
-                a(href="") Босоножки
+                a(href="")
+                    span Босоножки
             li
-                a(href="") Балетки
+                a(href="")
+                    span Балетки
             li
-                a(href="") Мокасины
+                a(href="")
+                    span Мокасины
             li
-                a(href="") Сапоги
+                a(href="")
+                    span Сапоги
             li
-                a(href="") Полусапожки
+                a(href="")
+                    span Полусапожки
             li
-                a(href="") Сникеры
+                a(href="")
+                    span Сникеры
             li
-                a(href="") Лоферы
+                a(href="")
+                    span Лоферы
             li
-                a(href="") Сандалии
+                a(href="")
+                    span Сандалии
             li
-                a(href="") Сабо
-
+                a(href="")
+                    span Сабо
+        .wrapper-columns
+            aside.aside(ng-controller="AsideCtrl")
+                form.form-validate(name="formValidate" method="POST" action="./controller.php")
+                    ul.list-switchers
+                        li
+                            //Если aside.switchers.price.isOpen = true то блок цены открыт при загрузке иначе закрыт, открытыми должны быть блоки в которых выбранно что-нибуть
+                            a(ng-init="switchers.price.isOpen=false" ng-class="(switchers.price.isOpen==false)?'close':'open'" ng-click="switch('price')") Цена
+                            .content-switcher
+                                range(floor='0' ceiling='4000' handle-low="400" handle-height="3500"  step="5" model="switchers.price")
+                        li
+                            a(ng-init="switchers.size.isOpen=false" ng-class="(switchers.size.isOpen==false)?'close':'open'" ng-click="switch('size')") Размер
+                            .content-switcher
+                                // nameSize1 - может быть любое название свойства латиницей
+                                checkbox(checked model="switchers.size.nameSize1") 0
+                                checkbox(model="switchers.size.nameSize2") 23
+                                checkbox(model="switchers.size.nameSize3") 23.5
+                                checkbox(model="switchers.size.nameSize4") 24
+                                checkbox(model="switchers.size.nameSize5") 24.5
+                                checkbox(model="switchers.size.nameSize6") 25
+                                checkbox(model="switchers.size.nameSize7") 26
+                                checkbox(model="switchers.size.nameSize8") 26.5
+                                checkbox(model="switchers.size.nameSize9") 27
+                                checkbox(model="switchers.size.nameSize10") 27.5
+                        li
+                            a(ng-init="switchers.brand.isOpen=false" ng-class="(switchers.brand.isOpen==false)?'close':'open'" ng-click="switch('brand')") Бренд
+                            .content-switcher
+                                checkbox(model="switchers.size.name1") GRADI (1)
+                                checkbox(checked model="switchers.brand.name2") adidas (2)
+                                checkbox(model="switchers.brand.name3") Alba (13)
+                                checkbox(model="switchers.brand.name4") Alex Mazurin (2)
+                                checkbox(model="switchers.brand.name5") Antonio Biaggi (3)
+                                checkbox(model="switchers.brand.name6") Apart (2)
+                                checkbox(model="switchers.brand.name7") ASH (5)
+                                checkbox(model="switchers.brand.name8") Baden (2)
+                                checkbox(model="switchers.brand.name9") Basic Editions (2)
+                                checkbox(model="switchers.brand.name10") Benta (14)
+                                checkbox(model="switchers.brand.name11") Betsy (2)
+                        li
+                            a(ng-init="switchers.heel_height.isOpen=false" ng-class="(switchers.heel_height.isOpen==false)?'close':'open'" ng-click="switch('heel_height')") Высота каблука
+                            .content-switcher
+                                checkbox(model="switchers.heel_height.name1") без каблука (1)
+                                checkbox(checked model="switchers.heel_height.name2") танкетка (2)
+                                checkbox(model="switchers.heel_height.name3") 0-3 см (13)
+                                checkbox(model="switchers.heel_height.name4") 3-9 см (2)
+                                checkbox(model="switchers.heel_height.name5") 10-14 см (4)
+                        li
+                            a(ng-init="switchers.color.isOpen=true" ng-class="(switchers.color.isOpen==false)?'close':'open'" ng-click="switch('color')") Цвет
+                            .content-switcher
+                                color(model="switchers.color.customsforall_value_name1" value="eccfb4")
+                                color(model="switchers.color.customsforall_value_name2" value="eaeaea")
+                                color(model="switchers.color.customsforall_value_name3" value="a7c4c8")
+                                color(model="switchers.color.customsforall_value_name4" value="ffe269")
+                                color(model="switchers.color.customsforall_value_name5" value="74b435")
+                                color(model="switchers.color.customsforall_value_name5" value="000000")
+                                color(model="switchers.color.customsforall_value_name5" value="dd3f5e")
+                                color(model="switchers.color.customsforall_value_name5" value="ff3535")
+                                color(model="switchers.color.customsforall_value_name5" value="ff903f")
+                                color(model="switchers.color.customsforall_value_name5" value="ff903f")
+                                color(model="switchers.color.customsforall_value_name5" value="b37bda")
+                        li
+                            a(ng-init="switchers.material.isOpen=false" ng-class="(switchers.material.isOpen==false)?'close':'open'" ng-click="switch('material')") Материал
+                            .content-switcher
+                                checkbox(model="switchers.color.name1") crosl ite (1)
+                                checkbox(checked model="switchers.color.name2") искусственная замша (2)
+                                checkbox(model="switchers.color.name3") искусственная кожа (8)
+                                checkbox(model="switchers.color.name4") искусственный материал (1)
+                                checkbox(model="switchers.color.name5") микрофибра (1)
+                                checkbox(model="switchers.color.name5") натуральная замша (40)
+                                checkbox(model="switchers.color.name5") натуральная кожа (517)
+                                checkbox(model="switchers.color.name5") натуральный велюр (78)
+                                checkbox(model="switchers.color.name5") натуральный нубук (12)
+                                checkbox(model="switchers.color.name5") ПВХ (1)
+                                checkbox(model="switchers.color.name5") полимер (2)
+                        input(type="hidden" value="{{switchers}}")
+                    div.wrapper-buttons
+                        button(href="product-details.html") Отправить
+                        a(href="product-details.html") Сбросить все
+            section.wrapper-list-products
+                div.sorting
+                    h2 Сортировать по:
+                    ul
+                        li
+                            a.active.arrow-up(href="") полулярности
+                        li
+                            a.active.arrow-down(href="") цене
+                        li
+                            a(href="") рейтингу
+                ul.list-products(itemscope itemtype="http://schema.org/Product")
+                    -var i=0;
+                    while i<12
+                        li(flipper-x="hover")
+                            .back
+                                img(src="./images/popular/#{i%4+1}.jpg")
+                                .over-light
+                                if i%2==0
+                                    span.sale sale
+                                else
+                                    span.new new
+                                .inner
+                                    h2 Размеры
+                                    p 36 38 40
+                                    a(href="product-details.html").link Подробнее
+                            .front
+                                if i%2==0
+                                    span.sale sale
+                                else
+                                    span.new new
+                                .wrapper-img
+                                    img(src="./images/popular/#{i%4+1}.jpg")
+                            .info
+                                h3 Туфли “MANGO”
+                                p
+                                    del 6 788 руб.
+                                    span 3 999 руб.
+                                div.wrapper-stars
+                                    .stars
+                                        span(style="width:87%")
+                                    span.count (38)
+                        -i++
+                .wrapper-pagination
+                    ul.pagination
+                        li
+                            a(href="") 1
+                        li
+                            span(href="") 2
+                        li
+                            a(href="") 3
+                        li
+                            a(href="") 4
+    +also-like()
