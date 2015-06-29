@@ -26,7 +26,7 @@
               <li><a href="tel:8-495-456-7878">8 (495) 456 78 78</a></li>
               <li><a href="">Перезвоните мне</a></li>
             </ul>
-          </header>
+          </header><a href="./cart.html" ng-class="{'rubberBand':animated == true}" class="fixed-cart animated"><span class="count">12</span></a>
       <main class="main">
         <div class="container">
               <header class="header-content">
@@ -570,12 +570,12 @@
                 <form name="formValidate" method="POST" action="./controller.php" class="form-validate">
                   <ul class="list-switchers">
                     <li>
-                      <!--Если aside.switchers.price.isOpen = true то блок цены открыт при загрузке иначе закрыт, открытыми должны быть блоки в которых выбранно что-нибуть--><a ng-init="switchers.price.isOpen=false" ng-class="(switchers.price.isOpen==false)?'close':'open'" ng-click="switch('price')">Цена</a>
+                      <!--Если aside.switchers.price.isOpen = true то блок цены открыт при загрузке иначе закрыт, открытыми должны быть блоки в которых выбранно что-нибуть--><a ng-init="switchers.price.isOpen=true" ng-class="(switchers.price.isOpen==false)?'close':'open'" ng-click="switch('price')">Цена</a>
                       <div class="content-switcher">
                         <range floor="0" ceiling="4000" handle-low="400" handle-height="3500" step="5" model="switchers.price"></range>
                       </div>
                     </li>
-                    <li><a ng-init="switchers.size.isOpen=false" ng-class="(switchers.size.isOpen==false)?'close':'open'" ng-click="switch('size')">Размер</a>
+                    <li><a ng-init="switchers.size.isOpen=true" ng-class="(switchers.size.isOpen==false)?'close':'open'" ng-click="switch('size')">Размер</a>
                       <div class="content-switcher">
                         <!-- nameSize1 - может быть любое название свойства латиницей-->
                         <checkbox checked model="switchers.size.nameSize1">0</checkbox>
@@ -584,7 +584,7 @@
                         <checkbox model="switchers.size.nameSize4">24</checkbox>
                         <checkbox model="switchers.size.nameSize5">24.5</checkbox>
                         <checkbox model="switchers.size.nameSize6">25</checkbox>
-                        <checkbox model="switchers.size.nameSize7">26</checkbox>
+                        <checkbox checked model="switchers.size.nameSize7">26</checkbox>
                         <checkbox model="switchers.size.nameSize8">26.5</checkbox>
                         <checkbox model="switchers.size.nameSize9">27</checkbox>
                         <checkbox model="switchers.size.nameSize10">27.5</checkbox>
@@ -616,17 +616,17 @@
                     </li>
                     <li><a ng-init="switchers.color.isOpen=true" ng-class="(switchers.color.isOpen==false)?'close':'open'" ng-click="switch('color')">Цвет</a>
                       <div class="content-switcher">
-                        <color model="switchers.color.customsforall_value_name1" value="eccfb4"></color>
+                        <color checked model="switchers.color.customsforall_value_name1" value="eccfb4"></color>
                         <color model="switchers.color.customsforall_value_name2" value="eaeaea"></color>
                         <color model="switchers.color.customsforall_value_name3" value="a7c4c8"></color>
                         <color model="switchers.color.customsforall_value_name4" value="ffe269"></color>
                         <color model="switchers.color.customsforall_value_name5" value="74b435"></color>
-                        <color model="switchers.color.customsforall_value_name5" value="000000"></color>
-                        <color model="switchers.color.customsforall_value_name5" value="dd3f5e"></color>
-                        <color model="switchers.color.customsforall_value_name5" value="ff3535"></color>
-                        <color model="switchers.color.customsforall_value_name5" value="ff903f"></color>
-                        <color model="switchers.color.customsforall_value_name5" value="ff903f"></color>
-                        <color model="switchers.color.customsforall_value_name5" value="b37bda"></color>
+                        <color model="switchers.color.customsforall_value_name6" value="000000"></color>
+                        <color model="switchers.color.customsforall_value_name7" value="dd3f5e"></color>
+                        <color checked model="switchers.color.customsforall_value_name8" value="ff3535"></color>
+                        <color model="switchers.color.customsforall_value_name9" value="ff903f"></color>
+                        <color model="switchers.color.customsforall_value_name10" value="ff903f"></color>
+                        <color model="switchers.color.customsforall_value_name11" value="b37bda"></color>
                       </div>
                     </li>
                     <li><a ng-init="switchers.material.isOpen=false" ng-class="(switchers.material.isOpen==false)?'close':'open'" ng-click="switch('material')">Материал</a>
@@ -636,16 +636,16 @@
                         <checkbox model="switchers.color.name3">искусственная кожа (8)</checkbox>
                         <checkbox model="switchers.color.name4">искусственный материал (1)</checkbox>
                         <checkbox model="switchers.color.name5">микрофибра (1)</checkbox>
-                        <checkbox model="switchers.color.name5">натуральная замша (40)</checkbox>
-                        <checkbox model="switchers.color.name5">натуральная кожа (517)</checkbox>
-                        <checkbox model="switchers.color.name5">натуральный велюр (78)</checkbox>
-                        <checkbox model="switchers.color.name5">натуральный нубук (12)</checkbox>
-                        <checkbox model="switchers.color.name5">ПВХ (1)</checkbox>
-                        <checkbox model="switchers.color.name5">полимер (2)</checkbox>
+                        <checkbox model="switchers.color.name6">натуральная замша (40)</checkbox>
+                        <checkbox model="switchers.color.name7">натуральная кожа (517)</checkbox>
+                        <checkbox model="switchers.color.name8">натуральный велюр (78)</checkbox>
+                        <checkbox model="switchers.color.name9">натуральный нубук (12)</checkbox>
+                        <checkbox model="switchers.color.name10">ПВХ (1)</checkbox>
+                        <checkbox model="switchers.color.name11">полимер (2)</checkbox>
                       </div>
                     </li>
-                    <input type="hidden" value="{{switchers}}">
                   </ul>
+                  <input type="hidden" value="{{switchers}}">
                   <div class="wrapper-buttons">
                     <button href="product-details.html">Отправить</button><a href="product-details.html">Сбросить все</a>
                   </div>
@@ -1101,8 +1101,8 @@
         </div>
       </div>
     </div>
-    <!--script(src="bundle.js" async)-->
-    <script src="http://localhost:8080/webpack-dev-server.js"></script>
-    <script src="http://localhost:8080/bundle.js"></script>
+    <script src="bundle.js" async></script>
+    <!--script(src="http://localhost:8080/webpack-dev-server.js")-->
+    <!--script(src="http://localhost:8080/bundle.js")-->
   </body>
 </html>

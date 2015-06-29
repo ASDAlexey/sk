@@ -35,6 +35,37 @@ body
   font:18px Georgia, sans-serif
   font-style italic
   color:#606060
+.fixed-cart
+  position:fixed
+  z-index:10
+  right 24px
+  top:50%
+  width:106px
+  height:106px
+  margin-top:-53px
+  background-color:#a9c251
+  tn(.7s)
+  &:before
+    content:''
+    position:absolute
+    z-index:1
+    aa(1)
+    sprite($fixed_cart)
+  .count
+    aa(2)
+    border-radius:50%
+    width:28px
+    height:28px
+    background-color:#000
+    color:#fff
+    text-align:center
+    padding-top:6px
+    display:block
+    margin-top:26px
+    margin-left:18px
+    lr(17px)
+  &:hover
+    background-color:#84c232
 @media screen and (max-width:1100px)
   html, body
     overflow-x:hidden

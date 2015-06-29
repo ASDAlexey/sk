@@ -6,6 +6,8 @@ html
     body(pointer-events-scroll ng-controller="PopupCtrl" style="opacity:0")
         .wrapper.dNtoLoad
             +header()
+            a(href="./cart.html" ng-class="{'rubberBand':animated == true}").fixed-cart.animated
+                span.count 12
             main.main
                 .container
                     +header-content()
@@ -140,6 +142,6 @@ html
                                 p У меня еще нет аккаунта
                                 a(href="" ng-click="switch('reg')") Зарегистрироваться
         include ./includes/thanks.jade
-        //script(src="bundle.js" async)
-        script(src="http://localhost:8080/webpack-dev-server.js")
-        script(src="http://localhost:8080/bundle.js")
+        script(src="bundle.js" async)
+        //script(src="http://localhost:8080/webpack-dev-server.js")
+        //script(src="http://localhost:8080/bundle.js")

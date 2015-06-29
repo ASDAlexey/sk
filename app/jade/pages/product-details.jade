@@ -1,0 +1,19 @@
+//- index.jade
+extends ../layout.jade
+block content
+    ul.breadcrumbs
+        li
+            a(href="./") Главная
+        li
+            a(href="./") Для женщин
+        li
+            a(href="./") Босоножки
+        li
+            span Betsy
+    section
+        .wrapper-columns.product-details(ng-controller="AsideCtrl")
+            aside.aside
+
+            section.product-info
+
+    +also-like()

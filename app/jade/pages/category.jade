@@ -46,11 +46,11 @@ block content
                     ul.list-switchers
                         li
                             //Если aside.switchers.price.isOpen = true то блок цены открыт при загрузке иначе закрыт, открытыми должны быть блоки в которых выбранно что-нибуть
-                            a(ng-init="switchers.price.isOpen=false" ng-class="(switchers.price.isOpen==false)?'close':'open'" ng-click="switch('price')") Цена
+                            a(ng-init="switchers.price.isOpen=true" ng-class="(switchers.price.isOpen==false)?'close':'open'" ng-click="switch('price')") Цена
                             .content-switcher
                                 range(floor='0' ceiling='4000' handle-low="400" handle-height="3500"  step="5" model="switchers.price")
                         li
-                            a(ng-init="switchers.size.isOpen=false" ng-class="(switchers.size.isOpen==false)?'close':'open'" ng-click="switch('size')") Размер
+                            a(ng-init="switchers.size.isOpen=true" ng-class="(switchers.size.isOpen==false)?'close':'open'" ng-click="switch('size')") Размер
                             .content-switcher
                                 // nameSize1 - может быть любое название свойства латиницей
                                 checkbox(checked model="switchers.size.nameSize1") 0
@@ -59,7 +59,7 @@ block content
                                 checkbox(model="switchers.size.nameSize4") 24
                                 checkbox(model="switchers.size.nameSize5") 24.5
                                 checkbox(model="switchers.size.nameSize6") 25
-                                checkbox(model="switchers.size.nameSize7") 26
+                                checkbox(checked model="switchers.size.nameSize7") 26
                                 checkbox(model="switchers.size.nameSize8") 26.5
                                 checkbox(model="switchers.size.nameSize9") 27
                                 checkbox(model="switchers.size.nameSize10") 27.5
@@ -88,17 +88,17 @@ block content
                         li
                             a(ng-init="switchers.color.isOpen=true" ng-class="(switchers.color.isOpen==false)?'close':'open'" ng-click="switch('color')") Цвет
                             .content-switcher
-                                color(model="switchers.color.customsforall_value_name1" value="eccfb4")
+                                color(checked model="switchers.color.customsforall_value_name1" value="eccfb4")
                                 color(model="switchers.color.customsforall_value_name2" value="eaeaea")
                                 color(model="switchers.color.customsforall_value_name3" value="a7c4c8")
                                 color(model="switchers.color.customsforall_value_name4" value="ffe269")
                                 color(model="switchers.color.customsforall_value_name5" value="74b435")
-                                color(model="switchers.color.customsforall_value_name5" value="000000")
-                                color(model="switchers.color.customsforall_value_name5" value="dd3f5e")
-                                color(model="switchers.color.customsforall_value_name5" value="ff3535")
-                                color(model="switchers.color.customsforall_value_name5" value="ff903f")
-                                color(model="switchers.color.customsforall_value_name5" value="ff903f")
-                                color(model="switchers.color.customsforall_value_name5" value="b37bda")
+                                color(model="switchers.color.customsforall_value_name6" value="000000")
+                                color(model="switchers.color.customsforall_value_name7" value="dd3f5e")
+                                color(checked model="switchers.color.customsforall_value_name8" value="ff3535")
+                                color(model="switchers.color.customsforall_value_name9" value="ff903f")
+                                color(model="switchers.color.customsforall_value_name10" value="ff903f")
+                                color(model="switchers.color.customsforall_value_name11" value="b37bda")
                         li
                             a(ng-init="switchers.material.isOpen=false" ng-class="(switchers.material.isOpen==false)?'close':'open'" ng-click="switch('material')") Материал
                             .content-switcher
@@ -107,13 +107,13 @@ block content
                                 checkbox(model="switchers.color.name3") искусственная кожа (8)
                                 checkbox(model="switchers.color.name4") искусственный материал (1)
                                 checkbox(model="switchers.color.name5") микрофибра (1)
-                                checkbox(model="switchers.color.name5") натуральная замша (40)
-                                checkbox(model="switchers.color.name5") натуральная кожа (517)
-                                checkbox(model="switchers.color.name5") натуральный велюр (78)
-                                checkbox(model="switchers.color.name5") натуральный нубук (12)
-                                checkbox(model="switchers.color.name5") ПВХ (1)
-                                checkbox(model="switchers.color.name5") полимер (2)
-                        input(type="hidden" value="{{switchers}}")
+                                checkbox(model="switchers.color.name6") натуральная замша (40)
+                                checkbox(model="switchers.color.name7") натуральная кожа (517)
+                                checkbox(model="switchers.color.name8") натуральный велюр (78)
+                                checkbox(model="switchers.color.name9") натуральный нубук (12)
+                                checkbox(model="switchers.color.name10") ПВХ (1)
+                                checkbox(model="switchers.color.name11") полимер (2)
+                    input(type="hidden" value="{{switchers}}")
                     div.wrapper-buttons
                         button(href="product-details.html") Отправить
                         a(href="product-details.html") Сбросить все
