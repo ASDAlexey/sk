@@ -53,23 +53,27 @@ module.exports = (angular,$)->
               if number < scope.options.countSlides
                 TweenMax.to(element[0],.7,{scrollTo : {x : parseInt(scope.itemWidth) * number}})
         dragStart = ()->
-          if element[0].closest('.top-scroller')
+          if element[0].closest('.top-scroller,.product-scroller')
             $timeout(=>
               $rootScope.currentSlide = parseInt(-this.x / scope.options.itemWidth)
               $rootScope.$apply()
             ,500)
         dragEnd = ()->
-          if element[0].closest('.top-scroller')
+          if element[0].closest('.top-scroller,.product-scroller')
             $timeout(=>
               $rootScope.currentSlide = parseInt(-this.x / scope.options.itemWidth)
               $rootScope.$apply()
             ,500)
         updatePosition = ()->
-          if element[0].closest('.top-scroller')
+          if element[0].closest('.top-scroller,.product-scroller')
             $timeout(=>
               $rootScope.currentSlide = parseInt(-this.x / scope.options.itemWidth)
               $rootScope.$apply()
             ,500)
-        Draggable.create(element[0],
-          {type : scope.direction,edgeResistance : 0.5,throwProps : true,lockAxis : true,onDragStart : dragStart,onDragEnd : dragEnd,onDrag : updatePosition})
+        if scope.direction is 'scrollTop'
+          Draggable.create(element[0],
+            {type : scope.direction,edgeResistance : .5,throwProps : true,lockAxis : true,onDragStart : dragStart,onDragEnd : dragEnd,onDrag : updatePosition})
+        else
+          Draggable.create(element[0],
+            {type : scope.direction,edgeResistance : 1,throwProps : true,lockAxis : true,onDragStart : dragStart,onDragEnd : dragEnd,onDrag : updatePosition})
   ]

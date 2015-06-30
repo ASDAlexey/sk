@@ -1,4 +1,5 @@
 /* Overlay style */
+$color=rgba(#fff, .7)
 .overlay
   position:fixed
   width:100%
@@ -6,7 +7,7 @@
   top:0
   left:0
   z-index:1000
-  background:rgba(#f4f7e7, .98)
+  background:$color
   .slider-form
     background:none
 /* Overlay closing cross */
@@ -83,15 +84,7 @@
   background-position:center top
   background-size cover
 .overlay-cornershape .overlay-path
-  fill:rgba(#f4f7e7, .98)
-//.overlay-cornershape .inner-popup,
-//.overlay-cornershape .overlay-close
-//  opacity:0
-//  tn(.4s)
-//.overlay-cornershape.open .inner-popup,
-//.overlay-cornershape.open .overlay-close
-//  opacity:1
-//  tn(.4s)
+  fill:$color
 .overlay-cornershape.close nav,
 .overlay-cornershape.close .overlay-close
   transition-delay:.4s

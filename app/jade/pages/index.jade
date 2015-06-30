@@ -22,7 +22,7 @@ block content
                                 a(href="./category.html") Начать покупки
                 div(style="background-image:url('./images/slider/1.jpg')")
                     // У блока .inner может быть два расположения в зависимости от картинки .left - значит внутренний текст будет распологаться слева,.right - значит внутренний текст будет распологаться справа
-                    .inner.left
+                    .inner.right
                         .cont
                             img.slider-logo(src="./images/slider-logo.png")
                             h1 Весенняя распродажа
@@ -119,7 +119,8 @@ block content
                 button.send(ng-click='send(dataForm,formValidate,action)') Ок
     section.brands
         h1.default-title Бренды
-        h2.default-sub-title перейти к покупкам
+        div.wrapper-default-sub-title
+            a.default-sub-title(href="#") перейти к покупкам
         .wrapper-scroller.brand-scroller.slider-brand(ng-controller="ScrollerCtrl")
             // Если слайдов меньше 6 не выводить на php блок ul.switch-brands
             ul.switch-brands

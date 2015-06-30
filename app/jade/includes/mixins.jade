@@ -53,7 +53,7 @@ mixin header()
             li
                 a(href="tel:8-495-456-7878") 8 (495) 456 78 78
             li
-                a(href="") Перезвоните мне
+                a(href="" ng-click="openPopup('recall',{})") Перезвоните мне
 mixin header-content()
     header.header-content
         .search
@@ -132,8 +132,7 @@ mixin header-content()
                     a(href="./category.html") #{listNav}
                     span
                     div.sub-menu
-                        div.start-category
-                            h2 Обувь
+                        div
                             ul
                                 li
                                     a(href="./product-details.html") Балетки
@@ -146,7 +145,6 @@ mixin header-content()
                                 li
                                     a(href="./product-details.html") Кеды
                         div
-                            h2
                             ul
                                 li
                                     a(href="./product-details.html") Кроссовки
@@ -159,7 +157,6 @@ mixin header-content()
                                 li
                                     a(href="./product-details.html") Полусапожки
                         div
-                            h2
                             ul
                                 li
                                     a(href="./product-details.html") Резиновые сапоги
@@ -172,51 +169,6 @@ mixin header-content()
                                 li
                                     a(href="./product-details.html") Тапочки
                         div
-                            h2
-                            ul
-                                li
-                                    a(href="./product-details.html") Туфли
-                        div.start-category
-                            h2 Сумки
-                            ul
-                                li
-                                    a(href="./product-details.html") Балетки
-                                li
-                                    a(href="./product-details.html") Босоножки
-                                li
-                                    a(href="./product-details.html") Cандалии
-                                li
-                                    a(href="./product-details.html") Ботинки
-                                li
-                                    a(href="./product-details.html") Кеды
-                        div
-                            h2
-                            ul
-                                li
-                                    a(href="./product-details.html") Кроссовки
-                                li
-                                    a(href="./product-details.html") Мокасины
-                                li
-                                    a(href="./product-details.html") Пантолеты
-                                li
-                                    a(href="./product-details.html") Шлепанцы
-                                li
-                                    a(href="./product-details.html") Полусапожки
-                        div.start-category
-                            h2 Платья
-                            ul
-                                li
-                                    a(href="./product-details.html") Резиновые сапоги
-                                li
-                                    a(href="./product-details.html") Сабо
-                                li
-                                    a(href="./product-details.html") Сапоги
-                                li
-                                    a(href="./product-details.html") Слипоны
-                                li
-                                    a(href="./product-details.html") Тапочки
-                        div
-                            h2
                             ul
                                 li
                                     a(href="./product-details.html") Туфли

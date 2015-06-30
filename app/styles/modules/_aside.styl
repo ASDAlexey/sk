@@ -2,6 +2,43 @@
   width:350px
   float:left
   padding-right:85px
+  .wrapper-stars
+    margin-top:26px
+    text-align:center
+    .stars
+      dibt()
+      sprite($stars)
+      span
+        display:block
+        sprite($stars_full)
+    .count
+      color:#303030
+      margin-left:9px
+      dint()
+      dint()
+      position:relative
+      z-index:0
+      top:2px
+      lb(17px)
+      text-transform:uppercase
+  .wrapper-to-vote
+    text-align:center
+    margin-top:20px
+    .to-vote
+      dibt()
+      text-decoration:none
+      lr(10px,37px)
+      color:#fff
+      text-transform:uppercase
+      width:153px
+      height:40px
+      display:block
+      margin:0 auto
+      background-color:#a9c251
+      border:3px solid #ecf2eb
+      tn(.5s)
+      &:hover
+        background-color:#84C232
   .wrapper-buttons
     margin-top:31px
     after()
@@ -9,7 +46,8 @@
     > button
       float:left
       text-decoration:none
-      lr(10px, 37px)
+      lr(14px, 37px)
+      padding-top:4px
       color:#fff
       text-transform:uppercase
       width:153px

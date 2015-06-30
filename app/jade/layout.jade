@@ -81,25 +81,8 @@ html
         //        path#outline(style='-webkit-filter:url(#f2)', stroke='#ff3000', fill='none', stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')
         //        path#outline-bg(opacity='0.5', fill='none', stroke="#ededed", stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')
         button.up.fa.fa-angle-double-up(move-up)
-        // popup recall block
-        //popup-svg.hide
-        //    .slider-form
-        //        h2
-        //            span Сделать заказ
-        //            span прямо сейчас
-        //        form.form-validate(name="formValidate", method='POST' novalidate='' is-valide-border="{{formValidate.$invalid}}" ng-controller="SliderFormCtrl")
-        //            div.wrapper-input
-        //                input(type="text" name="name" placeholder="Ваше имя" ng-model='dataForm.name' autocomplete="off" required)
-        //                span
-        //            div.wrapper-input
-        //                input(type="text" name="phone" ui-mask="+7(999)-999-99-99" ng-model='dataForm.phone' autocomplete="off" required)
-        //                span
-        //            .wrapper-send
-        //                button.send(ng-click="send('slider-form',formValidate)") Отправить заявку
-        //            p Гарантируем конфиденциальность ваших данных
-        //                span.fa.fa-lock
         // popup
-        popup-svg.hide-block
+        popup-svg(name="enter").hide-block
             section.authentification-block
                 img.logo(src="./images/popup-logo.jpg")
                 .flipper(flipper-x="click")
@@ -141,7 +124,21 @@ html
                             div.wrapper-link
                                 p У меня еще нет аккаунта
                                 a(href="" ng-click="switch('reg')") Зарегистрироваться
+        // popup
+        popup-svg(name="recall").hide-block
+            section.vote-block
+                h1.title-form Перезвоните мне
+                form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="RecallCtrl"
+                ng-init="action='./controller.php'")
+                    div.wrapper-input
+                        input(type="text" name="name" placeholder="Ваше имя" ng-model='dataForm.name' autocomplete="off" required)
+                        span
+                    div.wrapper-input
+                        input(type="text" name="phone" ui-mask="+7(999)-999-99-99" ng-model='dataForm.phone' autocomplete="off" required)
+                        span
+                    .wrapper-send
+                        button.send(ng-click='send(dataForm,formValidate,action,"auth-enter")') Отправить заявку
         include ./includes/thanks.jade
-        script(src="bundle.js" async)
-        //script(src="http://localhost:8080/webpack-dev-server.js")
-        //script(src="http://localhost:8080/bundle.js")
+        //script(src="bundle.js" async)
+        script(src="http://localhost:8080/webpack-dev-server.js")
+        script(src="http://localhost:8080/bundle.js")

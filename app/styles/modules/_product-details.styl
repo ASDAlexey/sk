@@ -1,3 +1,91 @@
 .product-details
+  margin-top:22px
   .aside
-    width:772px
+    flex-grow:1
+    width:auto
+    padding-right:77px
+  form
+    margin-bottom:0 !important
+  table
+    tr
+      td
+        padding:7px 0
+        lb()
+        color:#606060
+        &:first-child
+          width:225px
+          text-transform:uppercase
+          border-right:1px solid #d0d0d0
+          padding-right:34px
+        &:nth-child(2)
+          padding-left:34px
+  .product-info
+    width:402px
+    flex-shrink:0
+    .add-to-cart
+      margin-bottom:44px
+      width:100%
+      height:50px
+      background-color:#79bdbe
+      text-align:center
+      text-transform:uppercase
+      color:#fff
+      lr(14px,52px)
+      tn(.5s)
+      &:hover
+        background-color:#84c232
+    > *
+      margin-bottom:14px
+    .title
+      color:#303030
+      lb(29px)
+      text-transform:uppercase
+    p
+      &.mark
+        color:#828282
+        gi()
+      &.price
+        color:#fa3737
+        gi(32px)
+        del
+          font-size:21px
+          color:#606060
+          dibb()
+          margin-right:8px
+          position:relative
+          z-index:0
+          top:3px
+    h2
+      lb()
+      margin:33px 0 26px
+      text-transform:uppercase
+      color:#606060
+    .footnotes
+      color:#606060
+      lb()
+      width:225px
+      font-style italic
+    ul
+      margin-bottom:32px
+      display:block
+      li
+        dibt()
+        a
+          border:1px solid #959595
+          text-align:center
+          text-decoration:none
+          color:#464542
+          width:32px
+          height:32px
+          display:block
+          padding-top:9px
+          tn(.5s)
+          &:hover,&.active
+            background-color:#79bdbe
+            border-color:#79bdbe
+            color:#fff
+          &.disabled
+            opacity:.5
+            background-color:#fff
+            border-color:#959595
+            color:#464542

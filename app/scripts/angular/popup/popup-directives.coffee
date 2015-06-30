@@ -24,22 +24,31 @@ module.exports = (angular)->
       replace : true
       transclude : true
       template : require('./templates/popup-svg.jade')
+      controller : ($scope,$rootScope)->
+        $scope.closePopup = (msg,data) ->
+          console.log('close')
+          $rootScope.$broadcast 'popup',
+            data : data
+            msg : msg
+            isOpened : false
+      scope :
+        name : "@"
       link : (scope,element,attrs) ->
         angular.element(document).ready ->
           element[0].classList.remove 'hide-block'
           #popup events Listener
           scope.$on 'popup',(event,response) ->
             if response.isOpened
-              openOverlay()
-              if response.data
-                console.log response.data
+              if response.msg is scope.name
+                openOverlay()
             else if !response.isOpened
               closeOverlay()
-          overlay = document.querySelector('div.overlay')
-          tl = new TimelineMax(paused : true)
+          overlay = element[0]
+          tl = {}
+          tl[scope.name] = new TimelineMax(paused : true)
           $timeout (->
-            choise = _.union(element[0].getElementsByClassName('overlay-close'),element[0].getElementsByClassName('flipper'),element[0].getElementsByClassName('logo'))
-            tl.staggerFrom choise,0.7,{
+            choise = _.union(element[0].getElementsByClassName('inner-popup'),element[0].getElementsByClassName('overlay-close'),element[0].getElementsByClassName('logo'))
+            tl[scope.name].staggerFrom choise,0.7,{
               opacity : 0
               scale : 0
               y : 80
@@ -52,10 +61,10 @@ module.exports = (angular)->
             overlay.classList.add('open')
             path.animate {'path' : pathConfig.to},800,mina.easeout
             $timeout (->
-              tl.play()
+              tl[scope.name].play()
             ),800
           closeOverlay = ->
-            tl.reverse()
+            tl[scope.name].reverse()
             $timeout (->
               path.animate {'path' : pathConfig.from},500,mina.easeout
               $timeout (->
