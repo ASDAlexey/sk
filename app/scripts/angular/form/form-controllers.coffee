@@ -150,54 +150,6 @@ module.exports = (angular,$)->
     "$rootScope"
     "$timeout"
     ($scope,$http,$rootScope,$timeout) ->
-      $rootScope.formIsValide = false
-      #custom select
-      $scope.addSelects = ()->
-        resultSelects = []
-        angular.forEach $scope.selects,(value,key)->
-          if _.findWhere(value,{'ticked' : true}).value
-            resultSelects.push {
-              "name" : key
-              "value" : _.result(_.findWhere(value,{'ticked' : true}),'value')
-            }
-        if resultSelects.length
-          return resultSelects
-        else
-          return false
-      $scope.setCountSelects = ()->
-        $scope.zIndex = new Array(1)
-        $scope.zIndex = _.fill($scope.zIndex,false)
-      $scope.fOpen = (number)->
-        $scope.zIndex[number] = true
-      $scope.fClose = (number)->
-        $scope.zIndex[number] = false
-        if $scope.addSelects()
-          $scope.dataForm.data.selects = $scope.addSelects()
-      $scope.selects = {}
-      $scope.setSelect = (selectObj,isLast = false)->
-        $scope.selects[selectObj.name] = []
-        $scope.selects[selectObj.name].push {
-          name : selectObj.placeholder.text
-          value : selectObj.placeholder.value
-          maker : ""
-          ticked : true
-        }
-        angular.forEach selectObj.options,(value,key)->
-          unless selectObj.placeholder.text is value.text
-            $scope.selects[selectObj.name].push {
-              name : value.text
-              value : value.value
-              maker : ""
-              ticked : false
-            }
-
-        console.log($scope.selects)
-#        if isLast
-#          console.log('last')
-#          console.log($scope.selects)
-#          if $scope.addSelects()
-#            $scope.selectsCollection = $scope.addSelects()
-#            console.log($scope.selectsCollection)
       $scope.form_set_pristine = (form) ->
         if form.$setPristine
           form.$setPristine()
@@ -210,8 +162,6 @@ module.exports = (angular,$)->
       $scope.send = (dataForm,formValidate,action)=>
         if formValidate.$valid
           $scope.thanksShowTime()
-          if $scope.addSelects()
-            dataForm.data.selects = $scope.addSelects()
           sendOptions =
             action : action
             method : "POST"

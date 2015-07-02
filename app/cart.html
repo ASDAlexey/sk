@@ -357,18 +357,11 @@
                 <h1>Адрес доставки</h1>
                 <h2 class="default-sub-title">Все поля обязательны для заполнения</h2>
                 <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)" class="form-validate">
-                  <div ng-class="{'open':zIndex[0]==true}" class="select-block">
-                    <label>Выбор способа доставки</label>
-                    <!-- setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})-->
-                    <!-- name_select -любое имя cелекта латиницей-->
-                    <!-- "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder-->
-                    <!--  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}-->
-                    <!-- "options" - перечисляем коллекция всех options ceлекта-->
-                    <!-- name в setSelect должен совпадать с input-model="selects['select0']"-->
-                    <div multi-select ng-init="setSelect({&quot;name&quot;:&quot;select_delivery&quot;,&quot;placeholder&quot;:{&quot;value&quot;:&quot;1&quot;, &quot;text&quot;:&quot;Самовывоз&quot;},&quot;options&quot;:[{&quot;value&quot;:&quot;1&quot;,&quot;text&quot;:&quot;Самовывоз&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;2&quot;,&quot;text&quot;:&quot;Доставка по территории Москвы&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;3&quot;,&quot;text&quot;:&quot;Отправка курьерской службой&quot;,&quot;src&quot;:&quot;&quot;}]})" on-open="fOpen(0)" on-close="fClose(0)" input-model="selects['select_delivery']" button-label="name" item-label="name maker" tick-property="ticked" selection-mode="single" helper-elements=""></div>
-                    <p ng-if="selects['select0'][0].ticked"><strong>Адрес самовывоза:</strong> г. Москва, метро Ленинский Проспект, ул. Орджоникидзе, д.12.</p>
-                    <p ng-if="selects['select0'][1].ticked"><strong>Стоимость доставки 350 руб.</strong> Срок доставки - на следующий день после заказа.</p>
-                    <p ng-if="selects['select0'][2].ticked"><strong>Тариф доставки</strong> - в зависимости от адреса получателя. Стоимость определяется персонально при общении с менеджером компании.</p>
+                  <div ng-init="cart.delivery=[{&quot;name&quot;:&quot;delivery1&quot;,&quot;maker&quot; : &quot;Самовывоз&quot;,ticked : true},{&quot;name&quot;:&quot;delivery2&quot;,&quot;maker&quot; : &quot;Доставка по территории Москвы&quot;,ticked : false},{&quot;name&quot;:&quot;delivery3&quot;,&quot;maker&quot; : &quot;Отправка курьерской службой&quot;,ticked : false}]" class="select-block">
+                    <div isteven-multi-select input-model="cart.delivery" output-model="cart.deliverySelected" button-label="maker" item-label="maker" tick-property="ticked" disable-property="disabled" selection-mode="single" helper-elements></div>
+                    <p ng-if="cart.deliverySelected[0].name=='delivery1'"><strong>Адрес самовывоза:</strong> г. Москва, метро Ленинский Проспект, ул. Орджоникидзе, д.12.</p>
+                    <p ng-if="cart.deliverySelected[0].name=='delivery2'"><strong>Стоимость доставки 350 руб.</strong> Срок доставки - на следующий день после заказа.</p>
+                    <p ng-if="cart.deliverySelected[0].name=='delivery3'"><strong>Тариф доставки</strong> - в зависимости от адреса получателя. Стоимость определяется персонально при общении с менеджером компании.</p>
                   </div>
                   <div>
                     <label for="country">СТРАНА</label>
@@ -422,16 +415,12 @@
                 <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)" class="form-validate">
                   <div ng-class="{'open':zIndex[0]==true}" class="select-block">
                     <label>Выбор способа оплаты</label>
-                    <!-- setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})-->
-                    <!-- name_select -любое имя cелекта латиницей-->
-                    <!-- "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder-->
-                    <!--  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}-->
-                    <!-- "options" - перечисляем коллекция всех options ceлекта-->
-                    <!-- name в setSelect должен совпадать с input-model="selects['select0']"-->
-                    <div multi-select ng-init="setSelect({&quot;name&quot;:&quot;select_pay&quot;,&quot;placeholder&quot;:{&quot;value&quot;:&quot;1&quot;, &quot;text&quot;:&quot;Robokassa&quot;},&quot;options&quot;:[{&quot;value&quot;:&quot;1&quot;,&quot;text&quot;:&quot;Robokassa&quot;,&quot;src&quot;:&quot;./images/robokassa.png&quot;},{&quot;value&quot;:&quot;2&quot;,&quot;text&quot;:&quot;Оплата наличными в пункте самовывоза&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;3&quot;,&quot;text&quot;:&quot;Оплата банковской картой в пункте самовывоза&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;4&quot;,&quot;text&quot;:&quot;Оплата наличными курьеру&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;5&quot;,&quot;text&quot;:&quot;Оплата банковской картой курьеру&quot;,&quot;src&quot;:&quot;&quot;}]},true)" on-open="fOpen(1)" on-close="fClose(1)" input-model="selects['select_pay']" button-label="icon name" item-label="icon name maker" tick-property="ticked" selection-mode="single" helper-elements=""></div>
+                    <div ng-init="cart.payment.delivery1=[{&quot;icon&quot;: &quot;&lt;span class='icon-select robokassa'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment1&quot;,&quot;maker&quot; : &quot;Robokassa&quot;,ticked : true},{&quot;icon&quot;: &quot;&lt;span class='icon-select cash'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment2&quot;,&quot;maker&quot; : &quot;Оплата наличными в пункте самовывоза&quot;,ticked : false},{&quot;icon&quot;: &quot;&lt;span class='icon-select credit-card'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment3&quot;,&quot;maker&quot; : &quot;Оплата банковской картой в пункте самовывоза&quot;,ticked : false}];cart.payment.delivery2=[{&quot;icon&quot;: &quot;&lt;span class='icon-select robokassa'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment1&quot;,&quot;maker&quot; : &quot;Robokassa&quot;,ticked : true},{&quot;icon&quot;: &quot;&lt;span class='icon-select cash'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment3&quot;,&quot;maker&quot; : &quot;Оплата наличными курьеру&quot;,ticked : false},{&quot;icon&quot;: &quot;&lt;span class='icon-select credit-card'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment3&quot;,&quot;maker&quot; : &quot;Оплата банковской картой курьеру&quot;,ticked : false}];cart.payment.delivery3=[{&quot;icon&quot;: &quot;&lt;span class='icon-select robokassa'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment1&quot;,&quot;maker&quot; : &quot;Robokassa&quot;,ticked : true}]" class="select-block">
+                      <div isteven-multi-select input-model="cart.payment[cart.deliverySelected[0].name]" output-model="cart.paymentSelected" button-label="icon maker" item-label="icon maker" tick-property="ticked" disable-property="disabled" selection-mode="single" helper-elements></div>
+                    </div>
                   </div>
                   <div class="wrapper-send">
-                    <button ng-click="send(dataForm,formValidate,action)" class="send">Закащать сейчас</button>
+                    <button ng-click="send(dataForm,formValidate,action)" class="send">Заказать сейчас</button>
                   </div>
                 </form>
               </section>

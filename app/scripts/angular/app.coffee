@@ -12,7 +12,8 @@ module.exports = (angular)->
     'ngAnimate'
     'ngCookies'
     'ui.mask'
-    'multi-select'
+    "isteven-multi-select"
+#    'multi-select'
 #    'angularRangeSlider'
     'angularAwesomeSlider'
     'App.animate'

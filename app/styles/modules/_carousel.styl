@@ -62,13 +62,17 @@
           height:477px
           padding-right:15px
   &.product-scroller
-    //height:460px
     .move-to-slide-thumb
       margin-top:30px
       font-size:0
+      &.left
+        text-align:left
       > li
         margin-left:29px
-        &:first-child
+        margin-top:12px
+        &:nth-child(-n+7)
+          margin-top:0
+        &:nth-child(7n-6)
           margin-left:0
         dibt()
         width:70px

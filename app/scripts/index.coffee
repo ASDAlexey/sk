@@ -17,5 +17,6 @@ Snap = require("imports-loader?this=>window,fix=>module.exports=0!./vendors/snap
 #require('./plugins/angular-google-maps.min.js')
 #require('./plugins/angular-range-slider.js')
 require('./plugins/angular-awesome-slider.min.js')
-require('./plugins/angular-multi-select.js')
+#require('./plugins/angular-multi-select.js')
+require('./plugins/isteven-multi-select.js')
 require('./angular/app.coffee')(angular)
