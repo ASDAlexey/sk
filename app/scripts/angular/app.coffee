@@ -11,9 +11,10 @@ module.exports = (angular)->
   app = angular.module("App",[
     'ngAnimate'
     'ngCookies'
-#    'ui.mask'
+    'ui.mask'
     'multi-select'
-    'angularRangeSlider'
+#    'angularRangeSlider'
+    'angularAwesomeSlider'
     'App.animate'
 #    'App.preloader'
     'App.form'

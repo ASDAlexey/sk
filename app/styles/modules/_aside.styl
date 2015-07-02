@@ -1,4 +1,30 @@
 .aside
+  .range-block
+    margin:24px 0 20px
+    position:relative
+    z-index:0
+    .list-range
+      margin-top:7px
+    &:before
+      content:''
+      position:absolute
+      z-index:1
+      left:0
+      top:8px
+      background-color:#dedede
+      width:3px
+      height:8px
+    &:after
+      content:''
+      position:absolute
+      z-index:1
+      right:0
+      top:8px
+      background-color:#dedede
+      width:15px
+      height:8px
+    .jslider-value
+      display:none !important
   width:350px
   float:left
   padding-right:85px
@@ -78,15 +104,19 @@
           &.open
             position:relative
             z-index:0
-            &:before
-              content:''
-              position:absolute
-              z-index:1
-              left:0
-              bottom:-20px
-              width:100%
-              height:1px
-              background-color:#000
+            +.content-switcher
+              padding-bottom:20px
+              position:relative
+              z-index:0
+              &:before
+                content:''
+                position:absolute
+                z-index:1
+                left:0
+                bottom:0
+                width:100%
+                height:1px
+                background-color:#000
       > a
         cursor:pointer
         text-align:left

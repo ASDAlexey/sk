@@ -1,4 +1,4 @@
-module.exports = (angular,$)->
+module.exports = (angular)->
   'use strict'
   directive = angular.module('App.svg.svg-directives',[])
   directive.directive 'ngWidth',->

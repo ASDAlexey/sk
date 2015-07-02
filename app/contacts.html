@@ -51,6 +51,9 @@
                             <div class="wrapper-title">
                               <h1 class="title"><a href="./product-details.html">Туфли “МАНГО”</a></h1>
                             </div>
+                            <div class="wrapper-size">
+                              <p class="size"><span>39</span></p>
+                            </div>
                             <div class="wrapper-price">
                               <p class="price"><span>3 999 руб.</span></p>
                             </div>
@@ -60,6 +63,9 @@
                             <div class="wrapper-title">
                               <h1 class="title"><a href="./product-details.html">Туфли “МАНГО” 2</a></h1>
                             </div>
+                            <div class="wrapper-size">
+                              <p class="size"><span>39</span></p>
+                            </div>
                             <div class="wrapper-price">
                               <p class="price"><span>3 999 руб.</span></p>
                             </div>
@@ -68,6 +74,9 @@
                           <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
                             <div class="wrapper-title">
                               <h1 class="title"><a href="./product-details.html">Туфли “МАНГО” 3</a></h1>
+                            </div>
+                            <div class="wrapper-size">
+                              <p class="size"><span>39</span></p>
                             </div>
                             <div class="wrapper-price">
                               <p class="price"><span>3 999 руб.</span></p>
@@ -506,15 +515,22 @@
     <popup-svg name="recall" class="hide-block">
       <section class="vote-block">
         <h1 class="title-form">Перезвоните мне</h1>
-        <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="RecallCtrl" ng-init="action='./controller.php'" class="form-validate">
-          <div class="wrapper-input">
-            <input type="text" name="name" placeholder="Ваше имя" ng-model="dataForm.name" autocomplete="off" required><span></span>
+        <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'" class="form-validate">
+          <div>
+            <label for="name">Имя</label>
+            <input id="name" type="text" name="name" ng-model="dataForm.data.name" autocomplete="off" required>
           </div>
-          <div class="wrapper-input">
-            <input type="text" name="phone" ui-mask="+7(999)-999-99-99" ng-model="dataForm.phone" autocomplete="off" required><span></span>
+          <div>
+            <label for="phone">Телефон</label>
+            <input id="phone" ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model="dataForm.data.phone" autocomplete="off" required>
           </div>
+          <div>
+            <label for="msg">Сообщение</label>
+            <textarea name="msg" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+          </div>
+          <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;contacts&quot;" ng-model="dataForm.hidden.task">
           <div class="wrapper-send">
-            <button ng-click="send(dataForm,formValidate,action,&quot;auth-enter&quot;)" class="send">Отправить заявку</button>
+            <button ng-click="send(dataForm,formValidate,action)" class="send">Отправить</button>
           </div>
         </form>
       </section>

@@ -13,3 +13,11 @@ module.exports = (angular)->
     (input) ->
       if input
         Math.round(input * 100 / 1048576) / 100
+  .filter "toArr0",->
+    (input) ->
+      if input
+        input.split(';')[0]
+  .filter "toArr1",->
+    (input) ->
+      if input
+        input.split(';')[1]

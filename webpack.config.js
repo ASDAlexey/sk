@@ -72,7 +72,7 @@ module.exports={
         //    "window.jQuery":"jquery",
         //    "root.jQuery":"jquery"
         //}),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
         //new ngminPlugin(),
         //new webpack.optimize.DedupePlugin(),
         //new webpack.optimize.UglifyJsPlugin({

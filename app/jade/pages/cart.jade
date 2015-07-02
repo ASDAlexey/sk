@@ -1,0 +1,119 @@
+//- index.jade
+extends ../layout.jade
+block content
+    ul.breadcrumbs
+        li
+            a(href="./") Главная
+        li
+            a(href="./") Для женщин
+        li
+            a(href="./") Босоножки
+        li
+            span Betsy
+    section
+        h1.default-title Ваша корзина
+        h2.default-sub-title Резервация товара ограничена
+        section.cart(ng-controller="CartCtrl" ng-init="cart.products=#{JSON.stringify(cart)}")
+            table
+                tr
+                    th Товар
+                    th Описание
+                    th Размер
+                    th Кол-во
+                    th Цена
+                    th удалить
+                tr(ng-repeat="product in cart.products")
+                    td
+                        a(ng-href="{{product.link}}").wrapper-img
+                            img(ng-src="{{product.file_url}}")
+                    td
+                        h3(ng-bind="product.product_name") Босоножки BETSY
+                        p Артикул:
+                            span(ng-bind="product.product_sku")
+                    td 39
+                    td
+                        input(type="text" ng-model="product.quantity")
+                        ul
+                            li
+                                a(href="" class="plus" ng-click="changeQuantity(product,'increment')") +
+                            li
+                                a(href="" class="minus" ng-click="changeQuantity(product,'decrement')") -
+                    td
+                        span(ng-bind="product.product_price|splitSpace")
+                        |  руб.
+                    td
+                        a.delete(ng-click="delete(product)")
+            div.result
+                span Итог:
+                span(ng-bind="resultSum(cart.products)")
+                span руб.
+            section.step
+                h1 Адрес доставки
+                h2.default-sub-title Все поля обязательны для заполнения
+                form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)")
+                    div.select-block(ng-class="{'open':zIndex[0]==true}")
+                        label Выбор способа доставки
+                        // setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})
+                        // name_select -любое имя cелекта латиницей
+                        // "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder
+                        //  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}
+                        // "options" - перечисляем коллекция всех options ceлекта
+                        // name в setSelect должен совпадать с input-model="selects['select0']"
+                        div(multi-select ng-init='setSelect({"name":"select_delivery","placeholder":{"value":"1", "text":"Самовывоз"},"options":[{"value":"1","text":"Самовывоз","src":""},{"value":"2","text":"Доставка по территории Москвы","src":""},{"value":"3","text":"Отправка курьерской службой","src":""}]})' on-open="fOpen(0)" on-close="fClose(0)" input-model="selects['select_delivery']" button-label="name" item-label="name maker" tick-property="ticked" selection-mode="single" helper-elements="")
+                        p(ng-if="selects['select0'][0].ticked")
+                            strong Адрес самовывоза:
+                            |  г. Москва, метро Ленинский Проспект, ул. Орджоникидзе, д.12.
+                        p(ng-if="selects['select0'][1].ticked")
+                            strong Стоимость доставки 350 руб.
+                            |  Срок доставки - на следующий день после заказа.
+                        p(ng-if="selects['select0'][2].ticked")
+                            strong Тариф доставки
+                            |  - в зависимости от адреса получателя. Стоимость определяется персонально при общении с менеджером компании.
+                    div
+                        label(for="country") СТРАНА
+                        input#country(type="text" name="country" ng-model='dataForm.data.country' ng-init="dataForm.data.country='РОССИЯ'" autocomplete="off" required disabled)
+                    div.small.mr
+                        label(for="post_index") Почтовый индекс
+                        input#post_index(type="text" name="country" ng-model='dataForm.data.post_index' autocomplete="off" required)
+                    div.small
+                        label(for="region") Область/Край/Регион
+                        input#region(type="text" name="region" ng-model='dataForm.data.region' autocomplete="off" required)
+                    div.small.mr
+                        label(for="city") Город
+                        input#city(type="text" name="city" ng-model='dataForm.data.city' autocomplete="off" required)
+                    div.small
+                        label(for="street") Улица
+                        input#street(type="text" name="street" ng-model='dataForm.data.street' autocomplete="off" required)
+                    div.s-small.s-mr
+                        label(for="home") Дом
+                        input#home(type="text" name="home" ng-model='dataForm.data.home' autocomplete="off" required)
+                    div.s-small.s-mr
+                        label(for="housing") Корпус/Строение
+                        input#housing(type="text" name="housing" ng-model='dataForm.data.housing' autocomplete="off" required)
+                    div.s-small
+                        label(for="flat") Квартира
+                        input#flat(type="text" name="flat" ng-model='dataForm.data.flat' autocomplete="off" required)
+                    div.small.mr
+                        label(for="phone") Телефон
+                        input#phone(ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model='dataForm.data.phone' autocomplete="off" required)
+                    div.small
+                        label(for="email") E-mail
+                        input#email(type="text" name="email" ng-model='dataForm.data.email' autocomplete="off" required)
+                    input(type="hidden" name="task" ng-init='dataForm.hidden.task="cart"' ng-model='dataForm.hidden.task')
+                    div.wrapper-send
+                        button.send(ng-click='send(dataForm,formValidate,action)') Далее
+            section.step
+                h1 Метод оплаты
+                h2.default-sub-title Все поля обязательны для заполнения
+                form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)")
+                    div.select-block(ng-class="{'open':zIndex[0]==true}")
+                        label Выбор способа оплаты
+                        // setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})
+                        // name_select -любое имя cелекта латиницей
+                        // "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder
+                        //  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}
+                        // "options" - перечисляем коллекция всех options ceлекта
+                        // name в setSelect должен совпадать с input-model="selects['select0']"
+                        div(multi-select ng-init='setSelect({"name":"select_pay","placeholder":{"value":"1", "text":"Robokassa"},"options":[{"value":"1","text":"Robokassa","src":"./images/robokassa.png"},{"value":"2","text":"Оплата наличными в пункте самовывоза","src":""},{"value":"3","text":"Оплата банковской картой в пункте самовывоза","src":""},{"value":"4","text":"Оплата наличными курьеру","src":""},{"value":"5","text":"Оплата банковской картой курьеру","src":""}]},true)' on-open="fOpen(1)" on-close="fClose(1)" input-model="selects['select_pay']" button-label="icon name" item-label="icon name maker" tick-property="ticked" selection-mode="single" helper-elements="")
+                    div.wrapper-send
+                        button.send(ng-click='send(dataForm,formValidate,action)') Закащать сейчас

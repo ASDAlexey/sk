@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1246, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Description">
+    <meta name="keywords" content="Keywords">
+    <title>Магазин обуви</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <script src="./scripts/vendors/loadCSS.js"></script>
+    <script>
+      var stylesheet=loadCSS("./styles/application.css");
+      onloadCSS(stylesheet,function(){
+          setTimeout(function(){
+              document.body.style.opacity=1;
+          },700)
+      });
+    </script>
+  </head>
+  <body pointer-events-scroll ng-controller="PopupCtrl" style="opacity:0">
+    <div class="wrapper dNtoLoad">
+          <header class="header">
+            <ul class="header-list">
+              <li><a href="./contacts.html">Наши контакты</a></li>
+              <li><a href="tel:8-495-456-7878">8 (495) 456 78 78</a></li>
+              <li><a href="" ng-click="openPopup('recall',{})">Перезвоните мне</a></li>
+            </ul>
+          </header><a href="./cart.html" ng-class="{'rubberBand':animated == true}" class="fixed-cart animated"><span class="count">12</span></a>
+      <main class="main">
+        <div class="container">
+              <header class="header-content">
+                <div class="search">
+                  <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SearchCtrl" ng-init="action=&quot;index.php?limitstart=0&amp;option=com_virtuemart&amp;view=category&quot;" class="form-validate search">
+                    <button ng-click="send(dataForm,formValidate,action)" ng-class="{'active':isOpenSearch==true}" class="send"><span class="fa fa-search"></span></button>
+                    <div ng-class="{'active':isOpenSearch==true}" class="wrapper-search-block">
+                      <input type="text" name="search" placeholder="Поиск" ng-model="dataForm.search" autocomplete="off" ng-focus="isOpenSearch=true" ng-blur="blurSearch(dataForm.search)">
+                    </div>
+                  </form>
+                </div>
+                <div flip3d class="cart style"><a href=""><span>Корзина (</span><span>2</span>)</a>
+                  <div class="mini-cart-content">
+                    <div class="wrapper-scroller mini-cart-slider">
+                      <ul class="switcher">
+                        <li><a href="" class="prev"></a></li>
+                        <li><a href="" class="next"></a></li>
+                      </ul>
+                      <scroller item-width="87" count-slides="3" direction="scrollTop" class="scroller scroller-y is-draggable">
+                        <ul>
+                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
+                            <div class="wrapper-title">
+                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО”</a></h1>
+                            </div>
+                            <div class="wrapper-size">
+                              <p class="size"><span>39</span></p>
+                            </div>
+                            <div class="wrapper-price">
+                              <p class="price"><span>3 999 руб.</span></p>
+                            </div>
+                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
+                          </li>
+                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
+                            <div class="wrapper-title">
+                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО” 2</a></h1>
+                            </div>
+                            <div class="wrapper-size">
+                              <p class="size"><span>39</span></p>
+                            </div>
+                            <div class="wrapper-price">
+                              <p class="price"><span>3 999 руб.</span></p>
+                            </div>
+                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
+                          </li>
+                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
+                            <div class="wrapper-title">
+                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО” 3</a></h1>
+                            </div>
+                            <div class="wrapper-size">
+                              <p class="size"><span>39</span></p>
+                            </div>
+                            <div class="wrapper-price">
+                              <p class="price"><span>3 999 руб.</span></p>
+                            </div>
+                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
+                          </li>
+                        </ul>
+                      </scroller>
+                    </div>
+                    <footer class="footer-small-cart">
+                      <div class="close-small-cart">
+                        <div class="fa fa-close"></div>
+                      </div>
+                      <div><span>Итого:</span><span> 3 999</span><span>руб.</span></div><a href="./cart.html" class="issue">Оформить</a>
+                    </footer>
+                  </div>
+                </div>
+                <div class="authentificition style"><a href="" ng-click="openPopup('enter',{})">Вход</a><a href="" hidden>Иван (<span>выйти</span>)</a></div>
+                <ul>
+                  <li><a href="./"><img src="./images/logo.png" width="42" height="42"></a></li>
+                  <li><a href="./category.html">Для женщин</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">Для мужчин</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">Для детей</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">Акции</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">Распродажа</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">О компании</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </header>
+          <ul class="breadcrumbs">
+            <li><a href="./">Главная</a></li>
+            <li><a href="./">Для женщин</a></li>
+            <li><a href="./">Босоножки</a></li>
+            <li><span>Betsy</span></li>
+          </ul>
+          <section>
+            <h1 class="default-title">Ваша корзина</h1>
+            <h2 class="default-sub-title">Резервация товара ограничена</h2>
+            <section ng-controller="CartCtrl" ng-init="cart.products=[{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Босоножки betsy&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/1.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:1999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Туфли MANGO&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/2.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:2999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Сапоги incity&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/3.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:3999,&quot;link&quot;:&quot;./product-details.html&quot;}]" class="cart">
+              <table>
+                <tr>
+                  <th>Товар</th>
+                  <th>Описание</th>
+                  <th>Размер</th>
+                  <th>Кол-во</th>
+                  <th>Цена</th>
+                  <th>удалить</th>
+                </tr>
+                <tr ng-repeat="product in cart.products">
+                  <td><a ng-href="{{product.link}}" class="wrapper-img"><img ng-src="{{product.file_url}}"></a></td>
+                  <td>
+                    <h3 ng-bind="product.product_name">Босоножки BETSY</h3>
+                    <p>Артикул:<span ng-bind="product.product_sku"></span></p>
+                  </td>
+                  <td>39</td>
+                  <td>
+                    <input type="text" ng-model="product.quantity">
+                    <ul>
+                      <li><a href="" ng-click="changeQuantity(product,'increment')" class="plus">+</a></li>
+                      <li><a href="" ng-click="changeQuantity(product,'decrement')" class="minus">-</a></li>
+                    </ul>
+                  </td>
+                  <td><span ng-bind="product.product_price|splitSpace"></span> руб.</td>
+                  <td><a ng-click="delete(product)" class="delete"></a></td>
+                </tr>
+              </table>
+              <div class="result"><span>Итог:</span><span ng-bind="resultSum(cart.products)"></span><span>руб.</span></div>
+              <section class="step">
+                <h1>Адрес доставки</h1>
+                <h2 class="default-sub-title">Все поля обязательны для заполнения</h2>
+                <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)" class="form-validate">
+                  <div ng-class="{'open':zIndex[0]==true}" class="select-block">
+                    <label>Выбор способа доставки</label>
+                    <!-- setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})-->
+                    <!-- name_select -любое имя cелекта латиницей-->
+                    <!-- "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder-->
+                    <!--  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}-->
+                    <!-- "options" - перечисляем коллекция всех options ceлекта-->
+                    <!-- name в setSelect должен совпадать с input-model="selects['select0']"-->
+                    <div multi-select ng-init="setSelect({&quot;name&quot;:&quot;select_delivery&quot;,&quot;placeholder&quot;:{&quot;value&quot;:&quot;1&quot;, &quot;text&quot;:&quot;Самовывоз&quot;},&quot;options&quot;:[{&quot;value&quot;:&quot;1&quot;,&quot;text&quot;:&quot;Самовывоз&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;2&quot;,&quot;text&quot;:&quot;Доставка по территории Москвы&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;3&quot;,&quot;text&quot;:&quot;Отправка курьерской службой&quot;,&quot;src&quot;:&quot;&quot;}]})" on-open="fOpen(0)" on-close="fClose(0)" input-model="selects['select_delivery']" button-label="name" item-label="name maker" tick-property="ticked" selection-mode="single" helper-elements=""></div>
+                    <p ng-if="selects['select0'][0].ticked"><strong>Адрес самовывоза:</strong> г. Москва, метро Ленинский Проспект, ул. Орджоникидзе, д.12.</p>
+                    <p ng-if="selects['select0'][1].ticked"><strong>Стоимость доставки 350 руб.</strong> Срок доставки - на следующий день после заказа.</p>
+                    <p ng-if="selects['select0'][2].ticked"><strong>Тариф доставки</strong> - в зависимости от адреса получателя. Стоимость определяется персонально при общении с менеджером компании.</p>
+                  </div>
+                  <div>
+                    <label for="country">СТРАНА</label>
+                    <input id="country" type="text" name="country" ng-model="dataForm.data.country" ng-init="dataForm.data.country='РОССИЯ'" autocomplete="off" required disabled>
+                  </div>
+                  <div class="small mr">
+                    <label for="post_index">Почтовый индекс</label>
+                    <input id="post_index" type="text" name="country" ng-model="dataForm.data.post_index" autocomplete="off" required>
+                  </div>
+                  <div class="small">
+                    <label for="region">Область/Край/Регион</label>
+                    <input id="region" type="text" name="region" ng-model="dataForm.data.region" autocomplete="off" required>
+                  </div>
+                  <div class="small mr">
+                    <label for="city">Город</label>
+                    <input id="city" type="text" name="city" ng-model="dataForm.data.city" autocomplete="off" required>
+                  </div>
+                  <div class="small">
+                    <label for="street">Улица</label>
+                    <input id="street" type="text" name="street" ng-model="dataForm.data.street" autocomplete="off" required>
+                  </div>
+                  <div class="s-small s-mr">
+                    <label for="home">Дом</label>
+                    <input id="home" type="text" name="home" ng-model="dataForm.data.home" autocomplete="off" required>
+                  </div>
+                  <div class="s-small s-mr">
+                    <label for="housing">Корпус/Строение</label>
+                    <input id="housing" type="text" name="housing" ng-model="dataForm.data.housing" autocomplete="off" required>
+                  </div>
+                  <div class="s-small">
+                    <label for="flat">Квартира</label>
+                    <input id="flat" type="text" name="flat" ng-model="dataForm.data.flat" autocomplete="off" required>
+                  </div>
+                  <div class="small mr">
+                    <label for="phone">Телефон</label>
+                    <input id="phone" ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model="dataForm.data.phone" autocomplete="off" required>
+                  </div>
+                  <div class="small">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="text" name="email" ng-model="dataForm.data.email" autocomplete="off" required>
+                  </div>
+                  <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;cart&quot;" ng-model="dataForm.hidden.task">
+                  <div class="wrapper-send">
+                    <button ng-click="send(dataForm,formValidate,action)" class="send">Далее</button>
+                  </div>
+                </form>
+              </section>
+              <section class="step">
+                <h1>Метод оплаты</h1>
+                <h2 class="default-sub-title">Все поля обязательны для заполнения</h2>
+                <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)" class="form-validate">
+                  <div ng-class="{'open':zIndex[0]==true}" class="select-block">
+                    <label>Выбор способа оплаты</label>
+                    <!-- setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})-->
+                    <!-- name_select -любое имя cелекта латиницей-->
+                    <!-- "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder-->
+                    <!--  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}-->
+                    <!-- "options" - перечисляем коллекция всех options ceлекта-->
+                    <!-- name в setSelect должен совпадать с input-model="selects['select0']"-->
+                    <div multi-select ng-init="setSelect({&quot;name&quot;:&quot;select_pay&quot;,&quot;placeholder&quot;:{&quot;value&quot;:&quot;1&quot;, &quot;text&quot;:&quot;Robokassa&quot;},&quot;options&quot;:[{&quot;value&quot;:&quot;1&quot;,&quot;text&quot;:&quot;Robokassa&quot;,&quot;src&quot;:&quot;./images/robokassa.png&quot;},{&quot;value&quot;:&quot;2&quot;,&quot;text&quot;:&quot;Оплата наличными в пункте самовывоза&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;3&quot;,&quot;text&quot;:&quot;Оплата банковской картой в пункте самовывоза&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;4&quot;,&quot;text&quot;:&quot;Оплата наличными курьеру&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;5&quot;,&quot;text&quot;:&quot;Оплата банковской картой курьеру&quot;,&quot;src&quot;:&quot;&quot;}]},true)" on-open="fOpen(1)" on-close="fClose(1)" input-model="selects['select_pay']" button-label="icon name" item-label="icon name maker" tick-property="ticked" selection-mode="single" helper-elements=""></div>
+                  </div>
+                  <div class="wrapper-send">
+                    <button ng-click="send(dataForm,formValidate,action)" class="send">Закащать сейчас</button>
+                  </div>
+                </form>
+              </section>
+            </section>
+          </section>
+        </div>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div>
+            <h1 class="title">Коллекции</h1>
+            <ul>
+              <li><a href="./category.html">Женская обувь (1725)</a></li>
+              <li><a href="./category.html">Мужская обувь (635)</a></li>
+              <li><a href="./category.html">Детская обувь (2514)</a></li>
+              <li><a href="./category.html">Распродажа (76)</a></li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="title">Полезные ссылки</h1>
+            <ul>
+              <li><a href="./category.html">Женская обувь (1725)</a></li>
+              <li><a href="./category.html">Мужская обувь (635)</a></li>
+              <li><a href="./category.html">Детская обувь (2514)</a></li>
+              <li><a href="./category.html">Распродажа (76)</a></li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="title">Магазин</h1>
+            <ul>
+              <li><a href="./category.html">Женская обувь (1725)</a></li>
+              <li><a href="./category.html">Мужская обувь (635)</a></li>
+              <li><a href="./category.html">Детская обувь (2514)</a></li>
+              <li><a href="./category.html">Распродажа (76)</a></li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="title">Социальные сети</h1>
+            <p>2015 © All rights reserved. S.Klimov</p>
+            <ul class="social">
+              <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span><span>twitter</span></a></li>
+              <li><a href="https://ru-ru.facebook.com/"><span class="fa fa-facebook"></span><span>facebook</span></a></li>
+              <li><a href="http://instagram.com/"><span class="fa fa-instagram"></span><span>instagram</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-bottom"><a href="http://tutmee.ru" class="firm-logo">
+            <div><span>&Scy;&ocy;&zcy;&dcy;&acy;&ncy;&icy;&iecy; &dcy;&icy;&zcy;&acy;&jcy;&ncy;&acy;</span><span>&icy; &rcy;&acy;&zcy;&rcy;&acy;&bcy;&ocy;&tcy;&kcy;&acy; &scy;&acy;&jcy;&tcy;&ocy;&vcy;</span><span>LTD Tutmee.ru</span></div>
+            <div><img src="./images/firm-logo.png" width="195" height="53"></div></a></div>
+      </div>
+    </footer>
+    <!--#container-preloader.svg-container(preloader='[".wrapper"]' animate-preloader)-->
+    <!--    .progress-->
+    <!--        .text#persent-loaded 0-->
+    <!--        progress-circle-->
+    <!--    svg#preloader-svg(width='100%', height='100%' viewBox="0 0 187.3 93.70")-->
+    <!--        path#outline(style='-webkit-filter:url(#f2)', stroke='#ff3000', fill='none', stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')-->
+    <!--        path#outline-bg(opacity='0.5', fill='none', stroke="#ededed", stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')-->
+    <button move-up class="up fa fa-angle-double-up"></button>
+    <!-- popup-->
+    <popup-svg name="enter" class="hide-block">
+      <section class="authentification-block"><img src="./images/popup-logo.jpg" class="logo">
+        <div flipper-x="click" class="flipper">
+          <div class="back">
+            <form id="auth-reg" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='./controller.php'" class="form-validate reg">
+              <h1 class="title-form">Регистрация</h1>
+              <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" ng-model="dataForm.data.email" required>
+              </div>
+              <div>
+                <label>Пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required>
+              </div>
+              <div>
+                <label>Повторить пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" required>
+              </div>
+              <div class="wrapper-send">
+                <button ng-click="send(dataForm,formValidate,action,&quot;auth-reg&quot;)" class="send">Зарегистрироваться</button>
+              </div>
+              <div class="wrapper-link"><a href="" ng-click="switch('enter')">Вернуться к форме входа</a></div>
+            </form>
+          </div>
+          <div class="front">
+            <form id="auth-enter" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='./controller.php'" class="form-validate">
+              <h1 class="title-form">Войти</h1>
+              <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" ng-model="dataForm.data.email" required>
+              </div>
+              <div>
+                <label for="pwd">Пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required>
+              </div>
+              <input type="hidden" name="task" value="enter">
+              <input type="hidden" name="b8d93ef2c20163ba95c60b46df5d75be" value="1">
+              <div class="wrapper-send">
+                <button ng-click="send(dataForm,formValidate,action,&quot;auth-enter&quot;)" class="send">Авторизоваться</button>
+              </div>
+              <div class="wrapper-link">
+                <p>У меня еще нет аккаунта</p><a href="" ng-click="switch('reg')">Зарегистрироваться</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </popup-svg>
+    <!-- popup-->
+    <popup-svg name="recall" class="hide-block">
+      <section class="vote-block">
+        <h1 class="title-form">Перезвоните мне</h1>
+        <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'" class="form-validate">
+          <div>
+            <label for="name">Имя</label>
+            <input id="name" type="text" name="name" ng-model="dataForm.data.name" autocomplete="off" required>
+          </div>
+          <div>
+            <label for="phone">Телефон</label>
+            <input id="phone" ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model="dataForm.data.phone" autocomplete="off" required>
+          </div>
+          <div>
+            <label for="msg">Сообщение</label>
+            <textarea name="msg" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+          </div>
+          <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;contacts&quot;" ng-model="dataForm.hidden.task">
+          <div class="wrapper-send">
+            <button ng-click="send(dataForm,formValidate,action)" class="send">Отправить</button>
+          </div>
+        </form>
+      </section>
+    </popup-svg>
+    <div ng-if="formIsValide==true" class="w">
+      <div ng-class="{'load':load==true}" class="wrapper-thank">
+        <div ng-click="hideThank()" rotate class="close"><span></span></div>
+        <div class="wrapper-thank-content">
+          <div class="wrapper-logo"><img src="./images/logo.png"></div><span>Спасибо за заявку!</span><span>В ближайшее время, наш сотрудник, обязательно с Вами свяжется.</span>
+        </div>
+      </div>
+    </div>
+    <!--script(src="bundle.js" async)-->
+    <script src="http://localhost:8080/webpack-dev-server.js"></script>
+    <script src="http://localhost:8080/bundle.js"></script>
+  </body>
+</html>

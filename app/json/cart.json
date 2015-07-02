@@ -1,0 +1,32 @@
+[
+  {
+    "virtuemart_product_id": 1,
+    "product_name": "Босоножки betsy",
+    "product_sku": "567890",
+    "file_url": "./images/cart/1.jpg",
+    "size": "39",
+    "quantity": 2,
+    "product_price": 1999,
+    "link":"./product-details.html"
+  },
+  {
+    "virtuemart_product_id": 1,
+    "product_name": "Туфли MANGO",
+    "product_sku": "567890",
+    "file_url": "./images/cart/2.jpg",
+    "size": "39",
+    "quantity": 2,
+    "product_price": 2999,
+    "link":"./product-details.html"
+  },
+  {
+    "virtuemart_product_id": 1,
+    "product_name": "Сапоги incity",
+    "product_sku": "567890",
+    "file_url": "./images/cart/3.jpg",
+    "size": "39",
+    "quantity": 2,
+    "product_price": 3999,
+    "link":"./product-details.html"
+  }
+]

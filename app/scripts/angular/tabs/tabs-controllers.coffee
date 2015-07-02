@@ -19,6 +19,5 @@ module.exports = (angular)->
     ($scope,$rootScope) ->
       $rootScope.currentTab = 0
       $scope.switchTab = (number)->
-        console.log(number)
         $rootScope.currentTab=number
   ]

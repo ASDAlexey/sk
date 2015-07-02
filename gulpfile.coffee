@@ -78,6 +78,7 @@ gulp.task 'jade',->
   data = {}
   data.images = {}
   data.catalog = require './app/json/catalog.json'
+  data.cart = require './app/json/cart.json'
 #  data.images.bgslider = scandir('./app/images/main-slider','names')
   #  data.images.newSlider = scandir('./app/images/new-slider','names')
   gulp.src('./app/jade/pages/*.jade')

@@ -128,16 +128,19 @@ html
         popup-svg(name="recall").hide-block
             section.vote-block
                 h1.title-form Перезвоните мне
-                form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="RecallCtrl"
-                ng-init="action='./controller.php'")
-                    div.wrapper-input
-                        input(type="text" name="name" placeholder="Ваше имя" ng-model='dataForm.name' autocomplete="off" required)
-                        span
-                    div.wrapper-input
-                        input(type="text" name="phone" ui-mask="+7(999)-999-99-99" ng-model='dataForm.phone' autocomplete="off" required)
-                        span
-                    .wrapper-send
-                        button.send(ng-click='send(dataForm,formValidate,action,"auth-enter")') Отправить заявку
+                form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'")
+                    div
+                        label(for="name") Имя
+                        input#name(type="text" name="name" ng-model='dataForm.data.name' autocomplete="off" required)
+                    div
+                        label(for="phone") Телефон
+                        input#phone(ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model='dataForm.data.phone' autocomplete="off" required)
+                    div
+                        label(for="msg") Сообщение
+                        textarea(name="msg" ng-model='dataForm.data.msg' autocomplete="off" required)
+                    input(type="hidden" name="task" ng-init='dataForm.hidden.task="contacts"' ng-model='dataForm.hidden.task')
+                    div.wrapper-send
+                        button.send(ng-click='send(dataForm,formValidate,action)') Отправить
         include ./includes/thanks.jade
         //script(src="bundle.js" async)
         script(src="http://localhost:8080/webpack-dev-server.js")

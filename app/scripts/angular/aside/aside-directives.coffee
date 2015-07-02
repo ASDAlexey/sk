@@ -37,9 +37,12 @@ module.exports = (angular)->
       scope :
         checked : "="
         model : "="
-      controller : ($scope,$element,$attrs,$transclude)->
-        $scope.switch = (model)->
-          $scope.model = !model
+      controller : [
+        "$scope"
+        ($scope) ->
+          $scope.switch = (model)->
+            $scope.model = !model
+      ]
       link : (scope,element,attrs) ->
         unless _.isUndefined(attrs.checked)
           scope.model = true
@@ -57,11 +60,13 @@ module.exports = (angular)->
         checked : "="
         value : "@"
         model : "="
-      controller : ($scope,$element,$attrs,$transclude)->
-        $scope.switch = (model)->
-          $scope.model = !model
+      controller : [
+        "$scope"
+        ($scope) ->
+          $scope.switch = (model)->
+            $scope.model = !model
+      ]
       link : (scope,element,attrs) ->
-        console.log(scope.value)
         unless _.isUndefined(attrs.checked)
           scope.model = true
         else

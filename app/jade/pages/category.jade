@@ -48,7 +48,12 @@ block content
                             //Если aside.switchers.price.isOpen = true то блок цены открыт при загрузке иначе закрыт, открытыми должны быть блоки в которых выбранно что-нибуть
                             a(ng-init="switchers.price.isOpen=true" ng-class="(switchers.price.isOpen==false)?'close':'open'" ng-click="switch('price')") Цена
                             .content-switcher
-                                range(floor='0' ceiling='4000' handle-low="400" handle-height="3500"  step="5" model="switchers.price")
+                                div.range-block(ng-init="options.from=0;options.to=4000;options.step=1;switchers.price.value='400;3500'")
+                                    input(ng-model="switchers.price.value" type="text" slider options="options")
+                                    ul.list-range
+                                        li(ng-bind-template="{{switchers.price.value|toArr0}} руб.")
+                                        li(ng-bind-template="{{switchers.price.value|toArr1}} руб.")
+                                //range(floor='0' ceiling='4000' handle-low="400" handle-height="3500"  step="5" model="switchers.price")
                         li
                             a(ng-init="switchers.size.isOpen=true" ng-class="(switchers.size.isOpen==false)?'close':'open'" ng-click="switch('size')") Размер
                             .content-switcher

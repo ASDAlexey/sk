@@ -24,13 +24,16 @@ module.exports = (angular)->
       replace : true
       transclude : true
       template : require('./templates/popup-svg.jade')
-      controller : ($scope,$rootScope)->
-        $scope.closePopup = (msg,data) ->
-          console.log('close')
-          $rootScope.$broadcast 'popup',
-            data : data
-            msg : msg
-            isOpened : false
+      controller : [
+        "$scope"
+        "$rootScope"
+        ($scope,$rootScope) ->
+          $scope.closePopup = (msg,data) ->
+            $rootScope.$broadcast 'popup',
+              data : data
+              msg : msg
+              isOpened : false
+      ]
       scope :
         name : "@"
       link : (scope,element,attrs) ->
@@ -47,7 +50,8 @@ module.exports = (angular)->
           tl = {}
           tl[scope.name] = new TimelineMax(paused : true)
           $timeout (->
-            choise = _.union(element[0].getElementsByClassName('inner-popup'),element[0].getElementsByClassName('overlay-close'),element[0].getElementsByClassName('logo'))
+            choise = _.union(element[0].getElementsByClassName('inner-popup'),element[0].getElementsByClassName('overlay-close'),
+              element[0].getElementsByClassName('logo'))
             tl[scope.name].staggerFrom choise,0.7,{
               opacity : 0
               scale : 0
