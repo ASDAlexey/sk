@@ -26,7 +26,7 @@
               <li><a href="tel:8-495-456-7878">8 (495) 456 78 78</a></li>
               <li><a href="" ng-click="openPopup('recall',{})">Перезвоните мне</a></li>
             </ul>
-          </header><a href="./cart.html" ng-class="{'rubberBand':animated == true}" class="fixed-cart animated"><span class="count">12</span></a>
+          </header><a href="./cart.html" ng-class="{'rubberBand':animated == true}" ng-init="count=6" class="fixed-cart animated"><span ng-bind="count" class="count"></span></a>
       <main class="main">
         <div class="container">
               <header class="header-content">
@@ -39,50 +39,29 @@
                   </form>
                 </div>
                 <div flip3d class="cart style"><a href=""><span>Корзина (</span><span>2</span>)</a>
-                  <div class="mini-cart-content">
-                    <div class="wrapper-scroller mini-cart-slider">
-                      <ul class="switcher">
+                  <div ng-controller="MiniCart" class="mini-cart-content">
+                    <div ng-init="products=[{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Босоножки betsy&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/1.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:1999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Туфли MANGO&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/2.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:2999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Сапоги incity&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/3.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:3999,&quot;link&quot;:&quot;./product-details.html&quot;}]" class="wrapper-scroller mini-cart-slider">
+                      <ul ng-show="products.length&gt;2" class="switcher">
                         <li><a href="" class="prev"></a></li>
                         <li><a href="" class="next"></a></li>
                       </ul>
-                      <scroller item-width="87" count-slides="3" direction="scrollTop" class="scroller scroller-y is-draggable">
-                        <ul>
-                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
+                      <scroller ng-class="{'small-height':products.length&lt;2}" item-width="87" count-slides="3" direction="scrollTop" class="scroller scroller-y is-draggable">
+                        <ul ng-if="products.length">
+                          <li ng-repeat="product in products"><a ng-href="{{product.link}}" class="wrapper-img"><img ng-src="{{product.file_url}}"></a>
                             <div class="wrapper-title">
-                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО”</a></h1>
+                              <h1 class="title"><a ng-href="{{product.link}}" ng-bind="product.product_name"></a></h1>
                             </div>
                             <div class="wrapper-size">
-                              <p class="size"><span>39</span></p>
+                              <p class="size"><span ng-bind="product.size"></span></p>
                             </div>
                             <div class="wrapper-price">
-                              <p class="price"><span>3 999 руб.</span></p>
+                              <p class="price"><span><span ng-bind="product.product_price|splitSpace">3 999</span><span>руб.</span></span></p>
                             </div>
-                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
+                            <div class="wrapper-delete"><a href="" ng-click="delete(product)" class="delete"></a></div>
                           </li>
-                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
-                            <div class="wrapper-title">
-                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО” 2</a></h1>
-                            </div>
-                            <div class="wrapper-size">
-                              <p class="size"><span>39</span></p>
-                            </div>
-                            <div class="wrapper-price">
-                              <p class="price"><span>3 999 руб.</span></p>
-                            </div>
-                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
-                          </li>
-                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
-                            <div class="wrapper-title">
-                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО” 3</a></h1>
-                            </div>
-                            <div class="wrapper-size">
-                              <p class="size"><span>39</span></p>
-                            </div>
-                            <div class="wrapper-price">
-                              <p class="price"><span>3 999 руб.</span></p>
-                            </div>
-                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
-                          </li>
+                        </ul>
+                        <ul ng-if="!products.length" class="empty">
+                          <li><span>В корзине нет товаров</span></li>
                         </ul>
                       </scroller>
                     </div>
@@ -90,11 +69,11 @@
                       <div class="close-small-cart">
                         <div class="fa fa-close"></div>
                       </div>
-                      <div><span>Итого:</span><span> 3 999</span><span>руб.</span></div><a href="./cart.html" class="issue">Оформить</a>
+                      <div ng-if="products.length"><span>Итого:</span><span ng-bind="resultSum(products)|splitSpace"></span><span> руб.</span></div><a ng-if="products.length" href="./cart.html" class="issue">Оформить</a>
                     </footer>
                   </div>
                 </div>
-                <div class="authentificition style"><a href="" ng-click="openPopup('enter',{})">Вход</a><a href="" hidden>Иван (<span>выйти</span>)</a></div>
+                <div class="authentificition style"><a href="" ng-click="openPopup('enter',{})">Вход</a><a hidden href="./private-office.html">Иван (<span>выйти</span>)</a></div>
                 <ul>
                   <li><a href="./"><img src="./images/logo.png" width="42" height="42"></a></li>
                   <li><a href="./category.html">Для женщин</a><span></span>
@@ -352,75 +331,20 @@
                   <td><a ng-click="delete(product)" class="delete"></a></td>
                 </tr>
               </table>
-              <div class="result"><span>Итог:</span><span ng-bind="resultSum(cart.products)"></span><span>руб.</span></div>
-              <section class="step">
+              <div class="result"><span>Итого:</span><span ng-bind="resultSum(cart.products)|splitSpace"></span><span>руб.</span></div>
+              <section id="delivery" class="step">
                 <h1>Адрес доставки</h1>
                 <h2 class="default-sub-title">Все поля обязательны для заполнения</h2>
-                <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)" class="form-validate">
-                  <div ng-init="cart.delivery=[{&quot;name&quot;:&quot;delivery1&quot;,&quot;maker&quot; : &quot;Самовывоз&quot;,ticked : true},{&quot;name&quot;:&quot;delivery2&quot;,&quot;maker&quot; : &quot;Доставка по территории Москвы&quot;,ticked : false},{&quot;name&quot;:&quot;delivery3&quot;,&quot;maker&quot; : &quot;Отправка курьерской службой&quot;,ticked : false}]" class="select-block">
-                    <div isteven-multi-select input-model="cart.delivery" output-model="cart.deliverySelected" button-label="maker" item-label="maker" tick-property="ticked" disable-property="disabled" selection-mode="single" helper-elements></div>
-                    <p ng-if="cart.deliverySelected[0].name=='delivery1'"><strong>Адрес самовывоза:</strong> г. Москва, метро Ленинский Проспект, ул. Орджоникидзе, д.12.</p>
-                    <p ng-if="cart.deliverySelected[0].name=='delivery2'"><strong>Стоимость доставки 350 руб.</strong> Срок доставки - на следующий день после заказа.</p>
-                    <p ng-if="cart.deliverySelected[0].name=='delivery3'"><strong>Тариф доставки</strong> - в зависимости от адреса получателя. Стоимость определяется персонально при общении с менеджером компании.</p>
-                  </div>
-                  <div>
-                    <label for="country">СТРАНА</label>
-                    <input id="country" type="text" name="country" ng-model="dataForm.data.country" ng-init="dataForm.data.country='РОССИЯ'" autocomplete="off" required disabled>
-                  </div>
-                  <div class="small mr">
-                    <label for="post_index">Почтовый индекс</label>
-                    <input id="post_index" type="text" name="country" ng-model="dataForm.data.post_index" autocomplete="off" required>
-                  </div>
-                  <div class="small">
-                    <label for="region">Область/Край/Регион</label>
-                    <input id="region" type="text" name="region" ng-model="dataForm.data.region" autocomplete="off" required>
-                  </div>
-                  <div class="small mr">
-                    <label for="city">Город</label>
-                    <input id="city" type="text" name="city" ng-model="dataForm.data.city" autocomplete="off" required>
-                  </div>
-                  <div class="small">
-                    <label for="street">Улица</label>
-                    <input id="street" type="text" name="street" ng-model="dataForm.data.street" autocomplete="off" required>
-                  </div>
-                  <div class="s-small s-mr">
-                    <label for="home">Дом</label>
-                    <input id="home" type="text" name="home" ng-model="dataForm.data.home" autocomplete="off" required>
-                  </div>
-                  <div class="s-small s-mr">
-                    <label for="housing">Корпус/Строение</label>
-                    <input id="housing" type="text" name="housing" ng-model="dataForm.data.housing" autocomplete="off" required>
-                  </div>
-                  <div class="s-small">
-                    <label for="flat">Квартира</label>
-                    <input id="flat" type="text" name="flat" ng-model="dataForm.data.flat" autocomplete="off" required>
-                  </div>
-                  <div class="small mr">
-                    <label for="phone">Телефон</label>
-                    <input id="phone" ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model="dataForm.data.phone" autocomplete="off" required>
-                  </div>
-                  <div class="small">
-                    <label for="email">E-mail</label>
-                    <input id="email" type="text" name="email" ng-model="dataForm.data.email" autocomplete="off" required>
-                  </div>
-                  <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;cart&quot;" ng-model="dataForm.hidden.task">
-                  <div class="wrapper-send">
-                    <button ng-click="send(dataForm,formValidate,action)" class="send">Далее</button>
-                  </div>
-                </form>
+                <delivery-form data="cart"></delivery-form>
               </section>
-              <section class="step">
+              <section id="payment" class="step">
                 <h1>Метод оплаты</h1>
                 <h2 class="default-sub-title">Все поля обязательны для заполнения</h2>
-                <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)" class="form-validate">
-                  <div ng-class="{'open':zIndex[0]==true}" class="select-block">
-                    <label>Выбор способа оплаты</label>
-                    <div ng-init="cart.payment.delivery1=[{&quot;icon&quot;: &quot;&lt;span class='icon-select robokassa'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment1&quot;,&quot;maker&quot; : &quot;Robokassa&quot;,ticked : true},{&quot;icon&quot;: &quot;&lt;span class='icon-select cash'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment2&quot;,&quot;maker&quot; : &quot;Оплата наличными в пункте самовывоза&quot;,ticked : false},{&quot;icon&quot;: &quot;&lt;span class='icon-select credit-card'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment3&quot;,&quot;maker&quot; : &quot;Оплата банковской картой в пункте самовывоза&quot;,ticked : false}];cart.payment.delivery2=[{&quot;icon&quot;: &quot;&lt;span class='icon-select robokassa'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment1&quot;,&quot;maker&quot; : &quot;Robokassa&quot;,ticked : true},{&quot;icon&quot;: &quot;&lt;span class='icon-select cash'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment3&quot;,&quot;maker&quot; : &quot;Оплата наличными курьеру&quot;,ticked : false},{&quot;icon&quot;: &quot;&lt;span class='icon-select credit-card'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment3&quot;,&quot;maker&quot; : &quot;Оплата банковской картой курьеру&quot;,ticked : false}];cart.payment.delivery3=[{&quot;icon&quot;: &quot;&lt;span class='icon-select robokassa'&gt;&lt;/span&gt;&quot;,&quot;name&quot;:&quot;payment1&quot;,&quot;maker&quot; : &quot;Robokassa&quot;,ticked : true}]" class="select-block">
-                      <div isteven-multi-select input-model="cart.payment[cart.deliverySelected[0].name]" output-model="cart.paymentSelected" button-label="icon maker" item-label="icon maker" tick-property="ticked" disable-property="disabled" selection-mode="single" helper-elements></div>
-                    </div>
-                  </div>
+                <payment-form data="cart"></payment-form>
+                <form method="post" action="./cart.html" class="order-form">
+                  <input type="hidden" value="{{cart}}">
                   <div class="wrapper-send">
-                    <button ng-click="send(dataForm,formValidate,action)" class="send">Заказать сейчас</button>
+                    <button move-to-form="cart.hidden.isValidForm" ng-if="cart.hidden.isValidForm" class="send">Заказать сейчас</button><a move-to-form="cart.hidden.isValidForm" ng-if="!cart.hidden.isValidForm" class="send-link disabled">Заказать сейчас</a>
                   </div>
                 </form>
               </section>
@@ -503,7 +427,7 @@
               <div>
                 <label>Повторить пароль</label>
                 <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
-                <input type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" required>
+                <input type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" match="dataForm.data.pwd" required>
               </div>
               <div class="wrapper-send">
                 <button ng-click="send(dataForm,formValidate,action,&quot;auth-reg&quot;)" class="send">Зарегистрироваться</button>
@@ -538,7 +462,7 @@
     </popup-svg>
     <!-- popup-->
     <popup-svg name="recall" class="hide-block">
-      <section class="vote-block">
+      <section class="vote-block recall-popup-block">
         <h1 class="title-form">Перезвоните мне</h1>
         <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'" class="form-validate">
           <div>
@@ -568,8 +492,8 @@
         </div>
       </div>
     </div>
-    <!--script(src="bundle.js" async)-->
-    <script src="http://localhost:8080/webpack-dev-server.js"></script>
-    <script src="http://localhost:8080/bundle.js"></script>
+    <script src="bundle.js" async></script>
+    <!--script(src="http://localhost:8080/webpack-dev-server.js")-->
+    <!--script(src="http://localhost:8080/bundle.js")-->
   </body>
 </html>

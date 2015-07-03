@@ -118,6 +118,13 @@
       .scroller
         ul
           overflow auto
+          &.empty
+            >li
+              position:relative
+              z-index:0
+              span
+                display:block
+                aa(1)
           > li
             height:87px
             padding:18px 0 18px 0
@@ -221,6 +228,8 @@
             lb(12px)
             color:#36979d
             &:first-child
+              dibt()
+              margin-right:4px
               color:#303030
         > .issue
           float:right

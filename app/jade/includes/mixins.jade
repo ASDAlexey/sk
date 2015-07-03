@@ -67,68 +67,45 @@ mixin header-content()
                 span Корзина (
                 span 2
                 | )
-            .mini-cart-content
-                .wrapper-scroller.mini-cart-slider
-                    ul.switcher
+            .mini-cart-content(ng-controller="MiniCart")
+                .wrapper-scroller.mini-cart-slider(ng-init="products=#{JSON.stringify(cart)}")
+                    ul.switcher(ng-show="products.length>2")
                         li
                             a(href="" class="prev")
                         li
                             a(href="" class="next")
-                    scroller.scroller.scroller-y.is-draggable(item-width="87" count-slides="3" direction="scrollTop")
-                        ul
-                            li
-                                a(href="./product-details.html").wrapper-img
-                                    img(src="./images/small-cart/1.png" width="45" height="38")
+                    scroller.scroller.scroller-y.is-draggable(ng-class="{'small-height':products.length<2}" item-width="87" count-slides="3" direction="scrollTop")
+                        ul(ng-if="products.length")
+                            li(ng-repeat="product in products")
+                                a(ng-href="{{product.link}}").wrapper-img
+                                    img(ng-src="{{product.file_url}}")
                                 .wrapper-title
                                     h1.title
-                                        a(href="./product-details.html") Туфли “МАНГО”
+                                        a(ng-href="{{product.link}}" ng-bind="product.product_name")
                                 .wrapper-size
                                     p.size
-                                        span 39
+                                        span(ng-bind="product.size")
                                 .wrapper-price
                                     p.price
-                                        span 3 999 руб.
+                                        span
+                                            span(ng-bind="product.product_price|splitSpace") 3 999
+                                            span руб.
                                 .wrapper-delete
-                                    a.delete(href="")
+                                    a.delete(href="" ng-click="delete(product)")
+                        ul.empty(ng-if="!products.length")
                             li
-                                a(href="./product-details.html").wrapper-img
-                                    img(src="./images/small-cart/1.png" width="45" height="38")
-                                .wrapper-title
-                                    h1.title
-                                        a(href="./product-details.html") Туфли “МАНГО” 2
-                                .wrapper-size
-                                    p.size
-                                        span 39
-                                .wrapper-price
-                                    p.price
-                                        span 3 999 руб.
-                                .wrapper-delete
-                                    a.delete(href="")
-                            li
-                                a(href="./product-details.html").wrapper-img
-                                    img(src="./images/small-cart/1.png" width="45" height="38")
-                                .wrapper-title
-                                    h1.title
-                                        a(href="./product-details.html") Туфли “МАНГО” 3
-                                .wrapper-size
-                                    p.size
-                                        span 39
-                                .wrapper-price
-                                    p.price
-                                        span 3 999 руб.
-                                .wrapper-delete
-                                    a.delete(href="")
+                                span В корзине нет товаров
                 footer.footer-small-cart
                     .close-small-cart
                         .fa.fa-close
-                    div
+                    div(ng-if="products.length")
                         span Итого:
-                        span  3 999
-                        span руб.
-                    a.issue(href="./cart.html") Оформить
+                        span(ng-bind="resultSum(products)|splitSpace")
+                        span  руб.
+                    a.issue(ng-if="products.length" href="./cart.html") Оформить
         .authentificition.style
             a(href="" ng-click="openPopup('enter',{})") Вход
-            a(href="" hidden) Иван (
+            a(hidden href="./private-office.html") Иван (
                 span выйти
                 | )
         -var nav=["Для женщин","Для мужчин","Для детей","Акции","Распродажа","О компании"];

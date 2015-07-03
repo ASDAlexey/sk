@@ -11,3 +11,14 @@ module.exports = (angular)->
       template : require('./templates/delivery-form.jade')
       link : (scope,element,attr)->
   ]
+  directives.directive 'paymentForm',[
+    "$timeout"
+    ($timeout) ->
+      restrict : "E"
+      replace : true
+      scope :
+        dataForm : "=data"
+        action : "@"
+      template : require('./templates/payment-form.jade')
+      link : (scope,element,attr)->
+  ]

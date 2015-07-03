@@ -14,7 +14,8 @@ block content
         .wrapper-columns.product-details(ng-controller="ProductCtrl")
             aside.aside
                 .wrapper-scroller.product-scroller(ng-controller="ScrollerCtrl")
-                    scroller.scroller.is-draggable(item-width="778" count-slides="3" direction="scrollLeft")
+                    scroller.scroller.is-draggable(item-width="778" count-slides="1" direction="scrollLeft")
+                        // .one - если слайд всего 1
                         .content-scroller
                             div
                                 img(src="./images/product-details/1.jpg")
@@ -32,7 +33,7 @@ block content
                                 a(href="" ng-class="{'active':currentSlide==#{i}}" ng-click="toSlide(#{i},$event)")
                                     img(src="./images/product-details/#{i+1}.jpg")
                             -i++
-                .wrapper-stars(ng-init="product.vote=4.19;product.vote_counts=38;product.id=123")
+                .wrapper-stars(ng-init="product.vote=4.27;product.vote_counts=4;product.id=123")
                     .stars
                         span(style='width:{{product.vote|persent}}%')
                     span.count ({{product.vote_counts}}) рейтинг {{product.vote|round2|addZero}}/5.0
@@ -60,7 +61,7 @@ block content
                 // названия свойств объекта product можно менять -  product.title
                 h1.title(ng-init="product.title='Босоножки BETSY'") Босоножки BETSY
                 p.mark(ng-init="product.mark='Артикул: 14210160762'") Артикул: 14210160762
-                p.price(ng-init="product.price='3 999 руб.'") <del ng-init="product.price_old='5 789 руб.'">5 789 руб.</del> 3 999 руб.
+                p.price(ng-init="product.price=3999") <del ng-init="product.price_old=5789">{{product.price_old|splitSpace}} руб.</del> {{product.price|splitSpace}} руб.
                 h2 Выберите размер
                 ul
                     li
@@ -70,14 +71,14 @@ block content
                     li
                         a.disabled(href="") 38
                     li
-                        a(href="" ng-class="{'active':product.virtuemart_product_id==1}" ng-click="switchClass(1)") 39
+                        a(href="" ng-class="{'active':product.virtuemart_product_id==1}" ng-click="switchClass(1,'39')") 39
                     li
                         // поставить ng-init="product.active=Value из input(type='hidden', value='{{product.active}}'  name='virtuemart_product_id[]')"
-                        a(ng-init="product.virtuemart_product_id=2" href="" ng-class="{'active':product.virtuemart_product_id==2}" ng-click="switchClass(2)") 40
+                        a(ng-init="product.virtuemart_product_id=2" href="" ng-class="{'active':product.virtuemart_product_id==2}" ng-click="switchClass(2,'40')") 40
                     li
-                        a(href="" ng-class="{'active':product.virtuemart_product_id==3}" ng-click="switchClass(3)") 41
+                        a(href="" ng-class="{'active':product.virtuemart_product_id==3}" ng-click="switchClass(3,'41.5')") 41
                     li
-                        a(href="" ng-class="{'active':product.virtuemart_product_id==4}" ng-click="switchClass(4)") 42
+                        a(href="" ng-class="{'active':product.virtuemart_product_id==4}" ng-click="switchClass(4,'42')") 42
                 form(action='#', method='post')
                     button.add-to-cart(name='addtocart') Добавить в корзину
                     input(type='hidden', value='1', name='quantity[]')
@@ -119,5 +120,5 @@ block content
                         td Комплектация
                         td Туфли
                 p.footnotes * Числовые параметры соответствуют размеру
-                    span 35
+                    span(ng-bind="product.size" ng-init="product.size=35")  35
     +also-like()

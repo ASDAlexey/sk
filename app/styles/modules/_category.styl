@@ -2,13 +2,14 @@
   display:flex
   .wrapper-list-products
     width:calc(100% - 350px)
-    //flex-wrap:wrap
-    //display:flex
     .list-products
-
       padding-top:47px
+      justify-content flex-start
       > li
         margin-top:62px
+        margin-left:103px
+        &:nth-child(3n-2)
+          margin-left:0
         &:nth-child(-n+3)
           margin-top:0
   .sorting

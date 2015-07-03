@@ -25,17 +25,19 @@ module.exports = (angular,$)->
               if e.target.closest('.wrapper-img')
                 $window.location.href = e.target.closest('.wrapper-img').dataset.href
         )
-        if element[0].parentNode.classList.contains('mini-cart-slider')
-          element[0].parentNode.querySelectorAll('.switcher>li>a').forEach((el,index)->
-            el.addEventListener('click',(e)->
-              e.preventDefault()
-              ect = e.currentTarget
-              if ect.classList.contains('prev')
-                TweenMax.to(element[0],.7,{scrollTo : {y : "+=-87"}})
-              if ect.classList.contains('next')
-                TweenMax.to(element[0],.7,{scrollTo : {y : "+=87"}})
+        $timeout(->
+          if element[0].parentNode.classList.contains('mini-cart-slider')
+            element[0].parentNode.querySelectorAll('.switcher>li>a').forEach((el,index)->
+              el.addEventListener('click',(e)->
+                e.preventDefault()
+                ect = e.currentTarget
+                if ect.classList.contains('prev')
+                  TweenMax.to(element[0],.7,{scrollTo : {y : "+=-87"}})
+                if ect.classList.contains('next')
+                  TweenMax.to(element[0],.7,{scrollTo : {y : "+=87"}})
+              )
             )
-          )
+        ,1000)
         scope.options =
           itemWidth : parseInt(scope.itemWidth)
           countSlides : parseInt(scope.countSlides)

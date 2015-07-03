@@ -1,21 +1,22 @@
 div
-    form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)")
-        div.select-block(ng-class="{'open':zIndex[0]==true}")
-            label Выбор способа доставки
-            // setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})
-            // name_select -любое имя cелекта латиницей
-            // "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder
-            //  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}
-            // "options" - перечисляем коллекция всех options ceлекта
-            // name в setSelect должен совпадать с input-model="selects['select0']"
-            div(multi-select ng-init='setSelect({"name":"select_delivery","placeholder":{"value":"1", "text":"Самовывоз"},"options":[{"value":"1","text":"Самовывоз","src":""},{"value":"2","text":"Доставка по территории Москвы","src":""},{"value":"3","text":"Отправка курьерской службой","src":""}]})' on-open="fOpen(0)" on-close="fClose(0)" input-model="selects['select_delivery']" button-label="name" item-label="name maker" tick-property="ticked" selection-mode="single" helper-elements="")
-            p(ng-if="selects['select0'][0].ticked")
+    form.form-validate(name="formValidate" novalidate ng-controller="FormCtrl")
+        div.select-block(ng-init='dataForm.delivery=[{"name":"delivery1","maker" : "Самовывоз",ticked : true},{"name":"delivery2","maker" : "Доставка по территории Москвы",ticked : false},{"name":"delivery3","maker" : "Отправка курьерской службой",ticked : false}]')
+            div(isteven-multi-select
+            input-model="dataForm.delivery"
+            output-model="dataForm.deliverySelected"
+            button-label="maker"
+            item-label="maker"
+            tick-property="ticked"
+            disable-property="disabled"
+            selection-mode="single"
+            helper-elements)
+            p(ng-if="dataForm.deliverySelected[0].name=='delivery1'")
                 strong Адрес самовывоза:
                 |  г. Москва, метро Ленинский Проспект, ул. Орджоникидзе, д.12.
-            p(ng-if="selects['select0'][1].ticked")
+            p(ng-if="dataForm.deliverySelected[0].name=='delivery2'")
                 strong Стоимость доставки 350 руб.
                 |  Срок доставки - на следующий день после заказа.
-            p(ng-if="selects['select0'][2].ticked")
+            p(ng-if="dataForm.deliverySelected[0].name=='delivery3'")
                 strong Тариф доставки
                 |  - в зависимости от адреса получателя. Стоимость определяется персонально при общении с менеджером компании.
         div
@@ -47,7 +48,8 @@ div
             input#phone(ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model='dataForm.data.phone' autocomplete="off" required)
         div.small
             label(for="email") E-mail
-            input#email(type="text" name="email" ng-model='dataForm.data.email' autocomplete="off" required)
+            input#email(type="email" name="email" ng-model='dataForm.data.email' autocomplete="off" required)
         input(type="hidden" name="task" ng-init='dataForm.hidden.task="cart"' ng-model='dataForm.hidden.task')
+        input(type="hidden" name="isValidForm" value='{{dataForm.hidden.isValidForm=formValidate.$valid}}')
         div.wrapper-send
-            button.send(ng-click='send(dataForm,formValidate,action)') Далее
+            button.send(ng-click='send(dataForm,formValidate,"delivery")') Далее

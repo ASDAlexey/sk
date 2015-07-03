@@ -114,7 +114,7 @@
       position:absolute
       z-index:1
       left:50%
-      top:158px
+      top:133px
       tt(-50%,0)
       sprite($rubed)
     span
@@ -130,6 +130,18 @@
     padding:98px 0 88px
     background-color:#fefefe
     border:1px solid #e5e5e5
+    &:first-of-type
+      margin-bottom:165px
+      position:relative
+      z-index:0
+      &:after
+        content:''
+        position:absolute
+        z-index:1
+        left:50%
+        bottom:-90px
+        tt(-50%,0)
+        sprite($rubed)
     .multiSelect
       text-align:left
     .default-sub-title

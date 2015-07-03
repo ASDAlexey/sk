@@ -6,8 +6,8 @@ html
     body(pointer-events-scroll ng-controller="PopupCtrl" style="opacity:0")
         .wrapper.dNtoLoad
             +header()
-            a(href="./cart.html" ng-class="{'rubberBand':animated == true}").fixed-cart.animated
-                span.count 12
+            a(href="./cart.html" ng-class="{'rubberBand':animated == true}" ng-init="count=6").fixed-cart.animated
+                span.count(ng-bind="count")
             main.main
                 .container
                     +header-content()
@@ -100,7 +100,7 @@ html
                             div
                                 label Повторить пароль
                                 .show-psw(ng-click="determineType(isPwdShow)")
-                                input(type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" required)
+                                input(type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" match="dataForm.data.pwd" required)
                             div.wrapper-send
                                 button.send(ng-click='send(dataForm,formValidate,action,"auth-reg")') Зарегистрироваться
                             div.wrapper-link
@@ -126,7 +126,7 @@ html
                                 a(href="" ng-click="switch('reg')") Зарегистрироваться
         // popup
         popup-svg(name="recall").hide-block
-            section.vote-block
+            section.vote-block.recall-popup-block
                 h1.title-form Перезвоните мне
                 form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'")
                     div
@@ -142,6 +142,6 @@ html
                     div.wrapper-send
                         button.send(ng-click='send(dataForm,formValidate,action)') Отправить
         include ./includes/thanks.jade
-        //script(src="bundle.js" async)
-        script(src="http://localhost:8080/webpack-dev-server.js")
-        script(src="http://localhost:8080/bundle.js")
+        script(src="bundle.js" async)
+        //script(src="http://localhost:8080/webpack-dev-server.js")
+        //script(src="http://localhost:8080/bundle.js")

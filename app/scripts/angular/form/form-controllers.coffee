@@ -12,14 +12,28 @@ module.exports = (angular,$)->
         unless search
           $scope.isOpenSearch = false
   ]
+  controller.controller "MiniCart",[
+    "$scope"
+    "$rootScope"
+    ($scope,$rootScope) ->
+      $scope.$on 'cart:changed',(event,response) ->
+        $scope.products = response.data.products
+      $scope.delete = (product)->
+        $rootScope.$broadcast('product:delete',
+          data : product
+        )
+        $scope.products = _.without($scope.products,product)
+      $scope.resultSum = (products)->
+        _.sum products,(product) ->
+          parseInt(product.quantity) * parseFloat(product.product_price)
+  ]
   controller.controller "FormAuthCtrl",[
     "$scope"
     "$http"
     "$rootScope"
     "$timeout"
     "$window"
-    "Video"
-    ($scope,$http,$rootScope,$timeout,$window,Video) ->
+    ($scope,$http,$rootScope,$timeout,$window) ->
       $scope.form_set_dirty = (form) ->
         if form.$setDirty
           form.$setDirty()
@@ -44,11 +58,11 @@ module.exports = (angular,$)->
       $scope.changeShowRePsw = (pwd)->
         $scope.isRePwdShow = !pwd
       $scope.send = (dataForm,formValidate,action,form)=>
-        $scope.videos = Video.query()
-        $scope.videos.$promise.then((data)->
-        )
         if formValidate.$valid
-          angular.element(document.getElementById(form)).submit()
+          if form is 'edit-pwd'
+            angular.element(document.getElementById(form))[0].submit()
+          else
+            angular.element(document.getElementById(form))[0].submit()
         else
           $scope.form_set_dirty(formValidate)
   ]
@@ -149,7 +163,9 @@ module.exports = (angular,$)->
     "$http"
     "$rootScope"
     "$timeout"
-    ($scope,$http,$rootScope,$timeout) ->
+    "$window"
+    "$document"
+    ($scope,$http,$rootScope,$timeout,$window,$document) ->
       $scope.form_set_pristine = (form) ->
         if form.$setPristine
           form.$setPristine()
@@ -159,15 +175,22 @@ module.exports = (angular,$)->
           angular.forEach form,(input,key) ->
             if typeof input is 'object' and input.$name isnt `undefined`
               form[input.$name].$setViewValue (if form[input.$name].$viewValue isnt `undefined` then form[input.$name].$viewValue else "")
-      $scope.send = (dataForm,formValidate,action)=>
+      $scope.scrollTopPayment = ()->
+        scrollBlock = if($document[0].querySelector('body').scrollTop) then $document[0].querySelector('body') else $document[0].querySelector('html')
+        paymentBlockTop = $document[0].getElementById('payment').offsetTop
+        TweenMax.to(scrollBlock,.7,{scrollTop : paymentBlockTop})
+      $scope.send = (dataForm,formValidate,nameForm,action)=>
         if formValidate.$valid
-          $scope.thanksShowTime()
-          sendOptions =
-            action : action
-            method : "POST"
-            data : angular.copy(dataForm)
-          $scope.clear(formValidate)
-          $scope.sendData(sendOptions)
+          if nameForm is 'delivery'
+            $scope.scrollTopPayment()
+          else
+            $scope.thanksShowTime()
+            sendOptions =
+              action : action
+              method : "POST"
+              data : angular.copy(dataForm)
+            $scope.sendData(sendOptions)
+            $scope.clear(formValidate)
         else
           $scope.form_set_dirty(formValidate)
       $scope.clear = (formValidate)=>
@@ -194,11 +217,9 @@ module.exports = (angular,$)->
     "$http"
     "$rootScope"
     "$timeout"
-    ($scope,$http,$rootScope,$timeout) ->
-      $scope.cart = {}
-      $scope.cart.delivery = {}
-      $scope.cart.delivery.asd = 1
-      #calc cart
+    "Product"
+    ($scope,$http,$rootScope,$timeout,Product) ->
+#calc cart
       $scope.changeQuantity = (product,direction)->
         if direction is 'increment'
           product.quantity++
@@ -206,6 +227,9 @@ module.exports = (angular,$)->
           product.quantity--
       $scope.delete = (product)->
         $scope.cart.products = _.without($scope.cart.products,product)
+        new Product(product).$update()
+      $scope.$on 'product:delete',(event,response) ->
+        $scope.delete(response.data)
       $scope.resultSum = (products)->
         _.sum products,(product) ->
           parseInt(product.quantity) * parseFloat(product.product_price)
@@ -249,4 +273,10 @@ module.exports = (angular,$)->
         ).then(->
           $scope.clear(formValidate)
         )
+      $scope.$watch 'cart',((newVal,oldVal) ->
+        if !angular.equals(newVal,oldVal)
+          $rootScope.$broadcast('cart:changed',
+            data : newVal
+          )
+      ),true
   ]

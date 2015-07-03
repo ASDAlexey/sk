@@ -1,0 +1,16 @@
+div
+    form.form-validate(name="formValidate" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'")
+        div.select-block
+            label Выбор способа оплаты
+            div.select-block(ng-init='dataForm.payment.delivery1=[{"icon": "<span class=\'icon-select robokassa\'></span>","name":"payment1","maker" : "Robokassa",ticked : true},{"icon": "<span class=\'icon-select cash\'></span>","name":"payment2","maker" : "Оплата наличными в пункте самовывоза",ticked : false},{"icon": "<span class=\'icon-select credit-card\'></span>","name":"payment3","maker" : "Оплата банковской картой в пункте самовывоза",ticked : false}];dataForm.payment.delivery2=[{"icon": "<span class=\'icon-select robokassa\'></span>","name":"payment1","maker" : "Robokassa",ticked : true},{"icon": "<span class=\'icon-select cash\'></span>","name":"payment3","maker" : "Оплата наличными курьеру",ticked : false},{"icon": "<span class=\'icon-select credit-card\'></span>","name":"payment3","maker" : "Оплата банковской картой курьеру",ticked : false}];dataForm.payment.delivery3=[{"icon": "<span class=\'icon-select robokassa\'></span>","name":"payment1","maker" : "Robokassa",ticked : true}]')
+                div(isteven-multi-select
+                input-model="dataForm.payment[dataForm.deliverySelected[0].name]"
+                output-model="dataForm.paymentSelected"
+                button-label="icon maker"
+                item-label="icon maker"
+                tick-property="ticked"
+                disable-property="disabled"
+                selection-mode="single"
+                helper-elements)
+        //div.wrapper-send
+        //    button.send(ng-click='send(dataForm,formValidate,action,"payment")') Заказать сейчас

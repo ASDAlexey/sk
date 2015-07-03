@@ -18,15 +18,17 @@ block content
                 li 8 (495) 456 78 78
         h3 Наши контакты
         h2.default-sub-title Lorem ipsum dolor sit amet enim. Etiam ullamcorp uspendisse a pellentesque. li klimov
-        form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)")
-            div.select-block(ng-class="{'open':zIndex[0]==true}")
-                // setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})
-                // name_select -любое имя cелекта латиницей
-                // "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder
-                //  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}
-                // "options" - перечисляем коллекция всех options ceлекта
-                // name в setSelect должен совпадать с input-model="selects['select0']"
-                div(multi-select ng-init='setSelect({"name":"select0","placeholder":{"value":"", "text":"Город"},"options":[{"value":"1","text":"Москва","src":""},{"value":"2","text":"Санкт-Петербург","src":""}]})' on-open="fOpen(0)" on-close="fClose(0)" input-model="selects['select0']" button-label="name" item-label="name maker" tick-property="ticked" selection-mode="single" helper-elements="")
+        form.form-validate(name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'")
+            div.select-block(ng-init='dataForm.theme=[{"name":"theme1","maker" : "Вопрос",ticked : true},{"name":"theme2","maker" : "Вопрос2",ticked : false},{"name":"theme3","maker" : "Вопрос3",ticked : false}]')
+                div(isteven-multi-select
+                input-model="dataForm.theme"
+                output-model="dataForm.themeSelected"
+                button-label="maker"
+                item-label="maker"
+                tick-property="ticked"
+                disable-property="disabled"
+                selection-mode="single"
+                helper-elements)
             div.small
                 label(for="name") Имя
                 input#name(type="text" name="name" ng-model='dataForm.data.name' autocomplete="off" required)
@@ -38,5 +40,5 @@ block content
                 textarea(name="msg" ng-model='dataForm.data.msg' autocomplete="off" required)
             input(type="hidden" name="task" ng-init='dataForm.hidden.task="contacts"' ng-model='dataForm.hidden.task')
             div.wrapper-send
-                button.send(ng-click='send(dataForm,formValidate,action)') Отправить
+                button.send(ng-click='send(dataForm,formValidate,"contacts",action)') Отправить
     +also-like()

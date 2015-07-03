@@ -192,7 +192,7 @@
           tn(.5s)
           &:hover
             background-color:#84c232
-.step
+.step, .edit
   .form-validate
     width:580px
     margin:0 auto
@@ -232,7 +232,7 @@
         width:100%
         display:block
         padding-left:19px
-        line-height:44px
+        lr(14px, 44px)
       textarea
         padding-left:19px
         width:100%
@@ -243,17 +243,34 @@
         margin-top:30px
         text-align:center
         .send
-          padding-top:5px
+          padding-top:2px
           width:194px
           height:51px
           text-transform:uppercase
           color:#fff
           dibt()
+          line-height:51px
           background-color:#79bdbe
           tn(.5s)
           &:hover
-            background-color:#66bebe
-
-
-
-
+            background-color:#84c232
+.edit .form-validate>div:first-child
+  margin-top:44px
+.order-form
+  .wrapper-send
+    margin-top:30px
+    text-align:center
+    .send, .send-link
+      padding-top:5px
+      width:194px
+      height:51px
+      text-transform:uppercase
+      color:#fff
+      dibt()
+      background-color:#79bdbe
+      tn(.5s)
+      line-height:47px
+      &.disabled
+        background-color:#ccc !important
+      &:hover
+        background-color:#84c232

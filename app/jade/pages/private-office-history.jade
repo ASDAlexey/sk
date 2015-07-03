@@ -1,0 +1,69 @@
+//- index.jade
+extends ../layout.jade
+block content
+    section
+        h1.default-title.private Здравствуйте, Иван Это ваша история заказов
+        .wrapper-private-office-link
+            a.private-office-link(href="./private-office-edit.html") редактировать аккаунт
+        table.history-orders
+            tr
+                th Номер
+                th Дата
+                th Товары
+                th Статус
+                th Доставка
+                th Стоимость
+            tr
+                td #28364
+                td 21/05/2014
+                td
+                    ul
+                        li
+                            .wrapper-img
+                                img(src="./images/cart/1.jpg")
+                            .info
+                                h2 Туфли mango
+                                p Артикул: 567890
+                        li
+                            .wrapper-img
+                                img(src="./images/cart/2.jpg")
+                            .info
+                                h2 Туфли mango
+                                p Артикул: 567890
+                        li
+                            .wrapper-img
+                                img(src="./images/cart/3.jpg")
+                            .info
+                                h2 Туфли mango
+                                p Артикул: 567890
+                td не оплачен
+                td 22/05/2014
+                td 12 567 руб.
+            tr
+                td #28364
+                td 21/05/2014
+                td
+                    ul
+                        li
+                            .wrapper-img
+                                img(src="./images/cart/2.jpg")
+                            .info
+                                h2 Туфли mango
+                                p Артикул: 567890
+                td не оплачен
+                td 22/05/2014
+                td 22 567 руб.
+            tr
+                td #28364
+                td 21/05/2014
+                td
+                    ul
+                        li
+                            .wrapper-img
+                                img(src="./images/cart/3.jpg")
+                            .info
+                                h2 Туфли mango
+                                p Артикул: 567890
+                td оплачен
+                td 22/05/2014
+                td 12 500 руб.

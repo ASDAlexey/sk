@@ -12,6 +12,7 @@ module.exports = (angular)->
     'ngAnimate'
     'ngCookies'
     'ui.mask'
+    'validation.match'
     "isteven-multi-select"
 #    'multi-select'
 #    'angularRangeSlider'

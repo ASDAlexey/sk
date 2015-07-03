@@ -1,0 +1,70 @@
+//- index.jade
+extends ../layout.jade
+block content
+    ul.breadcrumbs
+        li
+            a(href="./") Главная
+        li
+            a(href="./") Аккаунт
+        li
+            span Редактировать свои данные
+    section
+        h1.default-title.private Редактировать данные
+        .wrapper-private-office-link
+            a.private-office-link(href="./private-office-history.html") История заказов
+        .edit
+            form.form-validate(name="formValidate" novalidate ng-controller="FormCtrl")
+                div.small.mr
+                    label(for="name") Имя
+                    input#name(type="text" name="name" ng-model='dataForm.data.name' autocomplete="off" required)
+                div.small
+                    label(for="surname") Фамилия
+                    input#surname(type="text" name="surname" ng-model='dataForm.data.surname' autocomplete="off" required)
+                div.small.mr
+                    label(for="post_index") Почтовый индекс
+                    input#post_index(type="text" name="country" ng-model='dataForm.data.post_index' autocomplete="off" required)
+                div.small
+                    label(for="region") Область/Край/Регион
+                    input#region(type="text" name="region" ng-model='dataForm.data.region' autocomplete="off" required)
+                div.small.mr
+                    label(for="city") Город
+                    input#city(type="text" name="city" ng-model='dataForm.data.city' autocomplete="off" required)
+                div.small
+                    label(for="street") Улица
+                    input#street(type="text" name="street" ng-model='dataForm.data.street' autocomplete="off" required)
+                div.s-small.s-mr
+                    label(for="home") Дом
+                    input#home(type="text" name="home" ng-model='dataForm.data.home' autocomplete="off" required)
+                div.s-small.s-mr
+                    label(for="housing") Корпус/Строение
+                    input#housing(type="text" name="housing" ng-model='dataForm.data.housing' autocomplete="off" required)
+                div.s-small
+                    label(for="flat") Квартира
+                    input#flat(type="text" name="flat" ng-model='dataForm.data.flat' autocomplete="off" required)
+                div.small.mr
+                    label(for="phone") Телефон
+                    input#phone(ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model='dataForm.data.phone' autocomplete="off" required)
+                div.small
+                    label(for="email") E-mail
+                    input#email(type="email" name="email" ng-model='dataForm.data.email' autocomplete="off" required)
+                input(type="hidden" name="task" ng-init='dataForm.hidden.task="private-office-edit"' ng-model='dataForm.hidden.task')
+                div.wrapper-send
+                    button.send(ng-click='send(dataForm,formValidate,"edit")') Сохранить
+        h1.default-title.private Сменить пароль
+        .edit.authentification-block
+            form#edit-pwd.form-validate.edit-pwd(method="post" action="./private-office-edit.html" name="formValidate" novalidate ng-controller="FormAuthCtrl")
+                div
+                    label Старый пароль
+                    .show-psw(ng-click="determineType(isPwdShow)")
+                    input(type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required)
+                div
+                    label Новый пароль
+                    .show-psw(ng-click="determineType(isPwdShow)")
+                    input(type="{{type}}" name="new_pwd" ng-model="dataForm.data.new_pwd" required)
+                div
+                    label Повторить новый пароль
+                    .show-psw(ng-click="determineType(isPwdShow)")
+                    input(type="{{type}}" name="re_new_pwd" ng-model="dataForm.data.re_new_pwd" match="dataForm.data.new_pwd" required)
+                input(type="hidden" name="task" ng-init='dataForm.hidden.task="private-office-pwd"' ng-model='dataForm.hidden.task')
+                div.wrapper-send
+                    button.send(ng-click='send(dataForm,formValidate,action,"edit-pwd")') Сменить

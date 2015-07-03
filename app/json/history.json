@@ -1,0 +1,12 @@
+[
+  {
+    "virtuemart_product_id": 1,
+    "product_name": "Босоножки betsy",
+    "product_sku": "567890",
+    "file_url": "./images/cart/1.jpg",
+    "size": "39",
+    "quantity": 2,
+    "product_price": 1999,
+    "link":"./product-details.html"
+  }
+]

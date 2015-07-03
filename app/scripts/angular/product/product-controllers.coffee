@@ -6,34 +6,44 @@ module.exports = (angular)->
     "Product"
     ($scope,Product) ->
       $scope.product = {}
-      $scope.switchClass = (number)->
+      $scope.switchClass = (number,size)->
         $scope.product.virtuemart_product_id = number
+        $scope.product.size = size
         $scope.product.task = "product"
         new Product($scope.product).$update().then((data)->
-          $scope.product=data
+          $scope.product.list = data.list
+          $scope.product.price = data.price
         )
   ]
   controller.controller "VoteCtrl",[
     "$scope"
     "$cookieStore"
+    "$timeout"
+    "$rootScope"
     "Product"
-    ($scope,$cookieStore,Product) ->
+    ($scope,$cookieStore,$timeout,$rootScope,Product) ->
       $scope.currentVote = 0
-      $scope.isActive=false
+      $scope.isActive = false
       $scope.setVote = (number)->
-        $scope.currentVote=number
-        $scope.isActive=true
-        $scope.product.currentVote=number
-      $scope.sendVote=(product)->
-        arrIsVoted=[]
+        $scope.currentVote = number
+        $scope.isActive = true
+        $scope.product.currentVote = number
+      $scope.sendVote = (product)->
+        arrIsVoted = []
         if $cookieStore.get('vote')
-          arrIsVoted=angular.fromJson($cookieStore.get('vote'))
+          arrIsVoted = angular.fromJson($cookieStore.get('vote'))
         if _.indexOf(arrIsVoted,$scope.product.id) == -1
           arrIsVoted.push $scope.product.id
           $cookieStore.put('vote',angular.toJson(arrIsVoted))
           $scope.product.vote_counts++
-          $scope.product.isVoted=true
-          $scope.product.vote=parseFloat(($scope.product.vote*($scope.product.vote_counts-1))+parseFloat($scope.currentVote))/$scope.product.vote_counts
+          $scope.product.isVoted = true
+          $scope.product.vote = parseFloat((parseFloat($scope.product.vote) * ($scope.product.vote_counts - 1)) + parseFloat($scope.currentVote)) / $scope.product.vote_counts
           product.task = "vote"
-          new Product(product).$update()
+          $timeout(->
+            $rootScope.$broadcast 'popup',
+              data : {}
+              msg : {}
+              isOpened : false
+          ,700)
+#          new Product(product).$update()
   ]

@@ -26,7 +26,7 @@
               <li><a href="tel:8-495-456-7878">8 (495) 456 78 78</a></li>
               <li><a href="" ng-click="openPopup('recall',{})">Перезвоните мне</a></li>
             </ul>
-          </header><a href="./cart.html" ng-class="{'rubberBand':animated == true}" class="fixed-cart animated"><span class="count">12</span></a>
+          </header><a href="./cart.html" ng-class="{'rubberBand':animated == true}" ng-init="count=6" class="fixed-cart animated"><span ng-bind="count" class="count"></span></a>
       <main class="main">
         <div class="container">
               <header class="header-content">
@@ -39,50 +39,29 @@
                   </form>
                 </div>
                 <div flip3d class="cart style"><a href=""><span>Корзина (</span><span>2</span>)</a>
-                  <div class="mini-cart-content">
-                    <div class="wrapper-scroller mini-cart-slider">
-                      <ul class="switcher">
+                  <div ng-controller="MiniCart" class="mini-cart-content">
+                    <div ng-init="products=[{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Босоножки betsy&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/1.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:1999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Туфли MANGO&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/2.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:2999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Сапоги incity&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/3.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:3999,&quot;link&quot;:&quot;./product-details.html&quot;}]" class="wrapper-scroller mini-cart-slider">
+                      <ul ng-show="products.length&gt;2" class="switcher">
                         <li><a href="" class="prev"></a></li>
                         <li><a href="" class="next"></a></li>
                       </ul>
-                      <scroller item-width="87" count-slides="3" direction="scrollTop" class="scroller scroller-y is-draggable">
-                        <ul>
-                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
+                      <scroller ng-class="{'small-height':products.length&lt;2}" item-width="87" count-slides="3" direction="scrollTop" class="scroller scroller-y is-draggable">
+                        <ul ng-if="products.length">
+                          <li ng-repeat="product in products"><a ng-href="{{product.link}}" class="wrapper-img"><img ng-src="{{product.file_url}}"></a>
                             <div class="wrapper-title">
-                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО”</a></h1>
+                              <h1 class="title"><a ng-href="{{product.link}}" ng-bind="product.product_name"></a></h1>
                             </div>
                             <div class="wrapper-size">
-                              <p class="size"><span>39</span></p>
+                              <p class="size"><span ng-bind="product.size"></span></p>
                             </div>
                             <div class="wrapper-price">
-                              <p class="price"><span>3 999 руб.</span></p>
+                              <p class="price"><span><span ng-bind="product.product_price|splitSpace">3 999</span><span>руб.</span></span></p>
                             </div>
-                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
+                            <div class="wrapper-delete"><a href="" ng-click="delete(product)" class="delete"></a></div>
                           </li>
-                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
-                            <div class="wrapper-title">
-                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО” 2</a></h1>
-                            </div>
-                            <div class="wrapper-size">
-                              <p class="size"><span>39</span></p>
-                            </div>
-                            <div class="wrapper-price">
-                              <p class="price"><span>3 999 руб.</span></p>
-                            </div>
-                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
-                          </li>
-                          <li><a href="./product-details.html" class="wrapper-img"><img src="./images/small-cart/1.png" width="45" height="38"></a>
-                            <div class="wrapper-title">
-                              <h1 class="title"><a href="./product-details.html">Туфли “МАНГО” 3</a></h1>
-                            </div>
-                            <div class="wrapper-size">
-                              <p class="size"><span>39</span></p>
-                            </div>
-                            <div class="wrapper-price">
-                              <p class="price"><span>3 999 руб.</span></p>
-                            </div>
-                            <div class="wrapper-delete"><a href="" class="delete"></a></div>
-                          </li>
+                        </ul>
+                        <ul ng-if="!products.length" class="empty">
+                          <li><span>В корзине нет товаров</span></li>
                         </ul>
                       </scroller>
                     </div>
@@ -90,11 +69,11 @@
                       <div class="close-small-cart">
                         <div class="fa fa-close"></div>
                       </div>
-                      <div><span>Итого:</span><span> 3 999</span><span>руб.</span></div><a href="./cart.html" class="issue">Оформить</a>
+                      <div ng-if="products.length"><span>Итого:</span><span ng-bind="resultSum(products)|splitSpace"></span><span> руб.</span></div><a ng-if="products.length" href="./cart.html" class="issue">Оформить</a>
                     </footer>
                   </div>
                 </div>
-                <div class="authentificition style"><a href="" ng-click="openPopup('enter',{})">Вход</a><a href="" hidden>Иван (<span>выйти</span>)</a></div>
+                <div class="authentificition style"><a href="" ng-click="openPopup('enter',{})">Вход</a><a hidden href="./private-office.html">Иван (<span>выйти</span>)</a></div>
                 <ul>
                   <li><a href="./"><img src="./images/logo.png" width="42" height="42"></a></li>
                   <li><a href="./category.html">Для женщин</a><span></span>
@@ -332,15 +311,9 @@
             </div>
             <h3>Наши контакты</h3>
             <h2 class="default-sub-title">Lorem ipsum dolor sit amet enim. Etiam ullamcorp uspendisse a pellentesque. li klimov</h2>
-            <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php';setCountSelects(1)" class="form-validate">
-              <div ng-class="{'open':zIndex[0]==true}" class="select-block">
-                <!-- setSelect({name:"name_select"","placeholder":{"value":"", "text":"Город"}})-->
-                <!-- name_select -любое имя cелекта латиницей-->
-                <!-- "placeholder" - информация в выбранныя в селекте при загрузке, если value ="", то выводиться текст, иначе нужно в placehoder-->
-                <!--  вставить объект который будет выбран при загрузке страницы, например "placeholder":{"value":"1", "text":"Москва"}-->
-                <!-- "options" - перечисляем коллекция всех options ceлекта-->
-                <!-- name в setSelect должен совпадать с input-model="selects['select0']"-->
-                <div multi-select ng-init="setSelect({&quot;name&quot;:&quot;select0&quot;,&quot;placeholder&quot;:{&quot;value&quot;:&quot;&quot;, &quot;text&quot;:&quot;Город&quot;},&quot;options&quot;:[{&quot;value&quot;:&quot;1&quot;,&quot;text&quot;:&quot;Москва&quot;,&quot;src&quot;:&quot;&quot;},{&quot;value&quot;:&quot;2&quot;,&quot;text&quot;:&quot;Санкт-Петербург&quot;,&quot;src&quot;:&quot;&quot;}]})" on-open="fOpen(0)" on-close="fClose(0)" input-model="selects['select0']" button-label="name" item-label="name maker" tick-property="ticked" selection-mode="single" helper-elements=""></div>
+            <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'" class="form-validate">
+              <div ng-init="dataForm.theme=[{&quot;name&quot;:&quot;theme1&quot;,&quot;maker&quot; : &quot;Вопрос&quot;,ticked : true},{&quot;name&quot;:&quot;theme2&quot;,&quot;maker&quot; : &quot;Вопрос2&quot;,ticked : false},{&quot;name&quot;:&quot;theme3&quot;,&quot;maker&quot; : &quot;Вопрос3&quot;,ticked : false}]" class="select-block">
+                <div isteven-multi-select input-model="dataForm.theme" output-model="dataForm.themeSelected" button-label="maker" item-label="maker" tick-property="ticked" disable-property="disabled" selection-mode="single" helper-elements></div>
               </div>
               <div class="small">
                 <label for="name">Имя</label>
@@ -356,7 +329,7 @@
               </div>
               <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;contacts&quot;" ng-model="dataForm.hidden.task">
               <div class="wrapper-send">
-                <button ng-click="send(dataForm,formValidate,action)" class="send">Отправить</button>
+                <button ng-click="send(dataForm,formValidate,&quot;contacts&quot;,action)" class="send">Отправить</button>
               </div>
             </form>
           </section>
@@ -478,7 +451,7 @@
               <div>
                 <label>Повторить пароль</label>
                 <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
-                <input type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" required>
+                <input type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" match="dataForm.data.pwd" required>
               </div>
               <div class="wrapper-send">
                 <button ng-click="send(dataForm,formValidate,action,&quot;auth-reg&quot;)" class="send">Зарегистрироваться</button>
@@ -513,7 +486,7 @@
     </popup-svg>
     <!-- popup-->
     <popup-svg name="recall" class="hide-block">
-      <section class="vote-block">
+      <section class="vote-block recall-popup-block">
         <h1 class="title-form">Перезвоните мне</h1>
         <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'" class="form-validate">
           <div>
@@ -543,8 +516,8 @@
         </div>
       </div>
     </div>
-    <!--script(src="bundle.js" async)-->
-    <script src="http://localhost:8080/webpack-dev-server.js"></script>
-    <script src="http://localhost:8080/bundle.js"></script>
+    <script src="bundle.js" async></script>
+    <!--script(src="http://localhost:8080/webpack-dev-server.js")-->
+    <!--script(src="http://localhost:8080/bundle.js")-->
   </body>
 </html>

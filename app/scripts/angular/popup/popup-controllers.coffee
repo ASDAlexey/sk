@@ -10,4 +10,7 @@ module.exports = (angular)->
           data : data
           msg : msg
           isOpened : true
+      $scope.$on 'cart:changed',(event,response) ->
+        $scope.count = _.sum response.data.products,(product) ->
+          parseInt(product.quantity)
   ]
