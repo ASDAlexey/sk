@@ -1,8 +1,8 @@
 module.exports = (angular)->
 
-#  require('./preloader/preloader.coffee')(angular)
+  require('./preloader/preloader.coffee')(angular)
   require('./form/form.coffee')(angular)
-  #  require('./svg/svg.coffee')(angular)
+  require('./svg/svg.coffee')(angular)
   require('./aside/aside.coffee')(angular)
   require('./animate/animate.coffee')(angular)
   require('./popup/popup.coffee')(angular)
@@ -14,16 +14,15 @@ module.exports = (angular)->
     'ui.mask'
     'validation.match'
     "isteven-multi-select"
-#    'multi-select'
-#    'angularRangeSlider'
     'angularAwesomeSlider'
     'App.animate'
-#    'App.preloader'
+    'App.preloader'
     'App.form'
     'App.aside'
     'App.popup'
     'App.drag'
     'App.product'
+    'App.svg'
   ])
   app.run(($timeout,$rootScope)->
     $timeout(->

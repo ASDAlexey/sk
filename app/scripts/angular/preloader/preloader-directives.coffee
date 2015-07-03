@@ -44,6 +44,9 @@ module.exports = (angular)->
             manifest.push(newSrc)
         persentLast = 0
         persent = 0
+        $timeout(->
+          document.documentElement.style.opacity = 1
+        ,1000)
         handleProgress = (event) ->
           if persent
             persentLast = persent
@@ -60,9 +63,9 @@ module.exports = (angular)->
                 $document[0].getElementById("persent-loaded").innerHTML = @target.d
           ,500)
         hidePreloader = ()->
-          angular.element($document[0].querySelector('.svg-container')).addClass('page-is-loaded')
+          angular.element($document[0].querySelector('.svg-container-block')).addClass('page-is-loaded')
           $timeout(->
-            angular.element($document[0].querySelector('.svg-container')).remove()
+            angular.element($document[0].querySelector('.svg-container-block')).remove()
           ,1200)
         handleComplete = (event) ->
           $timeout(->
@@ -93,29 +96,116 @@ module.exports = (angular)->
     ($timeout,$window)->
       restrict : "A"
       link : (scope,element,attrs) ->
-        container = document.getElementById('container')
-        TweenMax.set ['#preloader-svg'],
-          position : 'absolute'
-          top : '50%'
-          left : '50%'
-#          xPercent : -43
-#          yPercent : -45
-          xPercent : -50
+        boxContainer = document.getElementById('boxContainer');
+        boxLoader = document.getElementById('boxLoader');
+        box = document.getElementById('box');
+        base = document.getElementById('base');
+        TweenMax.set([boxLoader,base],{
+          position : 'absolute',
+          top : '50%',
+          left : '50%',
+          xPercent : -50,
           yPercent : -50
-        TweenMax.set [container],
-          position : 'absolute'
-          top : '50%'
-          left : '50%'
-          xPercent : -50
+        })
+
+        TweenMax.set([boxContainer],{
+          position : 'absolute',
+          top : '50%',
+          left : '50%',
+          xPercent : -50,
           yPercent : -50
-        tl = new TimelineMax(repeat : -1)
-        tl.set('#outline',drawSVG : '0% 0%').to('#outline',0.2,
-          drawSVG : '11% 25%'
-          ease : Linear.easeNone).to('#outline',0.5,
-          drawSVG : '35% 70%'
-          ease : Linear.easeNone).to '#outline',0.9,
-          drawSVG : '99% 100%'
-          ease : Linear.easeNone
+        })
+
+        tl = new TimelineMax({
+          repeat : -1
+        });
+
+        tl.timeScale(1.2)
+
+        tl.set(boxLoader,{
+          transformOrigin : '0% 100%',
+          left : '+=70',
+          top : '-=' + 70 / 2
+        })
+        .to(boxLoader,1,{
+            rotation : '-=90',
+            ease : Power4.easeInOut
+          })
+        .set(boxLoader,{
+            transformOrigin : '0% 100%',
+            left : '-=70',
+            rotation : 0
+          })
+        .to(boxLoader,1,{
+            rotation : '-=90',
+            ease : Power4.easeInOut
+          })
+        .set(boxLoader,{
+            transformOrigin : '0% 100%',
+            left : '-=70',
+            rotation : 0
+          })
+        .to(boxLoader,1,{
+            rotation : '-=270',
+            ease : Power4.easeInOut
+          })
+        .to(boxContainer,1,{
+            rotation : '+=180',
+            ease : Back.easeInOut
+          },'-=1')
+        .set(boxLoader,{
+            transformOrigin : '100% 0%',
+            top : '+=70',
+            rotation : 0
+          })
+        .to(boxLoader,1,{
+            rotation : '-=90',
+            ease : Power4.easeInOut
+          })
+        .set(boxLoader,{
+            transformOrigin : '100% 0%',
+            left : '+=70',
+            rotation : 0
+          })
+        .to(boxLoader,1,{
+            rotation : '-=90',
+            ease : Power4.easeInOut
+          })
+        .set(boxLoader,{
+            transformOrigin : '100% 0%',
+            left : '+=70',
+            rotation : 0
+          })
+        .to(boxLoader,1,{
+            rotation : '-=270',
+            ease : Power4.easeInOut
+          })
+        .to(boxContainer,1,{
+            rotation : '+=180',
+            ease : Back.easeInOut
+          },'-=1')
+#        container = document.getElementById('container')
+#        TweenMax.set ['#preloader-svg'],
+#          position : 'absolute'
+#          top : '50%'
+#          left : '50%'
+#          xPercent : -50
+#          yPercent : -50
+#        TweenMax.set [container],
+#          position : 'absolute'
+#          top : '50%'
+#          left : '50%'
+#          xPercent : -50
+#          yPercent : -50
+#        tl = new TimelineMax(repeat : -1)
+#        tl.set('#outline',drawSVG : '0% 0%').to('#outline',0.2,
+#          drawSVG : '11% 25%'
+#          ease : Linear.easeNone).to('#outline',0.5,
+#          drawSVG : '35% 70%'
+#          ease : Linear.easeNone).to '#outline',0.9,
+#          drawSVG : '99% 100%'
+#          ease : Linear.easeNone
+
 #        container = document.getElementById('container-preloader')
 #        drop = document.getElementById('drop')
 #        drop2 = document.getElementById('drop2')

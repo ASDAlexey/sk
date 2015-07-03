@@ -1,24 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html style="opacity:0">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=1246, user-scalable=0">
+    <meta name="viewport" content="width=1246">
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="Description">
     <meta name="keywords" content="Keywords">
     <title>Магазин обуви</title>
     <link rel="icon" type="image/png" href="./images/favicon.png">
-    <script src="./scripts/vendors/loadCSS.js"></script>
-    <script>
-      var stylesheet=loadCSS("./styles/application.css");
-      onloadCSS(stylesheet,function(){
-          setTimeout(function(){
-              document.body.style.opacity=1;
-          },700)
-      });
-    </script>
   </head>
-  <body pointer-events-scroll ng-controller="PopupCtrl" style="opacity:0">
+  <body pointer-events-scroll ng-controller="PopupCtrl">
     <div class="wrapper dNtoLoad">
           <header class="header">
             <ul class="header-list">
@@ -304,7 +295,7 @@
             <div ng-controller="ProductCtrl" class="wrapper-columns product-details">
               <aside class="aside">
                 <div ng-controller="ScrollerCtrl" class="wrapper-scroller product-scroller">
-                  <scroller item-width="778" count-slides="1" direction="scrollLeft" class="scroller is-draggable">
+                  <scroller item-width="778" count-slides="4" direction="scrollLeft" class="scroller is-draggable">
                     <!-- .one - если слайд всего 1-->
                     <div class="content-scroller">
                       <div><img src="./images/product-details/1.jpg"></div>
@@ -321,7 +312,7 @@
                     <li><a href="" ng-class="{'active':currentSlide==3}" ng-click="toSlide(3,$event)"><img src="./images/product-details/4.jpg"></a></li>
                   </ul>
                 </div>
-                <div ng-init="product.vote=4.27;product.vote_counts=4;product.id=123" class="wrapper-stars">
+                <div ng-init="product.vote=4.27;product.vote_counts=4;product.id=128" class="wrapper-stars">
                   <div class="stars"><span style="width:{{product.vote|persent}}%"></span></div><span class="count">({{product.vote_counts}}) рейтинг {{product.vote|round2|addZero}}/5.0</span>
                 </div>
                 <!--product.isVoted=false - false стоит если в $cookie 'vote' нет товара c таким id, иначе стоит true-->
@@ -514,13 +505,22 @@
             <div><img src="./images/firm-logo.png" width="195" height="53"></div></a></div>
       </div>
     </footer>
-    <!--#container-preloader.svg-container(preloader='[".wrapper"]' animate-preloader)-->
-    <!--    .progress-->
-    <!--        .text#persent-loaded 0-->
-    <!--        progress-circle-->
-    <!--    svg#preloader-svg(width='100%', height='100%' viewBox="0 0 187.3 93.70")-->
-    <!--        path#outline(style='-webkit-filter:url(#f2)', stroke='#ff3000', fill='none', stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')-->
-    <!--        path#outline-bg(opacity='0.5', fill='none', stroke="#ededed", stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')-->
+    <div id="container-preloader" preloader="[&quot;.wrapper&quot;]" animate-preloader class="svg-container-block">
+      <div class="progress">
+        <div id="persent-loaded" class="text">0</div>
+        <progress-circle></progress-circle>
+      </div>
+      <div class="content">
+        <div id="boxContainer" class="svg-container">
+          <svg id="boxLoader" width="70px" height="70px" viewbox="0 0 35 35" preserveaspectratio="none">
+            <rect x="0" fill="#79bdbe" width="35" height="35"></rect>
+          </svg>
+          <svg id="base" width="210px" height="210px" viewbox="0 0 105 105" preserveaspectratio="none">
+            <line stroke-width="1.5" fill="none" stroke="#dedede" stroke-miterlimit="10" x1="0" y1="52.5" x2="105" y2="52.5"></line>
+          </svg>
+        </div>
+      </div>
+    </div>
     <button move-up class="up fa fa-angle-double-up"></button>
     <!-- popup-->
     <popup-svg name="enter" class="hide-block">
@@ -606,6 +606,12 @@
         </div>
       </div>
     </div>
+    <script src="./scripts/vendors/loadCSS.js"></script>
+    <script>
+      var stylesheet=loadCSS("./styles/application.css");
+      onloadCSS(stylesheet,function(){
+      });
+    </script>
     <script src="bundle.js" async></script>
     <!--script(src="http://localhost:8080/webpack-dev-server.js")-->
     <!--script(src="http://localhost:8080/bundle.js")-->

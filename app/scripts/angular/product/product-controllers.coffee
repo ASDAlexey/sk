@@ -11,17 +11,22 @@ module.exports = (angular)->
         $scope.product.size = size
         $scope.product.task = "product"
         new Product($scope.product).$update().then((data)->
-          $scope.product.list = data.list
-          $scope.product.price = data.price
+          if data.list
+            $scope.product.list = data.list
+          if data.price
+            $scope.product.price = data.price
+          if data.price_old
+            $scope.product.price_old = data.price_old
         )
   ]
   controller.controller "VoteCtrl",[
     "$scope"
     "$cookieStore"
+    "$cookies"
     "$timeout"
     "$rootScope"
     "Product"
-    ($scope,$cookieStore,$timeout,$rootScope,Product) ->
+    ($scope,$cookieStore,$cookies,$timeout,$rootScope,Product) ->
       $scope.currentVote = 0
       $scope.isActive = false
       $scope.setVote = (number)->
@@ -34,7 +39,12 @@ module.exports = (angular)->
           arrIsVoted = angular.fromJson($cookieStore.get('vote'))
         if _.indexOf(arrIsVoted,$scope.product.id) == -1
           arrIsVoted.push $scope.product.id
-          $cookieStore.put('vote',angular.toJson(arrIsVoted))
+          now = new Date()
+          now.setDate(now.getDate() + 7)
+          $cookies.put('vote',arrIsVoted,{
+            expires : now
+          });
+          #          $cookieStore.put('vote',arrIsVoted,{expires : exp})
           $scope.product.vote_counts++
           $scope.product.isVoted = true
           $scope.product.vote = parseFloat((parseFloat($scope.product.vote) * ($scope.product.vote_counts - 1)) + parseFloat($scope.currentVote)) / $scope.product.vote_counts
@@ -45,5 +55,5 @@ module.exports = (angular)->
               msg : {}
               isOpened : false
           ,700)
-#          new Product(product).$update()
+          new Product(product).$update()
   ]

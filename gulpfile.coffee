@@ -16,7 +16,14 @@ stylus = require('gulp-stylus')
 scandir = require('scandir')
 connect = require('gulp-connect')
 gutil = require('gulp-util')
-htmlmin = require('gulp-htmlmin');
+htmlmin = require('gulp-htmlmin')
+purify = require('gulp-purifycss')
+minifyCss = require('gulp-minify-css')
+gulp.task 'purify-css', ->
+  gulp.src('./app/styles/application.css').pipe(purify([
+    './app/bundle.js'
+    './app/*.html'
+  ])).pipe(minifyCss()).pipe gulp.dest('./app/styles/')
 gulp.task 'minifyHTML', ->
   gulp.src('./app/*.html').pipe(htmlmin(collapseWhitespace: true)).pipe gulp.dest('./app/')
 gulp.task 'imagemin',->

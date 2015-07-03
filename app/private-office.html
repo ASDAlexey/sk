@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html style="opacity:0">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1246">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Description">
+    <meta name="keywords" content="Keywords">
+    <title>Магазин обуви</title>
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+  </head>
+  <body pointer-events-scroll ng-controller="PopupCtrl">
+    <div class="wrapper dNtoLoad">
+          <header class="header">
+            <ul class="header-list">
+              <li><a href="./contacts.html">Наши контакты</a></li>
+              <li><a href="tel:8-495-456-7878">8 (495) 456 78 78</a></li>
+              <li><a href="" ng-click="openPopup('recall',{})">Перезвоните мне</a></li>
+            </ul>
+          </header><a href="./cart.html" ng-class="{'rubberBand':animated == true}" ng-init="count=6" class="fixed-cart animated"><span ng-bind="count" class="count"></span></a>
+      <main class="main">
+        <div class="container">
+              <header class="header-content">
+                <div class="search">
+                  <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SearchCtrl" ng-init="action=&quot;index.php?limitstart=0&amp;option=com_virtuemart&amp;view=category&quot;" class="form-validate search">
+                    <button ng-click="send(dataForm,formValidate,action)" ng-class="{'active':isOpenSearch==true}" class="send"><span class="fa fa-search"></span></button>
+                    <div ng-class="{'active':isOpenSearch==true}" class="wrapper-search-block">
+                      <input type="text" name="search" placeholder="Поиск" ng-model="dataForm.search" autocomplete="off" ng-focus="isOpenSearch=true" ng-blur="blurSearch(dataForm.search)">
+                    </div>
+                  </form>
+                </div>
+                <div flip3d class="cart style"><a href=""><span>Корзина (</span><span>2</span>)</a>
+                  <div ng-controller="MiniCart" class="mini-cart-content">
+                    <div ng-init="products=[{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Босоножки betsy&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/1.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:1999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Туфли MANGO&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/2.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:2999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Сапоги incity&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/3.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:3999,&quot;link&quot;:&quot;./product-details.html&quot;}]" class="wrapper-scroller mini-cart-slider">
+                      <ul ng-show="products.length&gt;2" class="switcher">
+                        <li><a href="" class="prev"></a></li>
+                        <li><a href="" class="next"></a></li>
+                      </ul>
+                      <scroller ng-class="{'small-height':products.length&lt;2}" item-width="87" count-slides="3" direction="scrollTop" class="scroller scroller-y is-draggable">
+                        <ul ng-if="products.length">
+                          <li ng-repeat="product in products"><a ng-href="{{product.link}}" class="wrapper-img"><img ng-src="{{product.file_url}}"></a>
+                            <div class="wrapper-title">
+                              <h1 class="title"><a ng-href="{{product.link}}" ng-bind="product.product_name"></a></h1>
+                            </div>
+                            <div class="wrapper-size">
+                              <p class="size"><span ng-bind="product.size"></span></p>
+                            </div>
+                            <div class="wrapper-price">
+                              <p class="price"><span><span ng-bind="product.product_price|splitSpace">3 999</span><span>руб.</span></span></p>
+                            </div>
+                            <div class="wrapper-delete"><a href="" ng-click="delete(product)" class="delete"></a></div>
+                          </li>
+                        </ul>
+                        <ul ng-if="!products.length" class="empty">
+                          <li><span>В корзине нет товаров</span></li>
+                        </ul>
+                      </scroller>
+                    </div>
+                    <footer class="footer-small-cart">
+                      <div class="close-small-cart">
+                        <div class="fa fa-close"></div>
+                      </div>
+                      <div ng-if="products.length"><span>Итого:</span><span ng-bind="resultSum(products)|splitSpace"></span><span> руб.</span></div><a ng-if="products.length" href="./cart.html" class="issue">Оформить</a>
+                    </footer>
+                  </div>
+                </div>
+                <div class="authentificition style"><a href="" ng-click="openPopup('enter',{})">Вход</a><a hidden href="./private-office.html">Иван (<span>выйти</span>)</a></div>
+                <ul>
+                  <li><a href="./"><img src="./images/logo.png" width="42" height="42"></a></li>
+                  <li><a href="./category.html">Для женщин</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">Для мужчин</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">Для детей</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">Акции</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">Распродажа</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="./category.html">О компании</a><span></span>
+                    <div class="sub-menu">
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Балетки</a></li>
+                          <li><a href="./product-details.html">Босоножки</a></li>
+                          <li><a href="./product-details.html">Cандалии</a></li>
+                          <li><a href="./product-details.html">Ботинки</a></li>
+                          <li><a href="./product-details.html">Кеды</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Кроссовки</a></li>
+                          <li><a href="./product-details.html">Мокасины</a></li>
+                          <li><a href="./product-details.html">Пантолеты</a></li>
+                          <li><a href="./product-details.html">Шлепанцы</a></li>
+                          <li><a href="./product-details.html">Полусапожки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Резиновые сапоги</a></li>
+                          <li><a href="./product-details.html">Сабо</a></li>
+                          <li><a href="./product-details.html">Сапоги</a></li>
+                          <li><a href="./product-details.html">Слипоны</a></li>
+                          <li><a href="./product-details.html">Тапочки</a></li>
+                        </ul>
+                      </div>
+                      <div>
+                        <ul>
+                          <li><a href="./product-details.html">Туфли</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </header>
+          <ul class="breadcrumbs">
+            <li><a href="./">Главная</a></li>
+            <li><a href="./">Для женщин</a></li>
+            <li><a href="./">Босоножки</a></li>
+            <li><span>Betsy</span></li>
+          </ul>
+          <section>
+            <h1 class="default-title private">Здравствуйте, Иван Это ваш личный кабинет</h1>
+            <h2 class="default-sub-title">Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat.</h2>
+            <ul class="private-office-links">
+              <li><a href="private-office-history.html">История заказов</a></li>
+              <li><a href="private-office-edit.html">Редактировать аккаунт</a></li>
+            </ul>
+            <section class="subscribe private">
+              <div class="container">
+                <h1 class="default-title">Подпишитесь на обновления</h1>
+                <p>Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat.</p>
+                <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="SubscribeCtrl" ng-init="action=&quot;./controller.php&quot;" class="form-validate subscribe-form">
+                  <div>
+                    <input type="email" name="subscribe" placeholder="Ваш email" ng-model="dataForm.data.subscribe" autocomplete="off" required>
+                  </div>
+                  <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;subscribe&quot;" ng-model="dataForm.hidden.task">
+                  <button ng-click="send(dataForm,formValidate,action)" class="send">Ок</button>
+                </form>
+              </div>
+            </section>
+          </section>
+        </div>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div>
+            <h1 class="title">Коллекции</h1>
+            <ul>
+              <li><a href="./category.html">Женская обувь (1725)</a></li>
+              <li><a href="./category.html">Мужская обувь (635)</a></li>
+              <li><a href="./category.html">Детская обувь (2514)</a></li>
+              <li><a href="./category.html">Распродажа (76)</a></li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="title">Полезные ссылки</h1>
+            <ul>
+              <li><a href="./category.html">Женская обувь (1725)</a></li>
+              <li><a href="./category.html">Мужская обувь (635)</a></li>
+              <li><a href="./category.html">Детская обувь (2514)</a></li>
+              <li><a href="./category.html">Распродажа (76)</a></li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="title">Магазин</h1>
+            <ul>
+              <li><a href="./category.html">Женская обувь (1725)</a></li>
+              <li><a href="./category.html">Мужская обувь (635)</a></li>
+              <li><a href="./category.html">Детская обувь (2514)</a></li>
+              <li><a href="./category.html">Распродажа (76)</a></li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="title">Социальные сети</h1>
+            <p>2015 © All rights reserved. S.Klimov</p>
+            <ul class="social">
+              <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span><span>twitter</span></a></li>
+              <li><a href="https://ru-ru.facebook.com/"><span class="fa fa-facebook"></span><span>facebook</span></a></li>
+              <li><a href="http://instagram.com/"><span class="fa fa-instagram"></span><span>instagram</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-bottom"><a href="http://tutmee.ru" class="firm-logo">
+            <div><span>&Scy;&ocy;&zcy;&dcy;&acy;&ncy;&icy;&iecy; &dcy;&icy;&zcy;&acy;&jcy;&ncy;&acy;</span><span>&icy; &rcy;&acy;&zcy;&rcy;&acy;&bcy;&ocy;&tcy;&kcy;&acy; &scy;&acy;&jcy;&tcy;&ocy;&vcy;</span><span>LTD Tutmee.ru</span></div>
+            <div><img src="./images/firm-logo.png" width="195" height="53"></div></a></div>
+      </div>
+    </footer>
+    <div id="container-preloader" preloader="[&quot;.wrapper&quot;]" animate-preloader class="svg-container-block">
+      <div class="progress">
+        <div id="persent-loaded" class="text">0</div>
+        <progress-circle></progress-circle>
+      </div>
+      <div class="content">
+        <div id="boxContainer" class="svg-container">
+          <svg id="boxLoader" width="70px" height="70px" viewbox="0 0 35 35" preserveaspectratio="none">
+            <rect x="0" fill="#79bdbe" width="35" height="35"></rect>
+          </svg>
+          <svg id="base" width="210px" height="210px" viewbox="0 0 105 105" preserveaspectratio="none">
+            <line stroke-width="1.5" fill="none" stroke="#dedede" stroke-miterlimit="10" x1="0" y1="52.5" x2="105" y2="52.5"></line>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <button move-up class="up fa fa-angle-double-up"></button>
+    <!-- popup-->
+    <popup-svg name="enter" class="hide-block">
+      <section class="authentification-block"><img src="./images/popup-logo.jpg" class="logo">
+        <div flipper-x="click" class="flipper">
+          <div class="back">
+            <form id="auth-reg" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='./controller.php'" class="form-validate reg">
+              <h1 class="title-form">Регистрация</h1>
+              <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" ng-model="dataForm.data.email" required>
+              </div>
+              <div>
+                <label>Пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required>
+              </div>
+              <div>
+                <label>Повторить пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" match="dataForm.data.pwd" required>
+              </div>
+              <div class="wrapper-send">
+                <button ng-click="send(dataForm,formValidate,action,&quot;auth-reg&quot;)" class="send">Зарегистрироваться</button>
+              </div>
+              <div class="wrapper-link"><a href="" ng-click="switch('enter')">Вернуться к форме входа</a></div>
+            </form>
+          </div>
+          <div class="front">
+            <form id="auth-enter" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='./controller.php'" class="form-validate">
+              <h1 class="title-form">Войти</h1>
+              <div>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" ng-model="dataForm.data.email" required>
+              </div>
+              <div>
+                <label for="pwd">Пароль</label>
+                <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
+                <input type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required>
+              </div>
+              <input type="hidden" name="task" value="enter">
+              <input type="hidden" name="b8d93ef2c20163ba95c60b46df5d75be" value="1">
+              <div class="wrapper-send">
+                <button ng-click="send(dataForm,formValidate,action,&quot;auth-enter&quot;)" class="send">Авторизоваться</button>
+              </div>
+              <div class="wrapper-link">
+                <p>У меня еще нет аккаунта</p><a href="" ng-click="switch('reg')">Зарегистрироваться</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </popup-svg>
+    <!-- popup-->
+    <popup-svg name="recall" class="hide-block">
+      <section class="vote-block recall-popup-block">
+        <h1 class="title-form">Перезвоните мне</h1>
+        <form name="formValidate" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'" class="form-validate">
+          <div>
+            <label for="name">Имя</label>
+            <input id="name" type="text" name="name" ng-model="dataForm.data.name" autocomplete="off" required>
+          </div>
+          <div>
+            <label for="phone">Телефон</label>
+            <input id="phone" ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model="dataForm.data.phone" autocomplete="off" required>
+          </div>
+          <div>
+            <label for="msg">Сообщение</label>
+            <textarea name="msg" ng-model="dataForm.data.msg" autocomplete="off" required></textarea>
+          </div>
+          <input type="hidden" name="task" ng-init="dataForm.hidden.task=&quot;contacts&quot;" ng-model="dataForm.hidden.task">
+          <div class="wrapper-send">
+            <button ng-click="send(dataForm,formValidate,action)" class="send">Отправить</button>
+          </div>
+        </form>
+      </section>
+    </popup-svg>
+    <div ng-if="formIsValide==true" class="w">
+      <div ng-class="{'load':load==true}" class="wrapper-thank">
+        <div ng-click="hideThank()" rotate class="close"><span></span></div>
+        <div class="wrapper-thank-content">
+          <div class="wrapper-logo"><img src="./images/logo.png"></div><span>Спасибо за заявку!</span><span>В ближайшее время, наш сотрудник, обязательно с Вами свяжется.</span>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/vendors/loadCSS.js"></script>
+    <script>
+      var stylesheet=loadCSS("./styles/application.css");
+      onloadCSS(stylesheet,function(){
+      });
+    </script>
+    <script src="bundle.js" async></script>
+    <!--script(src="http://localhost:8080/webpack-dev-server.js")-->
+    <!--script(src="http://localhost:8080/bundle.js")-->
+  </body>
+</html>

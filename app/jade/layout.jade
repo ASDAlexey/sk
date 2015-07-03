@@ -1,9 +1,9 @@
 doctype html
-html
+html(style="opacity:0")
     head
         include ./includes/head.jade
         include ./includes/mixins.jade
-    body(pointer-events-scroll ng-controller="PopupCtrl" style="opacity:0")
+    body(pointer-events-scroll ng-controller="PopupCtrl")
         .wrapper.dNtoLoad
             +header()
             a(href="./cart.html" ng-class="{'rubberBand':animated == true}" ng-init="count=6").fixed-cart.animated
@@ -73,13 +73,16 @@ html
                             span LTD Tutmee.ru
                         div
                             img(src='./images/firm-logo.png' width="195" height="53")
-        //#container-preloader.svg-container(preloader='[".wrapper"]' animate-preloader)
-        //    .progress
-        //        .text#persent-loaded 0
-        //        progress-circle
-        //    svg#preloader-svg(width='100%', height='100%' viewBox="0 0 187.3 93.70")
-        //        path#outline(style='-webkit-filter:url(#f2)', stroke='#ff3000', fill='none', stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')
-        //        path#outline-bg(opacity='0.5', fill='none', stroke="#ededed", stroke-width='4', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', d='M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z')
+        #container-preloader.svg-container-block(preloader='[".wrapper"]' animate-preloader)
+            .progress
+                .text#persent-loaded 0
+                progress-circle
+            .content
+                #boxContainer.svg-container
+                    svg#boxLoader(width='70px', height='70px', viewbox='0 0 35 35', preserveaspectratio='none')
+                        rect(x='0', fill='#79bdbe', width='35', height='35')
+                    svg#base(width='210px', height='210px', viewbox='0 0 105 105', preserveaspectratio='none')
+                        line(stroke-width='1.5', fill='none', stroke='#dedede', stroke-miterlimit='10', x1='0', y1='52.5', x2='105', y2='52.5')
         button.up.fa.fa-angle-double-up(move-up)
         // popup
         popup-svg(name="enter").hide-block
@@ -142,6 +145,11 @@ html
                     div.wrapper-send
                         button.send(ng-click='send(dataForm,formValidate,action)') Отправить
         include ./includes/thanks.jade
+        script(src='./scripts/vendors/loadCSS.js')
+        script.
+            var stylesheet=loadCSS("./styles/application.css");
+            onloadCSS(stylesheet,function(){
+            });
         script(src="bundle.js" async)
         //script(src="http://localhost:8080/webpack-dev-server.js")
         //script(src="http://localhost:8080/bundle.js")

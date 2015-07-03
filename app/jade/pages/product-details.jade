@@ -14,7 +14,7 @@ block content
         .wrapper-columns.product-details(ng-controller="ProductCtrl")
             aside.aside
                 .wrapper-scroller.product-scroller(ng-controller="ScrollerCtrl")
-                    scroller.scroller.is-draggable(item-width="778" count-slides="1" direction="scrollLeft")
+                    scroller.scroller.is-draggable(item-width="778" count-slides="4" direction="scrollLeft")
                         // .one - если слайд всего 1
                         .content-scroller
                             div
@@ -33,7 +33,7 @@ block content
                                 a(href="" ng-class="{'active':currentSlide==#{i}}" ng-click="toSlide(#{i},$event)")
                                     img(src="./images/product-details/#{i+1}.jpg")
                             -i++
-                .wrapper-stars(ng-init="product.vote=4.27;product.vote_counts=4;product.id=123")
+                .wrapper-stars(ng-init="product.vote=4.27;product.vote_counts=4;product.id=128")
                     .stars
                         span(style='width:{{product.vote|persent}}%')
                     span.count ({{product.vote_counts}}) рейтинг {{product.vote|round2|addZero}}/5.0

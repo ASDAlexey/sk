@@ -219,7 +219,7 @@ module.exports = (angular,$)->
     "$timeout"
     "Product"
     ($scope,$http,$rootScope,$timeout,Product) ->
-#calc cart
+      #calc cart
       $scope.changeQuantity = (product,direction)->
         if direction is 'increment'
           product.quantity++
