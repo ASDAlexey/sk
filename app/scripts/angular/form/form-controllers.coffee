@@ -15,14 +15,25 @@ module.exports = (angular,$)->
   controller.controller "MiniCart",[
     "$scope"
     "$rootScope"
-    ($scope,$rootScope) ->
+    "ProductCart"
+    "$http"
+    ($scope,$rootScope,ProductCart,$http) ->
       $scope.$on 'cart:changed',(event,response) ->
-        $scope.products = response.data.products
+        if response.data.length
+          $scope.products = response.data
       $scope.delete = (product)->
+        product.task = "cartDelete"
+        ProductCart.delete(product)
+        $scope.products = _.without($scope.products,product)
         $rootScope.$broadcast('product:delete',
           data : product
+          products : $scope.products
+          name : 'minicart'
+          productsQ : _.sum $scope.products,(productEl) ->
+            parseInt(productEl.quantity)
         )
-        $scope.products = _.without($scope.products,product)
+      $scope.setProductsArr = (arr)->
+        $scope.products = arr
       $scope.resultSum = (products)->
         _.sum products,(product) ->
           parseInt(product.quantity) * parseFloat(product.product_price)
@@ -166,6 +177,9 @@ module.exports = (angular,$)->
     "$window"
     "$document"
     ($scope,$http,$rootScope,$timeout,$window,$document) ->
+      $scope.resultSum = (products)->
+        _.sum products,(product) ->
+          parseInt(product.quantity) * parseFloat(product.product_price)
       $scope.form_set_pristine = (form) ->
         if form.$setPristine
           form.$setPristine()
@@ -217,19 +231,30 @@ module.exports = (angular,$)->
     "$http"
     "$rootScope"
     "$timeout"
-    "Product"
-    ($scope,$http,$rootScope,$timeout,Product) ->
-      #calc cart
+    "ProductCart"
+    ($scope,$http,$rootScope,$timeout,ProductCart) ->
+#calc cart
       $scope.changeQuantity = (product,direction)->
+        product.task = 'cartUpdate'
         if direction is 'increment'
           product.quantity++
+          ProductCart.update({task : 'cartUpdate',quantity : product.quantity,virtuemart_product_id : product.virtuemart_product_id},product)
         if direction is 'decrement' and product.quantity > 1
           product.quantity--
-      $scope.delete = (product)->
+          ProductCart.update({task : 'cartUpdate',quantity : product.quantity,virtuemart_product_id : product.virtuemart_product_id},product)
+        $rootScope.$broadcast('cart:changed',
+          data : $scope.cart.products
+        )
+      $scope.delete = (product,name = '')->
         $scope.cart.products = _.without($scope.cart.products,product)
-        new Product(product).$update()
+        unless name is 'minicart'
+          product.task = "cartDelete"
+          ProductCart.delete(product)
+          $rootScope.$broadcast('cart:changed',
+            data : $scope.cart.products
+          )
       $scope.$on 'product:delete',(event,response) ->
-        $scope.delete(response.data)
+        $scope.cart.products = response.products
       $scope.resultSum = (products)->
         _.sum products,(product) ->
           parseInt(product.quantity) * parseFloat(product.product_price)
@@ -273,10 +298,21 @@ module.exports = (angular,$)->
         ).then(->
           $scope.clear(formValidate)
         )
-      $scope.$watch 'cart',((newVal,oldVal) ->
-        if !angular.equals(newVal,oldVal)
-          $rootScope.$broadcast('cart:changed',
-            data : newVal
-          )
-      ),true
+#      $scope.$watch 'cart.products',((newVal,oldVal) ->
+#        if !angular.equals(newVal,oldVal)
+#          console.log(newVal)
+#          #          if _.isObject(newVal)
+#          #            console.log(newVal)
+#          #            arr = []
+#          #            angular.forEach newVal,(el,key) ->
+#          #              console.log('ssss')
+#          #              console.log(el)
+#          #              if el
+#          #                arr.push el[0]
+#          #            console.log('////')
+#          #            console.log(_.compact(arr))
+#          $rootScope.$broadcast('cart:changed',
+#            data : newVal
+#          )
+#      ),true
   ]

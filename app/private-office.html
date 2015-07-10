@@ -29,7 +29,7 @@
                     </div>
                   </form>
                 </div>
-                <div flip3d class="cart style"><a href=""><span>Корзина (</span><span>2</span>)</a>
+                <div flip3d class="cart style"><a href=""><span>Корзина (</span><span ng-bind="count">2</span>)</a>
                   <div ng-controller="MiniCart" class="mini-cart-content">
                     <div ng-init="products=[{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Босоножки betsy&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/1.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:1999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Туфли MANGO&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/2.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:2999,&quot;link&quot;:&quot;./product-details.html&quot;},{&quot;virtuemart_product_id&quot;:1,&quot;product_name&quot;:&quot;Сапоги incity&quot;,&quot;product_sku&quot;:&quot;567890&quot;,&quot;file_url&quot;:&quot;./images/cart/3.jpg&quot;,&quot;size&quot;:&quot;39&quot;,&quot;quantity&quot;:2,&quot;product_price&quot;:3999,&quot;link&quot;:&quot;./product-details.html&quot;}]" class="wrapper-scroller mini-cart-slider">
                       <ul ng-show="products.length&gt;2" class="switcher">
@@ -41,6 +41,9 @@
                           <li ng-repeat="product in products"><a ng-href="{{product.link}}" class="wrapper-img"><img ng-src="{{product.file_url}}"></a>
                             <div class="wrapper-title">
                               <h1 class="title"><a ng-href="{{product.link}}" ng-bind="product.product_name"></a></h1>
+                            </div>
+                            <div class="wrapper-size">
+                              <p class="size"><span ng-bind="product.quantity"></span></p>
                             </div>
                             <div class="wrapper-size">
                               <p class="size"><span ng-bind="product.size"></span></p>
@@ -466,11 +469,10 @@
     <script src="./scripts/vendors/loadCSS.js"></script>
     <script>
       var stylesheet=loadCSS("./styles/application.css");
-      onloadCSS(stylesheet,function(){
-      });
+      onloadCSS(stylesheet,function(){});
     </script>
-    <script src="bundle.js" async></script>
-    <!--script(src="http://localhost:8080/webpack-dev-server.js")-->
-    <!--script(src="http://localhost:8080/bundle.js")-->
+    <!--script(src="bundle.js" async)-->
+    <script src="http://localhost:8080/webpack-dev-server.js"></script>
+    <script src="http://localhost:8080/bundle.js"></script>
   </body>
 </html>

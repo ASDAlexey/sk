@@ -1,6 +1,18 @@
 div
     form.form-validate(name="formValidate" novalidate ng-controller="FormCtrl" ng-init="action='./controller.php'")
         div.select-block
+            .result-block-form
+                p
+                    strong Итог:
+                    span 3 999 руб.
+                p
+                    strong Доставка:
+                    span(ng-if='dataForm.deliverySelected[0].name!=="delivery2"') 0 руб.
+                    span(ng-if='dataForm.deliverySelected[0].name=="delivery2"') {{dataForm.priceDelivery}} руб.
+                p
+                    strong К оплате:
+                    span(ng-if='dataForm.deliverySelected[0].name!=="delivery2"') {{resultSum(dataForm.products)|splitSpace}} руб.
+                    span(ng-if='dataForm.deliverySelected[0].name=="delivery2"') {{resultSum(dataForm.products)+dataForm.priceDelivery|splitSpace}} руб.
             label Выбор способа оплаты
             div.select-block(ng-init='dataForm.payment.delivery1=[{"icon": "<span class=\'icon-select robokassa\'></span>","name":"payment1","maker" : "Robokassa",ticked : true},{"icon": "<span class=\'icon-select cash\'></span>","name":"payment2","maker" : "Оплата наличными в пункте самовывоза",ticked : false},{"icon": "<span class=\'icon-select credit-card\'></span>","name":"payment3","maker" : "Оплата банковской картой в пункте самовывоза",ticked : false}];dataForm.payment.delivery2=[{"icon": "<span class=\'icon-select robokassa\'></span>","name":"payment1","maker" : "Robokassa",ticked : true},{"icon": "<span class=\'icon-select cash\'></span>","name":"payment3","maker" : "Оплата наличными курьеру",ticked : false},{"icon": "<span class=\'icon-select credit-card\'></span>","name":"payment3","maker" : "Оплата банковской картой курьеру",ticked : false}];dataForm.payment.delivery3=[{"icon": "<span class=\'icon-select robokassa\'></span>","name":"payment1","maker" : "Robokassa",ticked : true}]')
                 div(isteven-multi-select

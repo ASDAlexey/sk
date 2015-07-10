@@ -44,9 +44,10 @@ module.exports = (angular)->
             manifest.push(newSrc)
         persentLast = 0
         persent = 0
+        if $document[0].documentElement.classList.contains('ua-ie') then time=2000 else time=1000
         $timeout(->
-          document.documentElement.style.opacity = 1
-        ,1000)
+          $document[0].documentElement.style.opacity = 1
+        ,time)
         handleProgress = (event) ->
           if persent
             persentLast = persent
@@ -96,10 +97,10 @@ module.exports = (angular)->
     ($timeout,$window)->
       restrict : "A"
       link : (scope,element,attrs) ->
-        boxContainer = document.getElementById('boxContainer');
-        boxLoader = document.getElementById('boxLoader');
-        box = document.getElementById('box');
-        base = document.getElementById('base');
+        boxLoader = document.getElementById('boxLoader')
+        boxContainer = document.getElementById('boxContainer')
+        box = document.getElementById('box')
+        base = document.getElementById('base')
         TweenMax.set([boxLoader,base],{
           position : 'absolute',
           top : '50%',
@@ -184,65 +185,4 @@ module.exports = (angular)->
             rotation : '+=180',
             ease : Back.easeInOut
           },'-=1')
-#        container = document.getElementById('container')
-#        TweenMax.set ['#preloader-svg'],
-#          position : 'absolute'
-#          top : '50%'
-#          left : '50%'
-#          xPercent : -50
-#          yPercent : -50
-#        TweenMax.set [container],
-#          position : 'absolute'
-#          top : '50%'
-#          left : '50%'
-#          xPercent : -50
-#          yPercent : -50
-#        tl = new TimelineMax(repeat : -1)
-#        tl.set('#outline',drawSVG : '0% 0%').to('#outline',0.2,
-#          drawSVG : '11% 25%'
-#          ease : Linear.easeNone).to('#outline',0.5,
-#          drawSVG : '35% 70%'
-#          ease : Linear.easeNone).to '#outline',0.9,
-#          drawSVG : '99% 100%'
-#          ease : Linear.easeNone
-
-#        container = document.getElementById('container-preloader')
-#        drop = document.getElementById('drop')
-#        drop2 = document.getElementById('drop2')
-#        outline = document.getElementById('outline')
-#        TweenMax.set [container],
-#          position : 'absolute'
-#          top : '50%'
-#          left : '50%'
-#          xPercent : -50
-#          yPercent : -50
-#        TweenMax.set drop,transformOrigin : '50% 50%'
-#        tl = new TimelineMax(
-#          repeat : -1
-#          paused : false
-#          repeatDelay : 0
-#          immediateRender : false)
-#        tl.timeScale 3
-#        tl.to(drop,4,
-#          attr :
-#            cx : 250
-#            rx : '+=10'
-#            ry : '+=10'
-#          ease : Back.easeInOut.config(3)).to(drop2,4,{
-#            attr :
-#              cx : 250
-#            ease : Power1.easeInOut
-#          },'-=4').to(drop,4,
-#          attr :
-#            cx : 125
-#            rx : '-=10'
-#            ry : '-=10'
-#          ease : Back.easeInOut.config(3))
-#        .to drop2,4,{
-#          attr :
-#            cx : 125
-#            rx : '-=10'
-#            ry : '-=10'
-#          ease : Power1.easeInOut
-#        },'-=4'
   ]

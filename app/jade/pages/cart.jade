@@ -14,7 +14,7 @@ block content
         h1.default-title Ваша корзина
         h2.default-sub-title Резервация товара ограничена
         section.cart(ng-controller="CartCtrl" ng-init="cart.products=#{JSON.stringify(cart)}")
-            table
+            table(ng-init="cart.priceDelivery=350")
                 tr
                     th Товар
                     th Описание

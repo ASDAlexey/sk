@@ -268,3 +268,8 @@
     display:block;
     width:100%;
 }
+.multiSelect .show{
+    max-height:250px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}

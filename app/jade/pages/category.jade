@@ -121,7 +121,7 @@ block content
                     input(type="hidden" value="{{switchers}}")
                     div.wrapper-buttons
                         button(href="product-details.html") Отправить
-                        a(href="product-details.html") Сбросить все
+                        a(ng-click="reset(switchers)") Сбросить все
             section.wrapper-list-products
                 div.sorting
                     h2 Сортировать по:
@@ -131,7 +131,7 @@ block content
                         li
                             a.active.arrow-down(href="") цене
                         li
-                            a(href="") рейтингу
+                            a.arrow-down(href="") рейтингу
                 ul.list-products(itemscope itemtype="http://schema.org/Product")
                     -var i=0;
                     while i<12

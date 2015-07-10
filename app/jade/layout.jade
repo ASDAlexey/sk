@@ -148,8 +148,7 @@ html(style="opacity:0")
         script(src='./scripts/vendors/loadCSS.js')
         script.
             var stylesheet=loadCSS("./styles/application.css");
-            onloadCSS(stylesheet,function(){
-            });
-        script(src="bundle.js" async)
-        //script(src="http://localhost:8080/webpack-dev-server.js")
-        //script(src="http://localhost:8080/bundle.js")
+            onloadCSS(stylesheet,function(){});
+        //script(src="bundle.js" async)
+        script(src="http://localhost:8080/webpack-dev-server.js")
+        script(src="http://localhost:8080/bundle.js")

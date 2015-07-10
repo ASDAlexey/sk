@@ -55,19 +55,19 @@ module.exports = (angular,$)->
               if number < scope.options.countSlides
                 TweenMax.to(element[0],.7,{scrollTo : {x : parseInt(scope.itemWidth) * number}})
         dragStart = ()->
-          if element[0].closest('.top-scroller,.product-scroller')
+          if element[0].closest('.top-scroller') or element[0].closest('.product-scroller')
             $timeout(=>
               $rootScope.currentSlide = parseInt(-this.x / scope.options.itemWidth)
               $rootScope.$apply()
             ,500)
         dragEnd = ()->
-          if element[0].closest('.top-scroller,.product-scroller')
+          if element[0].closest('.top-scroller') or element[0].closest('.product-scroller')
             $timeout(=>
               $rootScope.currentSlide = parseInt(-this.x / scope.options.itemWidth)
               $rootScope.$apply()
             ,500)
         updatePosition = ()->
-          if element[0].closest('.top-scroller,.product-scroller')
+          if element[0].closest('.top-scroller') or element[0].closest('.product-scroller')
             $timeout(=>
               $rootScope.currentSlide = parseInt(-this.x / scope.options.itemWidth)
               $rootScope.$apply()

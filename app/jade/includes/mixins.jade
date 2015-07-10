@@ -65,7 +65,7 @@ mixin header-content()
         .cart.style(flip3d)
             a(href="")
                 span Корзина (
-                span 2
+                span(ng-bind="count") 2
                 | )
             .mini-cart-content(ng-controller="MiniCart")
                 .wrapper-scroller.mini-cart-slider(ng-init="products=#{JSON.stringify(cart)}")
@@ -82,6 +82,9 @@ mixin header-content()
                                 .wrapper-title
                                     h1.title
                                         a(ng-href="{{product.link}}" ng-bind="product.product_name")
+                                .wrapper-size
+                                    p.size
+                                        span(ng-bind="product.quantity")
                                 .wrapper-size
                                     p.size
                                         span(ng-bind="product.size")

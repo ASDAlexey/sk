@@ -19,15 +19,34 @@ div
             p(ng-if="dataForm.deliverySelected[0].name=='delivery3'")
                 strong Тариф доставки
                 |  - в зависимости от адреса получателя. Стоимость определяется персонально при общении с менеджером компании.
+        div.s-small.s-mr
+            label(for="lastname") Фамилия
+            input#home(type="text" name="lastname" ng-model='dataForm.data.lastname' autocomplete="off" required)
+        div.s-small.s-mr
+            label(for="firstname") Имя
+            input#housing(type="text" name="firstname" ng-model='dataForm.data.firstname' autocomplete="off" required)
+        div.s-small
+            label(for="middlename") Отчество
+            input#flat(type="text" name="middlename" ng-model='dataForm.data.middlename' autocomplete="off" required)
         div
             label(for="country") СТРАНА
-            input#country(type="text" name="country" ng-model='dataForm.data.country' ng-init="dataForm.data.country='РОССИЯ'" autocomplete="off" required disabled)
+            input#country(type="text" name="country" ng-model='dataForm.data.country' ng-init="dataForm.data.country='РОССИЯ'" required disabled)
         div.small.mr
             label(for="post_index") Почтовый индекс
-            input#post_index(type="text" name="country" ng-model='dataForm.data.post_index' autocomplete="off" required)
+            input#post_index(type="text" name="country" ng-model='dataForm.data.post_index' autocomplete="off"  required)
         div.small
             label(for="region") Область/Край/Регион
-            input#region(type="text" name="region" ng-model='dataForm.data.region' autocomplete="off" required)
+            div.select-block
+                div(isteven-multi-select
+                input-model="dataForm.region"
+                output-model="dataForm.regionSelected"
+                button-label="maker"
+                item-label="maker"
+                tick-property="ticked"
+                disable-property="disabled"
+                selection-mode="single"
+                helper-elements)
+            //input#region(type="text" name="region" ng-model='dataForm.data.region'  required)
         div.small.mr
             label(for="city") Город
             input#city(type="text" name="city" ng-model='dataForm.data.city' autocomplete="off" required)
@@ -39,10 +58,10 @@ div
             input#home(type="text" name="home" ng-model='dataForm.data.home' autocomplete="off" required)
         div.s-small.s-mr
             label(for="housing") Корпус/Строение
-            input#housing(type="text" name="housing" ng-model='dataForm.data.housing' autocomplete="off" required)
+            input#housing(type="text" name="housing" ng-model='dataForm.data.housing')
         div.s-small
             label(for="flat") Квартира
-            input#flat(type="text" name="flat" ng-model='dataForm.data.flat' autocomplete="off" required)
+            input#flat(type="text" name="flat" ng-model='dataForm.data.flat')
         div.small.mr
             label(for="phone") Телефон
             input#phone(ui-mask="+7(999)-999-99-99" type="text" name="phone" ng-model='dataForm.data.phone' autocomplete="off" required)
