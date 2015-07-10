@@ -91,7 +91,7 @@ html(style="opacity:0")
                 .flipper(flipper-x="click")
                     .back
                         form#auth-reg.form-validate.reg(name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl"
-                        ng-init="action='./controller.php'")
+                        ng-init="action='http://sk2.tutmee.ru/'")
                             h1.title-form Регистрация
                             div
                                 label(for="email") E-mail
@@ -104,6 +104,9 @@ html(style="opacity:0")
                                 label Повторить пароль
                                 .show-psw(ng-click="determineType(isPwdShow)")
                                 input(type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" match="dataForm.data.pwd" required)
+                            input(type="hidden" name="option" value="com_users")
+                            input(type="hidden" name="task" value="user.login")
+                            input(type="hidden" name="0e23c40c57a567381354bfedc95271f4" value="1")
                             div.wrapper-send
                                 button.send(ng-click='send(dataForm,formValidate,action,"auth-reg")') Зарегистрироваться
                             div.wrapper-link
@@ -111,7 +114,7 @@ html(style="opacity:0")
                     .front
                         form.form-validate#auth-enter(name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate
                         ng-controller="FormAuthCtrl"
-                        ng-init="action='./controller.php'")
+                        ng-init="action='http://sk2.tutmee.ru/'")
                             h1.title-form Войти
                             div
                                 label(for="email") E-mail
@@ -120,8 +123,9 @@ html(style="opacity:0")
                                 label(for="pwd") Пароль
                                 .show-psw(ng-click="determineType(isPwdShow)")
                                 input(type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required)
-                            input(type="hidden" name="task" value="enter")
-                            input(type="hidden" name="b8d93ef2c20163ba95c60b46df5d75be" value="1")
+                            input(type="hidden" name="option" value="com_users")
+                            input(type="hidden" name="task" value="user.login")
+                            input(type="hidden" name="0e23c40c57a567381354bfedc95271f4" value="1")
                             div.wrapper-send
                                 button.send(ng-click='send(dataForm,formValidate,action,"auth-enter")') Авторизоваться
                             div.wrapper-link

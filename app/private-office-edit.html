@@ -445,7 +445,7 @@
       <section class="authentification-block"><img src="./images/popup-logo.jpg" class="logo">
         <div flipper-x="click" class="flipper">
           <div class="back">
-            <form id="auth-reg" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='./controller.php'" class="form-validate reg">
+            <form id="auth-reg" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='http://sk2.tutmee.ru/'" class="form-validate reg">
               <h1 class="title-form">Регистрация</h1>
               <div>
                 <label for="email">E-mail</label>
@@ -461,6 +461,9 @@
                 <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
                 <input type="{{type}}" name="re_pwd" ng-model="dataForm.data.re_pwd" match="dataForm.data.pwd" required>
               </div>
+              <input type="hidden" name="option" value="com_users">
+              <input type="hidden" name="task" value="user.login">
+              <input type="hidden" name="0e23c40c57a567381354bfedc95271f4" value="1">
               <div class="wrapper-send">
                 <button ng-click="send(dataForm,formValidate,action,&quot;auth-reg&quot;)" class="send">Зарегистрироваться</button>
               </div>
@@ -468,7 +471,7 @@
             </form>
           </div>
           <div class="front">
-            <form id="auth-enter" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='./controller.php'" class="form-validate">
+            <form id="auth-enter" name="formValidate" method="POST" is-valide-border="{{formValidate.$invalid}}" novalidate ng-controller="FormAuthCtrl" ng-init="action='http://sk2.tutmee.ru/'" class="form-validate">
               <h1 class="title-form">Войти</h1>
               <div>
                 <label for="email">E-mail</label>
@@ -479,8 +482,9 @@
                 <div ng-click="determineType(isPwdShow)" class="show-psw"></div>
                 <input type="{{type}}" name="pwd" ng-model="dataForm.data.pwd" required>
               </div>
-              <input type="hidden" name="task" value="enter">
-              <input type="hidden" name="b8d93ef2c20163ba95c60b46df5d75be" value="1">
+              <input type="hidden" name="option" value="com_users">
+              <input type="hidden" name="task" value="user.login">
+              <input type="hidden" name="0e23c40c57a567381354bfedc95271f4" value="1">
               <div class="wrapper-send">
                 <button ng-click="send(dataForm,formValidate,action,&quot;auth-enter&quot;)" class="send">Авторизоваться</button>
               </div>

@@ -35,7 +35,7 @@ module.exports = (angular,$)->
       $scope.setProductsArr = (arr)->
         $scope.products = arr
       $scope.resultSum = (products)->
-        _.sum products,(product) ->
+        sum=_.sum products,(product) ->
           parseInt(product.quantity) * parseFloat(product.product_price)
   ]
   controller.controller "FormAuthCtrl",[

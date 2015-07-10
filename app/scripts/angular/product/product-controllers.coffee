@@ -36,15 +36,14 @@ module.exports = (angular)->
       $scope.sendVote = (product)->
         arrIsVoted = []
         if $cookieStore.get('vote')
-          arrIsVoted = angular.fromJson($cookieStore.get('vote'))
+          arrIsVoted = $cookieStore.get('vote')
         if _.indexOf(arrIsVoted,$scope.product.id) == -1
           arrIsVoted.push $scope.product.id
           now = new Date()
-          now.setDate(now.getDate() + 7)
-          $cookies.put('vote',arrIsVoted,{
+          now.setDate(now.getDate() + 365)
+          $cookies.put('vote',angular.toJson(arrIsVoted),{
             expires : now
           });
-          #          $cookieStore.put('vote',arrIsVoted,{expires : exp})
           $scope.product.vote_counts++
           $scope.product.isVoted = true
           $scope.product.vote = parseFloat((parseFloat($scope.product.vote) * ($scope.product.vote_counts - 1)) + parseFloat($scope.currentVote)) / $scope.product.vote_counts
